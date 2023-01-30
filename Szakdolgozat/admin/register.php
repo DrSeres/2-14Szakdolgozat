@@ -95,6 +95,7 @@ if(isset($_POST['submit'])){
             <input type="password" name="passwordAgain" id="passwordAgain" placeholder="Írd be a jelszót mégegyszer">
         </div>
         <button type="submit" name="submit" id="submit" class="btn">Regisztráció</button>
+        Van fiókja <a href="login.php" style="text-decoration: none; font-size: 1.2rem;"><span style="color: red; padding: 10px;"> Jelentkezzen be!</span></a>
 </form>
 
         

@@ -10,11 +10,11 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    background-clip: border-box;
 }
 .flex-box {
     width: 300px;
     height: 400px;
-    background: linear-gradient(purple, red);
     color: white;
     font-size: 25px;
     text-align: center;
