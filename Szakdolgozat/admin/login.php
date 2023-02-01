@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
         } else if($sor['user_type'] == 'user')
         {
             $_SESSION['user_name'] = $sor['user'];
-            header('Location:../user/user.php');
+            header('Location:../oldal/webshop.html');
         }
     } else {
         $hibak[] = "Nem jó felhasználónév vagy jelszó!";
