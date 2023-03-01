@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Köszönjük megrendelését</h1>
+    <h3 id="rendeles"></h3>
+    <h4 id="total"></h4>
+
+    <h2>A rendelés véglegesítéséhez kérjük adja meg telefonszámát:</h2>
+    <input type="tel" name="tel" id="tel">
+
+ <script>
+window.onload = function(){
+
+   const jsonParsolas = JSON.parse(localStorage.getItem('cuccok'));
+   const jsonResult = jsonParsolas;
+    const result = jsonResult.map(data => {
+            document.getElementById("rendeles").innerHTML+=(
+           '<ul><li>'+data.no +" darab " + data.name + " "+ (data.no * data.price) + '</li></ul>'); 
+      
+              //fizetendő kiszámítása
+    let sum = 0;
+    JSON.parse(localStorage.getItem('cuccok')).map(data => {
+        sum += data.no * data.price;
+    });
+    document.getElementById("total").innerHTML = "Fizetendő összesen " + sum + " Ft";
+});
+  
+
+    let telszam = document.getElementById("tel");
+    //console.log(telszam);
+    telszam.addEventListener('change', (e) =>{
+        const jsonParsolas = JSON.parse(localStorage.getItem('cuccok'));
+        //console.log("Függvényen belüli adat:");
+        //console.log(jsonParsolas);
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "storage.php", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == XMLHttpRequest.DONE){
+               // console.log("Első xhr req");
+                //console.log(xhr.responseText);
+                let ans = jsonParsolas;
+                console.log("küldés előtti áll");
+                console.log(ans);
+                localStorage.setItem("ans", JSON.stringify(ans))
+            }
+        };
+        xhr.send(JSON.stringify(jsonParsolas));
+        window.location.href= "storage.php"
+    })
+
+
+}
+
+function telszam(){
+    //document.write("Üzenete elküldésre került")
+}
+
+
+ </script>
+</body>
+</html>

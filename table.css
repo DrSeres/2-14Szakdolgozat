@@ -1,0 +1,21 @@
+table {
+    width: 50%;
+    margin: auto;
+  }
+  
+
+  
+  tr:nth-child(even) {
+    background-color: #D6EEEE;
+  }
+  img {
+      float: left;
+      width: 20px;
+      height: 20px;
+    padding-right: 10px;    
+  }
+  th
+  {
+      text-align: justify;
+      padding: 20px;
+  }
