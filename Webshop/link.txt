@@ -1,1 +1,6 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+ https://stackoverflow.com/questions/44102855/remove-class-using-javascript-inside-of-php
+ https://stackoverflow.com/questions/20728839/get-element-by-classname-with-domdocument-method
+ https://stackoverflow.com/questions/2108663/in-php-how-to-remove-specific-class-from-html-tag
