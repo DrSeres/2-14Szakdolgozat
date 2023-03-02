@@ -156,7 +156,7 @@ input {
     width: calc(100% - 58%);
     height: 100%;
     color: #fff;
-    /* backdrop-filter: blur(10px); */
+    backdrop-filter: blur(6px);
 }
 
 .login-section .form-box{

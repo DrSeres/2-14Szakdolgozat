@@ -3,17 +3,7 @@
 require('kapcsolat.php');
 
 session_start();
-// if (!isset($_SESSION['user_name']) || !isset($_SESSION['admin_name'])) {
-//   header('location:foBejelentkezes.php');
-//   session_unset();
-//   session_destroy();
-//   exit();
-// }
 
-// echo "<pre>";
-// print_r($_SESSION);
-// echo "</pre>";
-  
 ?>
 <!DOCTYPE html>
 <html lang="en">

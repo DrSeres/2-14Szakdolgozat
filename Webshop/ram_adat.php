@@ -76,9 +76,17 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
                 
             </ul>
         </nav>
-        <div class="kosaricon">
-            <p>0</p> <i class="fa fa-shopping-cart"></i>
-        </div>
+        <?php 
+        
+        if(isset($_SESSION['user_type'])){
+            if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
+                echo  '<div class="kosaricon">
+                    <p>0</p> <i class="fa fa-shopping-cart"></i>
+                </div>';
+            }
+        }
+        
+        ?>
         </header>
 <!-- 
         <p>Magok száma: {$sor['kapacitas']}</p>

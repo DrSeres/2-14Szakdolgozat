@@ -111,7 +111,7 @@ session_start();
     </div>
     <!-- SIGN UP FORM CREATION -->
 
-    <script src="js/FoBejelentkezes.js"></script>
+    <script src="../js/FoBejelentkezes.js"></script>
 </body>
 
 </html>

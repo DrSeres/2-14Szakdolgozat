@@ -27,14 +27,14 @@ window.onload = function() {
                 //létre hozzuk a kulcs értékpárokat
                 let termek = {
                     id: i+1,
-                    name: element.target.parentElement.children[0].innerHTML,
+                    name: element.target.parentElement.parentElement.children[0].innerHTML,
                     price: parseInt(element.target.parentElement.children[2].innerHTML),
                     no: parseInt(element.target.parentElement.children[3].value)
                 };
                 console.log(termek);
                 //adjuk hozzá a localStoragehez az adatokat
                 if (JSON.parse(localStorage.getItem('termekek') === null)) {
-                    termekek.push(termek);
+                    termekek.push(termek);  
                     //tárolás localStorageba
                     localStorage.setItem('termekek', JSON.stringify(termekek));
                     window.location.reload();

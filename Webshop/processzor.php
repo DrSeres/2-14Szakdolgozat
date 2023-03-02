@@ -5,7 +5,7 @@ session_start();
 // if(isset($_SESSION['user_type'])){
 //     if($_SESSION['user_type'] == "user"){
 //         //echo '<script>document.getElementById("show").classList.remove("hidden");</script>';
-        
+   
 //     }
 // }
 // else
@@ -81,29 +81,6 @@ URLAP;
     <link rel="stylesheet" href="../css/oldal.css">
 </head>
 <body>
-<table class='tulajdonsagok'>
-        <tr>
-        <th colspan="2"><img src='../img/notes.png' alt="">Tulajdonságok</th>
-       
-        </tr>
-        <tr>
-       <td>Szélesség: <b> 210 mm</b></td>
-        <td> Mélység: <b> 428 mm</b></td>
-        
-        </tr>
-        <tr>
-        <td colspan="4">Támogatott alaplaptípusok: <b> ATX </b> </td>
-        <td>Micro ATX</b></td>
-        <td>Extended ATX</td>
-        <td>Extended ATX</td>
-        <td>Extended ATX</td>
-        </tr>
-        <tr>
-        <td colspan="4">Előlapi csatlakozók: <b> Audio az előlapon</b></td>
-        <td>eSATA</td>
-        
-        </tr>
-      </table>
         
     <header>
         <nav>
@@ -113,10 +90,18 @@ URLAP;
                 <li><a href="">Kapcsolat</a></li>
             </ul>
         </nav>
-            
-        <div class="kosaricon">
-            <p>0</p> <i class="fa fa-shopping-cart"></i>
-        </div>
+        <?php 
+        
+        if(isset($_SESSION['user_type'])){
+            if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
+                echo  '<div class="kosaricon">
+                    <p>0</p> <i class="fa fa-shopping-cart"></i>
+                </div>';
+            }
+        }
+        
+        ?>
+       
     </header>
     <div class="oldalLogo">
     <div class="area" >
@@ -165,9 +150,9 @@ URLAP;
                     const divek = document.getElementsByClassName("appear");
                     console.log(divek);
                     for(div of divek){
-                        div.classList.add("hidden");
+                        div.classList.add("hidden");   
                     }
-                    
+
                     </script>';
                     //echo '<script>let div = document.getElementById("show"); console.log("ez"); console.log(div)</script>';
                 

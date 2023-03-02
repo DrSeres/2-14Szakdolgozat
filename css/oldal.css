@@ -64,9 +64,7 @@ i.fa .fa-shopping-cart {
   /* background-image: url("../img/gaming header Oldal.jpg");
   background-size: cover; */
 }
-.oldalLogo img {
-  
-}
+
 
 .centered {
   position: absolute;
@@ -465,4 +463,6 @@ figcaption a {
 
 .hidden {
   display: none;
+  
 }
+
