@@ -38,13 +38,27 @@ session_start();
         <li><a href="index.php">Főoldal</a></li>
         <li><a href="">Üzleteink</a></li>
         <li><a href="">Kapcsolat</a></li>
-        <li><a href="foBejelentkezes.php">Bejelentkezés</a></li>
-        <li><a> <?= ($_SESSION['user_type'] == 'user' ? "<span style='color:blue'> Üdvözöllek </span>" . $_SESSION['name'] : "<span style='color:red'> Üdvözöllek Admin </span>" . $_SESSION['name']); ?> </a></li>
+
+        <?php 
+        
+        if(isset($_SESSION['user_type'])){
+          if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
+            
+          }
+        }
+        else
+        {
+          echo '<li><a href="foBejelentkezes.php">Bejelentkezés</a></li>';
+        }
+        ?>
+
+        
+        <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<span style='color:blue'> Üdvözöllek </span>" . $_SESSION['name'] : "<span style='color:red'> Üdvözöllek Admin </span>" . $_SESSION['name']) : "") ; ?> </a></li>
         
         <?php 
         
-        if(isset($_SESSION['user_tpye'])){
-          if($_SESSION['user_tpye'] == 'user'){
+        if(isset($_SESSION['user_type'])){
+          if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
             echo '<li><a href="Kijelentkezes.php">Kijelentkezés</a></li>';
           }
           
