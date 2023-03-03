@@ -118,7 +118,33 @@ URLAP;
         <main>
         <div class="termekek">
         
-                <?php print $kimenet ?>
+                <?php print $kimenet;
+                
+                if(isset($_SESSION['user_type'])){
+                    if($_SESSION['user_type'] == "user"){
+                        //echo '<script>document.getElementById("show").classList.remove("hidden");</script>';
+                        
+                    }
+                }
+                else
+                {
+                    echo '<script>
+                    
+                    const divek = document.getElementsByClassName("appear");
+                    console.log(divek);
+                    for(div of divek){
+                        div.classList.add("hidden");   
+                    }
+
+                    </script>';
+                    //echo '<script>let div = document.getElementById("show"); console.log("ez"); console.log(div)</script>';
+                
+                    //echo '<script>alert("Szia")</script>';
+                }
+                
+                
+                
+                ?>
                 </div>
         </main>
     

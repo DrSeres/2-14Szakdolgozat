@@ -48,7 +48,6 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
 
 
 
-
 ?>
 
 <!DOCTYPE html>
