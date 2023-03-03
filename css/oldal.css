@@ -92,7 +92,7 @@ main {
 .vasarlas {
   /* background-image: url("../img/hirlevel.jpg"); */
   /* background: #A5A5A5; */
-  background-image: url("../processzor/img/wallpaper.png");
+  background-image: url("../img/wallpaper.png");
   background-attachment: fixed;
   background-size: cover;
   padding: 100px;

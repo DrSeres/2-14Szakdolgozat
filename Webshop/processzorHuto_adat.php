@@ -71,7 +71,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     <header>
     <nav>
             <ul>
-                <li><a href="">Főoldal</a></li>
+                <li><a href="index.php">Főoldal</a></li>
                 <li><a href="">Kapcsolat</a></li>
               <li><a href="processzorHuto.php" class='Vissza'>Vissza a Webshopra</a></li>
                 

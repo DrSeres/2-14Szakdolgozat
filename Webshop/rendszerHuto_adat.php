@@ -71,9 +71,9 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     <header>
     <nav>
             <ul>
-                <li><a href="">Főoldal</a></li>
+                <li><a href="index.php">Főoldal</a></li>
                 <li><a href="">Kapcsolat</a></li>
-              <li><a href="processzor.php" class='Vissza'>Vissza a Webshopra</a></li>
+              <li><a href="rendszerHuto.php" class='Vissza'>Vissza a Webshopra</a></li>
                 
             </ul>
             <!-- <p>Magok száma: {$sor['tipus']}</p>

@@ -68,7 +68,7 @@ URLAP;
     <header>
         <nav>
             <ul>
-                <li><a href="../index.html">Főoldal</a></li>
+                <li><a href="index.php">Főoldal</a></li>
                 <li><a href="">Üzleteink</a></li>
                 <li><a href="">Kapcsolat</a></li>
             </ul>
