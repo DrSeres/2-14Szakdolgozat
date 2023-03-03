@@ -1,9 +1,11 @@
 window.onload = function() {
     const kosaricon = document.querySelector('.kosaricon');
+    console.log(kosaricon);
     //Ez az x amivel bezárjuk a felugró ablakot
     const cartCloseBtn = document.querySelector('.fa-close');
     //kosar tartalma
     const cartBox = document.querySelector('.cartBox');
+    console.log(cartBox);
     //a felugró ablak megjelenítése
 
     kosaricon.addEventListener('click', function() {
@@ -27,9 +29,10 @@ window.onload = function() {
                 //létre hozzuk a kulcs értékpárokat
                 let termek = {
                     id: i+1,
+                    kep: element.target.parentElement.parentElement.parentElement.children[0].innerHTML,
                     name: element.target.parentElement.parentElement.children[0].innerHTML,
-                    price: parseInt(element.target.parentElement.children[2].innerHTML),
-                    no: parseInt(element.target.parentElement.children[3].value)
+                    price: parseInt(element.target.parentElement.parentElement.children[2].innerHTML),
+                    no: parseInt(element.target.parentElement.children[0].value)
                 };
                 console.log(termek);
                 //adjuk hozzá a localStoragehez az adatokat
@@ -72,27 +75,69 @@ window.onload = function() {
     const cartBoxTable = cartBox.querySelector("table");
     console.log(cartBoxTable);
     let tableData = '';
+    let price = [];
+    let darab = [];
+    let nev = [];
+    let t = [];
     //fejlave
     if(JSON.parse(localStorage.getItem('termekek'))[0] === null){
-        tableData += `<tr><td colspan="5"></td></tr>`;
+        tableData += `<tr><td colspan="6"></td></tr>`;
     } else {
         JSON.parse(localStorage.getItem('termekek')).map(data =>{
-            tableData += `<tr><td>` + data.id + `</td><td>` + data.name + `</td><td>` + data.no + ` darab</td><td>` + data.price * data.no + ` Ft</td><td><a href="#" onclick=Delete(this) style='color:red'>X</a></td></tr>`;
+            tableData += `<tr style='display:none;'><td>` + data.id +`<tr><td>` + data.kep + `</td><td>` + data.name + `</td><td>` + data.no + ` darab</td><td>` + data.price * data.no + ` Ft</td><td><a href="#" onclick=Delete(this) style='color:red'>X</a></td></tr>`;
+
+            
+
+            nev.push(data.name);
+            price.push(data.price*data.no);
+            darab.push(data.no);
+
+            
+            t.push(nev);
+            t.push(price);
+            t.push(darab);
         })
     }
     let sum = 0;
+    
     JSON.parse(localStorage.getItem('termekek')).map(data =>{
         sum += data.no * data.price;
+        
     });
-    tableData += `<tr><th colspan="3"><a href="#" onclick=Megrendeles();>Megrendelés elküldése</th><th>` + sum + ` Ft</th><th><a href="#" onclick=allDelete(this)>Összes törlése</a></th></tr>`;
+     tableData += `<tr><th colspan="3"><a href="#" onclick=Megrendelese(); id='kuldes'>Megrendelés elküldése</th><th>` + sum + ` Ft</th><th><a href="#" onclick=allDelete(this)>Összes törlése</a></th></tr>`;
 
     cartBoxTable.innerHTML = tableData;
 
+    let gomb = document.getElementById("kuldes");
+    console.log(gomb);
+    gomb.addEventListener("click", () => {    
+        console.log("szia");
+        let adatok = new FormData();
+        adatok.append("nev", nev[0]);
+        adatok.append("prices", price[0]);
+        adatok.append("rendelesDb", darab[0]);
+        fetch("feltoltes.php", {
+            method: "POST",
+            body: adatok
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => console.log(error));
+        
+        // adatok.append("rendelesDb", darab[0]);
+        // adatok.append("prices", price[0]);
+        
+        
+        console.log(adatok);
+        
     
-
+    });
     
     
 }
+
 //törlés
 function Delete(elem) {
     let termekek = [];

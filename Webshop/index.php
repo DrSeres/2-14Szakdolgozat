@@ -28,7 +28,7 @@ session_start();
         <li><a href="index.php">Főoldal</a></li>
         <li><a href="">Üzleteink</a></li>
         <li><a href="">Kapcsolat</a></li>
-
+  
         <?php 
         
         if(isset($_SESSION['user_type'])){

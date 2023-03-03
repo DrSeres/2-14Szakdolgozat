@@ -172,7 +172,35 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
       </div>
     </div>
  </footer>
-
+ <table class='tulajdonsagok'>
+        <tr>
+        <th colspan="2"><img src='../img/notes.png' alt="">Tulajdonságok</th>
+       
+        </tr>
+        <tr>
+       <td>Foglalat:  <b> AMD AM4</b></td>
+        <td> Lapkakészlet:  <b> AMD B550</b></td>
+        
+        </tr>
+        <tr>
+        <td>Alaplap formátum <b>ATX </b> </td>
+        <td>Memória típusa  <b> DDR4</b></td>
+        
+        </tr>
+        <tr>
+        <td>Csatlakozás mód: <b>  Dual-channel</b></td>
+        <td>Hátlapi audió:  <b> Audio jack + Optical S/PDIF out</b></td>
+        
+        </tr>
+        <tr>
+        <td>Max. frekvencia (OC):  <b> 4 800 MHz</b></td>
+        <td>Sorozat:   <b>Asus ROG Strix</b></td>
+        
+        </tr>
+           <td> SATA 3 csatlakozó:  <b>4 db</b></td>
+           <td>Hangkártya típusa: <b> SupremeFX S1220A</b></td>
+        </tr>
+      </table>
  <script src="../js/script.js"></script>
 </body>
     

@@ -1,8 +1,9 @@
 <?php 
-
+require("kapcsolat.php");
 $Data = "<script>document.write(localStorage.getItem('ans'));</script>";
 
-require("../kapcsolat.php");
+
+
 echo `<pre>`;
 print_r($Data);
 echo `</pre>`;
@@ -25,7 +26,12 @@ echo `</pre>`;
 let order= JSON.parse(localStorage.getItem('ans'));
 console.log("küldés utáni állapot stragebe érkezett");
 console.log(order);
- <?php   $sql = "INSERT INTO megrendeles (nev) VALUES('2', '{order}')" ?>
+ <?php 
+ $insert_query = "INSERT INTO megrendeles ( id, nev, termek) VALUES ( '1' , '1' '{order}' );";
+ print_r( $insert_query);
+ mysqli_query($dbconnect, $insert_query);
+ echo $order;
+ ?>
 </script>
 </body>
 </html>
