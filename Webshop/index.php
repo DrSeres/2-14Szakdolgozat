@@ -41,7 +41,7 @@ session_start();
           echo '<li><a href="foBejelentkezes.php">Bejelentkezés</a></li>';
         }
         ?>
-
+ 
         
         <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<span style='color:blue'> Üdvözöllek </span>" . $_SESSION['name'] : "<span style='color:red'> Üdvözöllek Admin </span>" . $_SESSION['name']) : "") ; ?> </a></li>
         
