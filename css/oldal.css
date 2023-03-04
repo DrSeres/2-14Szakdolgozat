@@ -466,3 +466,32 @@ figcaption a {
   
 }
 
+
+.megrendeles {
+  background-color: #003554;
+  padding: 10px;
+  border-radius: 7px;
+}
+.megrendeles:hover{
+  letter-spacing: 0.3rem;
+
+}
+
+.fizetes{
+  background-color: #003554;
+  padding: 10px;
+  border-radius: 7px;
+  color: white;
+}
+.fizetes:hover{
+  letter-spacing: 0.3rem;
+}
+.osszesTorles {
+  background-color: red;
+  color: white;
+  border-radius: 6px;
+  border: 1px solid black;
+}
+.osszesTorles:hover{
+  letter-spacing: 0.1rem;
+}

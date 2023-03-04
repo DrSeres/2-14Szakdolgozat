@@ -117,9 +117,9 @@ window.onload = function () {
     sum += data.no * data.price;
   });
   tableData +=
-    `<tr><th colspan="3"><a href="#" onclick=Megrendelese(); id='kuldes'>Megrendelés elküldése</th><th>` +
+    `<tr ><th colspan="3" class='megrendeles'><a href="#" onclick=Megrendeles(); id='kuldes'>Megrendelés elküldése</th><th class='fizetes'>` +
     sum +
-    ` Ft</th><th><a href="#" onclick=allDelete(this)>Összes törlése</a></th></tr>`;
+    ` Ft</th ><th class='osszesTorles'><a href="#" onclick=allDelete(this)>Összes törlése</a></th></tr>`;
 
   cartBoxTable.innerHTML = tableData;
 
@@ -173,5 +173,5 @@ function allDelete(elem) {
 }
 
 function Megrendeles() {
-  window.location.href = "megrendeles.html";
+  window.location.href = "megrendeles.php";
 }
