@@ -17,7 +17,7 @@ if(isset($_POST['rendben'])){
     $varos = $_POST['varos'];
     $megye = $_POST['megye'];
     
-    $select = "SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email GROUP BY megrendeles.id;";
+    $select = "SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;";
     print "<pre>";
     print($select);
     print "</pre>";
@@ -30,7 +30,7 @@ if(isset($_POST['rendben'])){
   // $email = $eredmeny['email'];
   // print_r($email);
 
-    $insert = "INSERT INTO `megrendelesveglegesitese`(`megrendelesId`, `keresztNev`, `vezetekNev`, `emailId`, `kartyaszam`, `kod`, `telefonSzam`, `szallitasiCim`, `Varos`, `Megye`) VALUES ('','{$kernev}','{$veznev}','{$id}','{$kartyaszam}','{$kod}','{$telefon}','{$cim}','{$varos}','{$megye}')";
+    $insert = "INSERT INTO `megrendelesveglegesitese`(`megrendelesId`, `keresztNev`, `vezetekNev`, `emailId`, `kartyaszam`, `kod`, `telefonSzam`, `szallitasiCim`, `Varos`, `Megye`) VALUES ('','{$kernev}','{$veznev}','','{$kartyaszam}','{$kod}','{$telefon}','{$cim}','{$varos}','{$megye}')";
     $eredmeny = mysqli_query($dbconnect, $insert);
     print_r($eredmeny);
 
