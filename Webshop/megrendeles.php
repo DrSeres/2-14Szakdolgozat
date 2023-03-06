@@ -17,17 +17,6 @@ if(isset($_POST['rendben'])){
     $varos = $_POST['varos'];
     $megye = $_POST['megye'];
     
-  //   $select = "SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;";
-  //   print "<pre>";
-  //   print($select);
-  //   print "</pre>";
-  // $result = mysqli_query($dbconnect, $select);
-  // $eredmeny = mysqli_fetch_array($result);
-
-  // print "<pre>";
-  // print_r($eredmeny);
-  // print "</pre>";
-
 
   $result = $dbconnect->query("SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;");
 
