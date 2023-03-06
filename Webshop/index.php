@@ -27,7 +27,7 @@ session_start();
       <ul>
         <li><a href="index.php">Főoldal</a></li>
         <li><a href="">Üzleteink</a></li>
-        <li><a href="">Kapcsolat</a></li>
+        <li><a href="kapcsolat.html">Kapcsolat</a></li>
   
         <?php 
         
@@ -117,8 +117,8 @@ session_start();
     <!-- <hr> -->
     <h2 id="kategoria">Kategóriák</h2>
     <div class="main">
-      <div class="flexbox-container">
-        <div class="flex-box hover-img">
+      <div class="grid-container">
+        <div class="oszlop1 hover-img">
           <a href="asd"><img src="img/processzorok-1920x960.jpg" alt="" width="100%"></a>
           <figcaption>
             <a href="processzor.php">
@@ -126,7 +126,7 @@ session_start();
             </a>
           </figcaption>
         </div>
-        <div class="flex-box hover-img">
+        <div class="oszlop2 hover-img">
           <a href="asd"><img src="img/procHuto.jpg" alt="" width="100%"></a>
           <figcaption>
             <a href="processzorHuto.php">
@@ -134,7 +134,7 @@ session_start();
             </a>
           </figcaption>
         </div>
-        <div class="flex-box hover-img">
+        <div class="oszlop3 hover-img">
           <a href="asd"><img src="img/alaplap.jpg" alt="" width="100%"></a>
           <figcaption>
             <a href="alaplap.php">
@@ -142,9 +142,9 @@ session_start();
             </a>
           </figcaption>
         </div>
-      </div>
-      <div class="flexbox-container">
-        <div class="flex-box hover-img">
+      
+      
+        <div class="oszlop4 hover-img">
           <a href="asd"><img src="img/videokartya.jpg" alt="" width="100%"></a>
           <figcaption>
 
@@ -153,7 +153,7 @@ session_start();
             </a>
           </figcaption>
         </div>
-        <div class="flex-box hover-img">
+        <div class="oszlop5 hover-img">
           <a href="asd"><img src="img/memoria.jpg" alt="" width="100%" style="background: transparent;"></a>
           <figcaption>
 
@@ -162,7 +162,7 @@ session_start();
             </a>
           </figcaption>
         </div>
-        <div class="flex-box hover-img">
+        <div class="oszlop6 hover-img">
           <a href="asd"><img src="img/rendszerhuto.jpg" alt="" width="100%"></a>
           <figcaption>
             <a href="rendszerHuto.php">
@@ -170,9 +170,9 @@ session_start();
             </a>
           </figcaption>
         </div>
-      </div>
-      <div class="flexbox-container">
-        <div class="flex-box hover-img ">
+      
+      
+        <div class="oszlop7 hover-img ">
           <a href="asd"><img src="img/ssd.jpg" alt="" width="100%"></a>
           <figcaption>
             <a href="ssd.php">
@@ -180,7 +180,7 @@ session_start();
             </a>
           </figcaption>
         </div>
-        <div class="flex-box hover-img">
+        <div class="oszlop8 hover-img">
           <img src="img/tapegyseg.jpg" alt="" width="100%">
           <figcaption>
             <a href="tapegyseg.php">
@@ -189,7 +189,7 @@ session_start();
 
           </figcaption>
         </div>
-        <div class="flex-box hover-img">
+        <div class="oszlop9 hover-img">
           <a href="asd"><img src="img/gephaz.jpg" alt="" width="100%"></a>
           <figcaption>
             <a href="gephaz.php">
@@ -197,10 +197,10 @@ session_start();
             </a>
           </figcaption>
         </div>
-      </div>
+      
 
 
-
+        </div>
     </div>
     <!-- <hr> -->
     <div class="vasarlas">
