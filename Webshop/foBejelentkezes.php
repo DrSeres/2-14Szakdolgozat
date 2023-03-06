@@ -110,7 +110,9 @@ session_start();
         </div>
     </div>
     <!-- SIGN UP FORM CREATION -->
-
+    <script type="text/javascript">
+    localStorage.clear();
+</script>
     <script src="../js/FoBejelentkezes.js"></script>
 </body>
 

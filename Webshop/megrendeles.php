@@ -17,24 +17,37 @@ if(isset($_POST['rendben'])){
     $varos = $_POST['varos'];
     $megye = $_POST['megye'];
     
-    $select = "SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;";
+  //   $select = "SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;";
+  //   print "<pre>";
+  //   print($select);
+  //   print "</pre>";
+  // $result = mysqli_query($dbconnect, $select);
+  // $eredmeny = mysqli_fetch_array($result);
+
+  // print "<pre>";
+  // print_r($eredmeny);
+  // print "</pre>";
+
+
+  $result = $dbconnect->query("SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;");
+
+  $rows = $result->fetch_all(MYSQLI_ASSOC);
+  foreach ($rows as $row) {
+      echo " ".$row["id"]. " ";
+      $insert = "INSERT INTO `megrendelesveglegesitese`(`megrendelesId`, `keresztNev`, `vezetekNev`, `emailId`, `kartyaszam`, `kod`, `telefonSzam`, `szallitasiCim`, `Varos`, `Megye`) VALUES ('','{$kernev}','{$veznev}','{$row['id']}','{$kartyaszam}','{$kod}','{$telefon}','{$cim}','{$varos}','{$megye}')";
+    $eredmeny = mysqli_query($dbconnect, $insert);
     print "<pre>";
-    print($select);
+    print_r($eredmeny);
     print "</pre>";
-  $result = mysqli_query($dbconnect, $select);
-  $eredmeny = mysqli_fetch_array($result);
-  print "<pre>";
-  print_r($eredmeny);
-    print "</pre>";
+  }
+  
   
   // $email = $eredmeny['email'];
   // print_r($email);
 
-    $insert = "INSERT INTO `megrendelesveglegesitese`(`megrendelesId`, `keresztNev`, `vezetekNev`, `emailId`, `kartyaszam`, `kod`, `telefonSzam`, `szallitasiCim`, `Varos`, `Megye`) VALUES ('','{$kernev}','{$veznev}','','{$kartyaszam}','{$kod}','{$telefon}','{$cim}','{$varos}','{$megye}')";
-    $eredmeny = mysqli_query($dbconnect, $insert);
-    print_r($eredmeny);
+    
 
-    $update = "UPDATE `termek`INNER JOIN megrendeles ON  SET = `darab`='[value-6]-10' WHERE termek.termekNev = megrendeles.nev";
+    // $update = "UPDATE `termek`INNER JOIN megrendeles ON  SET = `darab`='[value-6]-10' WHERE termek.termekNev = megrendeles.nev";
 
 }
 
@@ -77,7 +90,7 @@ if(isset($_POST['rendben'])){
             </fieldset>
 
             <fieldset>
-              <label class="c-form-label" for="code">Kód<span class="c-form-required"> *</span></label>
+              <label class="c-form-label" for="code">CVV Kód<span class="c-form-required"> *</span></label>
               <input id="code" class="c-form-input" type="text" name="code" placeholder="XXX    " required>
             </fieldset>
           </div>

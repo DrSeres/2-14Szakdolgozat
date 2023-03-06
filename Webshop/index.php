@@ -49,10 +49,9 @@ session_start();
         
         if(isset($_SESSION['user_type'])){
           if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
-            echo '<li><a href="Kijelentkezes.php">Kijelentkezés</a></li>';
-          }
-          
+            echo '<li><a href="Kijelentkezes.php" class="logout">Kijelentkezés</a></li>';
         }
+      }
         ?>
       </ul>
 
