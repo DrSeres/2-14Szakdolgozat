@@ -2,49 +2,29 @@
 
 //Űrlap feldolgozása
 
-require("../kapcsolat.php");
+require("kapcsolat.php");
 
 if (isset($_POST['rendben'])) {
-    $marka = strip_tags(trim($_POST['marka']));
-    $tipus = strip_tags(trim($_POST['tipus']));
-    $magok = $_POST['magok'];
-    $szalak = $_POST['szalak'];
-    $processzor_foglalat = strip_tags(trim($_POST['processzor_foglalat']));
-    $processzor_orajel = $_POST['processzor_orajel'];
-    $processzor_turbo_orajel = $_POST['processzor_turbo_orajel'];
-    $integralt_grafikai_processzor = $_POST['integralt_grafikai_processzor'];
+    $markaId = $_POST['markaId'];
+    $termekNev = strip_tags(trim($_POST['termekNev']));
     $leiras = $_POST['leiras'];
     $ar = $_POST['ar'];
+    $darab = $_POST['darab'];
 
     //változók visszaadása
 
     $mine = array("image/jpeg", "image/gif", "image/png");
-    if (empty($marka)) {
+    if (empty($termekNev)) {
         $hibak[] = "Nem adott meg márkát!";
     }
-    if (empty($tipus)) {
+    if (empty($leiras)) {
         $hibak[] = "Nem adott meg modelt!";
     }
-    if (empty($magok)) {
+    if (empty($ar)) {
         $hibak[] = "Nem adott meg magok!";
     }
-    if (empty($szalak)) {
+    if (empty($darab)) {
         $hibak[] = "Nem adott meg szalak!";
-    }
-    if (empty($processzor_foglalat)) {
-        $hibak[] = "Nem adott meg processzor_foglalat!";
-    }
-    if (empty($processzor_orajel)) {
-        $hibak[] = "Nem adott meg processzor_orajel!";
-    }
-    if (empty($processzor_turbo_orajel)) {
-        $hibak[] = "Nem adott meg processzor_turbo_orajel!";
-    }
-    if (empty($leiras)) {
-        $hibak[] = "Nem adott meg leiras!";
-    }
-    if (empty($ar)) {
-        $hibak[] = "Nem adott meg ar!";
     }
 
 

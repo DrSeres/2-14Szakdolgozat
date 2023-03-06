@@ -6,6 +6,6 @@ if (isset($_GET['id'])) {
             WHERE id = {$id}";
     mysqli_query($dbconn, $sql);
 }
-header("location: k_{$k}.php");
+header("location: kategoria.html");
 
 ?>
