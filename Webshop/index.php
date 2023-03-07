@@ -14,9 +14,13 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="../css/oldal.css">
-  <link rel="stylesheet" href="../css/flexbox.css">
-  <link rel="stylesheet" href="../css/sablon.css">
+  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/oldal.css">
+  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/flexbox.css">
+  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/sablon.css">
+  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/oldal.css">
+  <!-- <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/style.css"> -->
+  <!-- <link rel="stylesheet" href="../css/flexbox.css">
+  <link rel="stylesheet" href="../css/sablon.css"> -->
   <link rel="stylesheet" href="../css/style.css">
   <title>Számítógép webshop</title>
 </head>
@@ -117,7 +121,7 @@ session_start();
     <!-- <hr> -->
     <h2 id="kategoria">Kategóriák</h2>
     <div class="main">
-      <div class="grid-container">
+      <!-- <div class="grid-container">
         <div class="oszlop1 hover-img">
           <a href="asd"><img src="img/processzorok-1920x960.jpg" alt="" width="100%"></a>
           <figcaption>
@@ -196,9 +200,67 @@ session_start();
               <h3>Számítógépház</h3>
             </a>
           </figcaption>
-        </div>
+        </div> -->
       
-
+        <div class="grid-container">
+      <div class="hover-img oszlop1">
+        <a href="asd"><img src="../img/processzorok-1920x960.jpg" alt="" width="100%"></a>
+        <figcaption>
+          <a href="processzor.php"><h3>Processzor</h3></a>
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop2">
+        <a href="asd"><img src="img/procHuto.jpg" alt="" width="100%"></a>
+        <figcaption>
+          <a href="procHuto.php"><h3>Processzorhűtő</h3></a>
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop3">
+        <a href="asd"><img src="img/alaplap.jpg" alt="" width="100%"></a>
+        <figcaption>
+          <a href="asd.php"><h3>Alaplap</h3></a>
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop4">
+        <a href="asd"><img src="img/videokartya.jpg" alt="" width="100%"></a>
+        <figcaption>
+          
+          <a href="videokartya.php"><h3>Videókártya</h3></a>
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop5">
+        <a href="asd"><img src="img/memoria.jpg" alt="" width="100%" style="background: transparent;"></a>
+        <figcaption>
+          
+          <a href="asd.php"><h3>Memória</h3></a>
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop6">
+        <a href="asd"><img src="img/rendszerhuto.jpg" alt="" width="100%"></a>
+        <figcaption>
+          <a href="asd.php"><h3>Rendszerhűtő</h3></a>
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop7">
+        <a href="asd"><img src="img/ssd.jpg" alt="" width="100%"></a>
+        <figcaption>
+          <a href="asd.php"><h3>SSD</h3></a>
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop8">
+        <img src="img/tapegyseg.jpg" alt="" width="100%">
+        <figcaption>
+          <a href="asd.php"><h3>Tápegység</h3></a>
+          
+        </figcaption>
+      </div>
+      <div class="hover-img oszlop9">
+        <a href="asd"><img src="img/gephaz.jpg" alt="" width="100%"></a>
+        <figcaption>
+          <a href="asd.php"><h3>Számítógépház</h3></a>
+        </figcaption>
+      </div>
+    </div>
 
         </div>
     </div>
