@@ -70,7 +70,7 @@ URLAP;
             <ul>
                 <li><a href="index.php">Főoldal</a></li>
                 <li><a href="">Üzleteink</a></li>
-                <li><a href="">Kapcsolat</a></li>
+                <li><a href="kapcsolat.html">Kapcsolat</a></li>
             </ul>
         </nav>
             

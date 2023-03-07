@@ -22,6 +22,7 @@ session_start();
   <!-- <link rel="stylesheet" href="../css/flexbox.css">
   <link rel="stylesheet" href="../css/sablon.css"> -->
   <link rel="stylesheet" href="../css/style.css">
+  <!-- <link rel="stylesheet" href="../css/oldal.css"> -->
   <title>Számítógép webshop</title>
 </head>
 
@@ -265,10 +266,11 @@ session_start();
         </div>
     </div>
     <!-- <hr> -->
-    <div class="vasarlas">
-      <h2>Tekintse meg ajánlatainkat</h2>
-      <a href="webshop.php"><button type="button">Vásárlás most</button></a>
-    </div>
+    <div class="vasarlas feliratkozas" style="background-image: url(../img/wallpaper.png);">
+            <h2>Iratkozzon fel hírlevelünkre</h2>
+            <input type="email" name="email" id="email" placeholder='Írja be E-mail címet' required >
+            <button type="submit">Feliratkozás</button>
+        </div>
   </main>
 
 
