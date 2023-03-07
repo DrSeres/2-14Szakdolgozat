@@ -1,5 +1,35 @@
 <?php
 
+require("kapcsolat.php");
+
+$sql = "SELECT kategoria.kategoriaNev, gyarto.gyartoNev FROM `kategoria`
+INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID;";
+
+$eredmeny = mysqli_query($dbconn, $sql);
+
+
+
+$sorok = "<table>
+<tr>
+    <th>Gyártó</th>
+    <th>Kategória</th>
+</tr>";
+while($sor = mysqli_fetch_assoc($eredmeny)) {
+    $sorok.= "<tr>
+    <td>{$sor['gyartoNev']}</td>
+    <td>{$sor['kategoriaNev']}</td>";
+}
+$sorok.="</table>";
+
+
+
+
+
+
+
+
+
+
 //Űrlap feldolgozása
 if (isset($_POST['rendben'])) {
     $kategoriaID = $_POST['kategoriaID'];
@@ -29,7 +59,7 @@ if (isset($_POST['rendben'])) {
         mysqli_query($dbconn, $sql);
 
         
-        header("location: felvetel_2.php");
+        header("location: kategoria.php");
     }
 }
 
@@ -73,8 +103,9 @@ if (isset($_POST['rendben'])) {
             <p>A*-gal jelölt mezők kitöltése kötelező.</p>
 
             <!--Elküldés és reset-->
-            <input type="submit" value="Tovább" id="rendben" name="rendben">
+            <input type="submit" value="Rendben" id="rendben" name="rendben">
             <p><a href="kategoria.html">Vissza az oldalra</a></p>
+            <?php if (isset($sorok)) print $sorok; ?>
         </form>
     </div>
 

@@ -16,6 +16,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
 }
 
 
+
 if (isset($_POST['rendben'])) {
     $markaId = $_POST['markaId'];
     $termekNev = strip_tags(trim($_POST['termekNev']));
@@ -56,7 +57,18 @@ if (isset($_POST['rendben'])) {
             $kit = ".jpg";
     }
 
-    $foto = date('U') . $kit;
+    $sql = "SELECT kategoria.kategoriaID FROM kategoria
+        INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID
+        INNER JOIN termek ON gyarto.gyartoId = termek.markaId
+        WHERE termek.markaId = {$markaId}";
+
+    $eredmeny = mysqli_query($dbconn, $sql);
+
+    $sor = mysqli_fetch_array($eredmeny);
+    $kategoriaID = $sor['kategoriaID'];
+
+
+    $foto = $kategoriaID . "_" . date('U') . $kit;
     //Hibaüzenet összeállítása
     if (isset($hibak)) {
         $kimenet = "<ul>\n";
@@ -75,7 +87,7 @@ if (isset($_POST['rendben'])) {
 
 
         //kép mozgatása a végleges helyére
-        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/TESZT_FOTO/{$foto}");
+        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekek/{$foto}");
         header("location: kategoria.html");
     }
 }
@@ -95,7 +107,7 @@ if (isset($_POST['rendben'])) {
 
 <body>
     <div class="container">
-        <h1>Új adaz hozzáadása</h1>
+        <h1>Új adat hozzáadása</h1>
         <form method="post" enctype="multipart/form-data">
 
             <?php if (isset($kimenet)) print $kimenet; ?>
