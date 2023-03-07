@@ -178,21 +178,11 @@ table {
     text-align: center;
 }
 
-
-
-
-/* 
-
-.tulajdonsagok {
-    
-    width: 50%;
-    margin: auto;
+.tableScrollBar::-webkit-scrollbar {
+    background: #16a0e5;
+    border-radius: 5px;     
   }
-  
-
-  
-.tulajdonsagok  tr:nth-child(even) {
-    background-color: #D6EEEE;
-    margin: 30px;
-    padding: 30px;
-  } */
+.tableScrollBar::-webkit-scrollbar-thumb {
+    background: #051923;
+    border-radius: 5px; 
+  }
