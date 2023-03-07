@@ -117,7 +117,7 @@ window.onload = function () {
     sum += data.no * data.price;
   });
   tableData +=
-    `<tr ><th colspan="3" class='megrendeles'><a href="#" onclick=Megrendeles(); id='kuldes'>Megrendelés elküldése</th><th class='fizetes'>` +
+    `<tr><th colspan="3" class='megrendeles'><a href="#" onclick=Megrendeles(); id='kuldes'>Megrendelés elküldése</th><th class='fizetes'>` +
     sum +
     ` Ft</th ><th class='osszesTorles'><a href="#" onclick=allDelete(this)>Összes törlése</a></th></tr>`;
 

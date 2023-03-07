@@ -148,13 +148,21 @@ URLAP;
         </main>
     
     <!--Kosár tartalma-->
+    
     <div class="cartBox">
+
         <div class="cart">
+
             <!--A gomb, mivel majd bezárjuk-->
             <i class="fa fa-close"></i>
             <h1>Kosár tartalma</h1>
             <!--Táblázat, ahol a termékek kerülnek-->
-            <table></table>
+            <div style="overflow-y:auto; height:350px; overflow-x:hidden">
+           <table></table>
+           </div>
+           </div>
+        
+        </iframe>
         </div>
     </div>
     

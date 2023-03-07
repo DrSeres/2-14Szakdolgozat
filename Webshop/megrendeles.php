@@ -16,7 +16,10 @@ if(isset($_POST['rendben'])){
     $cim = $_POST['cim'];
     $varos = $_POST['varos'];
     $megye = $_POST['megye'];
-    
+    echo hash_hmac('ripemd160', 'The quick brown fox jumped over the lazy dog.', 'secret');
+
+
+
 
   $result = $dbconnect->query("SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;");
 

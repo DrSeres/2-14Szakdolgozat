@@ -172,7 +172,9 @@ URLAP;
             <i class="fa fa-close"></i>
             <h1>Kosár tartalma</h1>
             <!--Táblázat, ahol a termékek kerülnek-->
+            <div style="overflow-y:auto; height:350px; overflow-x:hidden">
             <table></table>
+            </div>
         </div>
     </div>
     
