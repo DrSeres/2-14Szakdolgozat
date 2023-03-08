@@ -8,6 +8,19 @@ body{
     color: white;
 }
 
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5rem;
+}
+
+
 .container{
     margin: auto;
     background-color: rgba(23, 104, 144, 0.75);

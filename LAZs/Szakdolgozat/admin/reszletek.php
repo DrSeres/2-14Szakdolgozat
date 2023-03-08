@@ -23,6 +23,7 @@ $ar = $sor['ar'];
 $darab = $sor['darab'];
 $foto = ($sor['foto']) != "nincskep.png" ? $sor['foto'] : "nincskep.png";
 
+$cim = $sor['gyartoNev'] . " " . $sor['termekNev'];
 ?>
 
 
@@ -35,7 +36,7 @@ $foto = ($sor['foto']) != "nincskep.png" ? $sor['foto'] : "nincskep.png";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/felv_mod.css">
     <link rel="stylesheet" href="css/table.css">
-    <title>Új gyártó hozzáadása</title>
+    <title> <?php print $cim ?></title>
 </head>
 
 <body>

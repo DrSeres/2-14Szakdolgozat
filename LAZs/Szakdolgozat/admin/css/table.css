@@ -23,7 +23,7 @@ td{
     color: white;
 }
 
-img {
+table img {
     width: 200px;
     height: 120px;
 }
@@ -31,3 +31,28 @@ tr:nth-child(odd) {
     background-color: #001e30;
     color: white;
   }
+
+  .tulajdonsagok th {
+    /* display: flex;
+    flex-direction: row; */
+    text-align: left;
+  }
+
+.tulajdonsagok img {
+    height: 15px;
+    width: 15px;
+    padding-right: 10px;
+    margin-top: 6px;
+}
+
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+html::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #fff;
+    border-radius: 5rem;
+}
