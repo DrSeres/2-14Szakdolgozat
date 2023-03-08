@@ -23,7 +23,7 @@ $kifejezes = (isset($_GET['kifejezes'])) ? $_GET['kifejezes'] : "";
 
 $kimenet = "";
 while ($sor = mysqli_fetch_assoc($eredmeny)) {
-    $kimenet .=
+    $kimenet .=  
 <<<URLAP
     <article>
     <div class="border">
