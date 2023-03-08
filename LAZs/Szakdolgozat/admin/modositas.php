@@ -95,7 +95,7 @@ if (isset($_POST['rendben'])) {
 else{
     $id = (int)$_GET['id'];
     $sql = "SELECT*
-            FROM termek
+            FROM termek INNER JOIN gyarto ON gyarto.gyartoId = termek.termekId
             WHERE id = {$id}";
     $eredmeny = mysqli_query($dbconn, $sql);
     $sor = mysqli_fetch_assoc($eredmeny);
