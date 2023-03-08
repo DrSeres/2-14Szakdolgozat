@@ -32,3 +32,15 @@
 .gomboks:hover{
     background-color: #0582ca;
 }
+form {
+    text-align: center;
+    padding: 20px;
+}
+form input {
+    background: #003554;
+    font-size: 1.3rem;
+    color: white;
+    padding: 4px;
+    width: 400px;    
+    border-radius: 5px;
+}

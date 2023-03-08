@@ -91,6 +91,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
   <link rel="stylesheet" href="css/table.css">
   
   <title>Számítógép webshop</title>
+  <script src="/js/input.js"></script>
 </head>
 
 <body>
@@ -153,16 +154,11 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     <div class="layer"></div> -->
   <main id="main">
     <!-- <hr> -->
-    <h2 id="kategoria">Kategóriák</h2>
+    <h2 id="kategoria">Táblák</h2>
     <p class="gombok"><a href="felvetel.php"><button>Új gyártó hozzáadása</button></a> | <a href="felvetel_2.php"><button>Új adat hozzáadása</button></a> | <a href="felvetel.php"><button>Kijelentkezés</button></a></p>
     <form method="post">
-      <input type="search" name="kifejezes" id="kifejezes" placeholder="Keresés">
+      <input type="text" name="kifejezes" id="kifejezes" placeholder="Keresés">
     </form>
-    <p><label for="markaId">Kategória kiválasztása*: </label>
-                <select id="markaId" name="markaId">
-                    <?php print_r($kiir);?>
-                </select>
-            </p>
     <div class="main">
       <div class="flexbox-container">
         <?php print_r($kimenet); ?>
@@ -170,8 +166,9 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     </div>
 
 
-
+    
       <script src="../js/script.js"></script>
+      
 </body>
 
 </html>
