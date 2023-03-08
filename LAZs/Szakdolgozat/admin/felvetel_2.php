@@ -140,9 +140,6 @@ if (isset($_POST['rendben'])) {
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
             <p><label for="foto">Fotó feltöltése</label>
                 <input type="file" name="foto" id="dataFileInput">
-                <script>
-
-                </script>
             </p>
 
 

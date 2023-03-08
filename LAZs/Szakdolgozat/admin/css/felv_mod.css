@@ -117,3 +117,26 @@ textarea::-webkit-scrollbar-thumb {
     background: #051923;
     border-radius: 5px; 
   }
+
+input #file-upload-button{
+    color: red;
+    background: red;
+}
+#dataFileInput input #file-upload-button{
+    color: red;
+    background: red;
+}
+/*FILE FELTÖLTÉS GOMB SZINEZÉSE*/
+
+/*https://stackoverflow.com/questions/67913925/how-to-change-the-color-of-the-choose-file-button-wordpress*/
+
+
+input[type=file]::file-selector-button{
+    background: #051923;
+    color: white;
+    border-radius: 4px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/**/
