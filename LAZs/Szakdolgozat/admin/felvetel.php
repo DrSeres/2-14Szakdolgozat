@@ -9,7 +9,7 @@ $eredmeny = mysqli_query($dbconn, $sql);
 
 
 
-$sorok = "<table>
+$sorok = "<table class='gyKtable'>
 <tr>
     <th>Gyártó</th>
     <th>Kategória</th>
@@ -105,7 +105,11 @@ if (isset($_POST['rendben'])) {
             <!--Elküldés és reset-->
             <input type="submit" value="Rendben" id="rendben" name="rendben">
             <p><a href="kategoria.php">Vissza az oldalra</a></p>
-            <?php if (isset($sorok)) print $sorok; ?>
+            <details>
+                <summary>Meglévő táblák megtekintése</summary>
+                <?php if (isset($sorok)) print $sorok; ?>
+            </details>
+            
         </form>
     </div>
 

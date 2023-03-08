@@ -21,7 +21,7 @@ $kimenet = "<table>
     <th>Márka</th>
     <th>Modell</th>
     <th>Ár</th>
-    <th></th>
+    <th>Műveletek</th>
 </tr>";
 while ($sor = mysqli_fetch_assoc($eredmeny)) {
   $kimenet .= "<tr>
@@ -96,21 +96,6 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
 
 <body>
   <header>
-    <!-- <div class="topnav" id="myTopnav">
-
-      <a href="#index.html" class="active">Főoldal</a>
-      <a href="#webshop.html">Webshop</a>
-      <a href="#kapcsolatFelvetel.html">Kapcsolat</a>
-      <a href="#about">About</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
-      <a href="kosar.html" style="float: right; margin-right: 30px; border: none;"><i
-          class="fa fa-shopping-cart"></i></a>
-      <a href="" style="float: right; margin-right: 30px; border: none;"><i class="fas fa-user-alt"
-          onclick="openForm()"></i></a>
-
-    </div> -->
 
     <div class="oldalLogo">
       <div class="area">

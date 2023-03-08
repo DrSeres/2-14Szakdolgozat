@@ -54,4 +54,36 @@ a:hover{
 textarea{
     background: #003554;
     color: white;
+    resize: none;
 }
+details{
+    text-align: center;
+}
+.gyKtable {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+summary {
+    margin: 10px;
+    color: white;
+}
+summary::marker{
+    color: #051923;
+}
+.gyKtable th{
+    background: #001e30;
+    padding: 10px;
+}
+.gyKtable td{
+    padding: 10px;
+    border: 2px solid black;
+}
+.gyKtable th {
+    border-top-left-radius: 10px;
+}
+.gyKtable tr:nth-child(odd) {
+    background-color: #001e30;
+    color: white;
+  }
