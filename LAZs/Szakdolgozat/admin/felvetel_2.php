@@ -88,7 +88,7 @@ if (isset($_POST['rendben'])) {
 
         //kép mozgatása a végleges helyére
         move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekek/{$foto}");
-        header("location: kategoria.html");
+        header("location: kategoria.php");
     }
 }
 
