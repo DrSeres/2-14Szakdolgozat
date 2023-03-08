@@ -27,7 +27,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
 <<<URLAP
     <article>
     <div class="border">
-    <a href=videokartya_adat.php?id={$sor['termekId']}">
+    <a href=videokartya_adat.php?id={$sor['id']}">
     <img src="../img/videokartya/{$sor['foto']}" alt="{$sor['foto']} "></a>
     
     </div>

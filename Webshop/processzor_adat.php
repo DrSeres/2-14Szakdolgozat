@@ -3,7 +3,7 @@
 require("kapcsolat.php");
 session_start();
 $id = (int)$_GET['id'];
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE termek.termekId   = {$id};";
+$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE termek.id   = {$id};";
 
 $eredmeny = mysqli_query($dbconnect, $sql);
 
