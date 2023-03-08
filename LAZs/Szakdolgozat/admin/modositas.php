@@ -95,7 +95,7 @@ if (isset($_POST['rendben'])) {
 else{
     $id = (int)$_GET['id'];
     $sql = "SELECT*
-            FROM termek INNER JOIN gyarto ON gyarto.gyartoId = termek.termekId
+            FROM termek INNER JOIN gyarto ON gyarto.gyartoId = termek.markaId
             WHERE id = {$id}";
     $eredmeny = mysqli_query($dbconn, $sql);
     $sor = mysqli_fetch_assoc($eredmeny);
@@ -154,7 +154,7 @@ else{
 
 
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-            <img src="../img/TESZT_FOTO/<?php print $foto;?>">
+            <img src="../img/termekek/<?php print $foto;?>">
             <p><label for="foto">Fotó feltöltése</label>
                 <input type="file" name="foto" id="foto">
             </p>
@@ -166,7 +166,7 @@ else{
 
             <!--Elküldés és reset-->
             <input type="submit" value="Rendben" id="rendben" name="rendben">
-            <p><a href="processzor.php">Vissza az oldalra</a></p>
+            <p><a href="kategoria.php">Vissza az oldalra</a></p>
         </form>
     </div>
 
