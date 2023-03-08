@@ -99,7 +99,7 @@ window.onload = function () {
         data.no +
         ` darab</td><td>` +
         data.price * data.no +
-        ` Ft</td><td><a href="#" onclick=Delete(this) style='color:red'>X</a></td></tr>`;
+        ` Ft</td><td><a href="#" onclick=Delete(this) style='color:#051923; font-weight:900'>X</a></td></tr>`;
 
       nev.push(data.name);
       console.log(nevDb);

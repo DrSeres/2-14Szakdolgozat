@@ -495,3 +495,6 @@ figcaption a {
 .osszesTorles:hover{
   letter-spacing: 0.1rem;
 }
+close{
+  background:#051923;
+}

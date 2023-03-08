@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+html::-webkit-scrollbar-track {
+    background: #16a0e5;
+}
 
+html::-webkit-scrollbar-thumb {
+    background: #003554;
+}
 body{
     background-image: url(../../img/wallpaper.png);
     background-repeat: no-repeat;
@@ -8,17 +17,7 @@ body{
     color: white;
 }
 
-html::-webkit-scrollbar {
-    width: .8rem;
-}
-html::-webkit-scrollbar-track {
-    background: transparent;
-}
 
-html::-webkit-scrollbar-thumb {
-    background: #fff;
-    border-radius: 5rem;
-}
 
 
 .container{
@@ -99,4 +98,22 @@ summary::marker{
 .gyKtable tr:nth-child(odd) {
     background-color: #001e30;
     color: white;
+  }
+
+#termekFoto {
+    display: block;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+
+
+
+textarea::-webkit-scrollbar {
+    background: #16a0e5;
+    border-radius: 5px;     
+  }
+textarea::-webkit-scrollbar-thumb {
+    background: #051923;
+    border-radius: 5px; 
   }

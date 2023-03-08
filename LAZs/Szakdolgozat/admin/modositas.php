@@ -100,6 +100,7 @@ else{
     $eredmeny = mysqli_query($dbconn, $sql);
     $sor = mysqli_fetch_assoc($eredmeny);
 
+    $gyartoNev = $sor['gyartoNev'];
     $gyartoId = $sor['gyartoId'];
     $termekNev = $sor['termekNev'];
     $leiras = $sor['leiras'];
@@ -117,12 +118,12 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/felv_mod.css">
-    <title>Új adat hozzáadása</title>
+    <title><?php print $gyartoNev . " " .$termekNev?></title>
 </head>
 
 <body>
     <div class="container">
-        <h1>Új adat hozzáadása</h1>
+        <h1> <?php print $gyartoNev . " " . $termekNev?> módosítása</h1>
         <form method="post" enctype="multipart/form-data">
 
             <?php if (isset($kimenet)) print $kimenet; ?>
@@ -154,7 +155,7 @@ else{
 
 
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-            <img src="../img/termekek/<?php print $foto;?>">
+            <img src="../img/termekek/<?php print $foto;?>" id="termekFoto">
             <p><label for="foto">Fotó feltöltése</label>
                 <input type="file" name="foto" id="foto">
             </p>
