@@ -19,3 +19,38 @@ img{
     max-width: 500px;
     width: 100%;
 }
+select {
+    background: #003554;
+    color: white;
+    padding: 3px;
+}
+input {
+    background: #003554;
+    color: white;
+    padding: 3px;
+}
+#rendben {
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#rendben:hover{
+    background: #051923; 
+}
+a{
+    color: #003554;
+    text-decoration: none;
+    background: #003554;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 0.8rem;
+}
+a:hover{
+    background: #051923; 
+}
+textarea{
+    background: #003554;
+    color: white;
+}

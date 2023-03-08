@@ -104,7 +104,7 @@ if (isset($_POST['rendben'])) {
 
             <!--Elküldés és reset-->
             <input type="submit" value="Rendben" id="rendben" name="rendben">
-            <p><a href="kategoria.html">Vissza az oldalra</a></p>
+            <p><a href="kategoria.php">Vissza az oldalra</a></p>
             <?php if (isset($sorok)) print $sorok; ?>
         </form>
     </div>

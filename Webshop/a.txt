@@ -1,0 +1,28 @@
+<table class='tulajdonsagok'>
+        <tr>
+        <th colspan="2"><img src='../img/notes.png' alt="">Tulajdonságok</th>
+       
+        </tr>
+        <tr>
+       <td>Processzor sorozat: <b> AMD Ryzen 5</b></td>
+        <td> Foglalat: <b> Socket AM4</b></td>
+        
+        </tr>
+        <tr>
+        <td>Mikroarchitektúra: <b> Zen 3 </b> </td>
+        <td>Processzor kódnév:  <b> Vermeer</b></td>
+        
+        </tr>
+        <tr>
+        <td>Hűtés típusa: <b> Wraith Stealth</b></td>
+        <td>Processzormagok száma: <b> 6 ×</b></td>
+        
+        </tr>
+        <tr>
+        <td>Szálak száma: <b> 12 ×</b></td>
+        <td>Processzor frekvencia: <b> 3,7 GHz (3,7 GHz)</b></td>
+        
+        </tr>
+           <td> Felhasználási terület: <b>Asztali PC </b></td><td> Memoria támogatás <b>DDR4 3200 MHz</b></td>
+        </tr>
+      </table>
