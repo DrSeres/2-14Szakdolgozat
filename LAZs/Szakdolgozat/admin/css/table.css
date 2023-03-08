@@ -21,4 +21,9 @@ td{
 
 img {
     width: 200px;
+    height: 120px;
 }
+tr:nth-child(odd) {
+    background-color: #001e30;
+    color: white;
+  }

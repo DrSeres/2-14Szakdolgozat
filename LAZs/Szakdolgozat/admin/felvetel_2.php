@@ -139,7 +139,10 @@ if (isset($_POST['rendben'])) {
 
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
             <p><label for="foto">Fotó feltöltése</label>
-                <input type="file" name="foto" id="foto">
+                <input type="file" name="foto" id="dataFileInput">
+                <script>
+
+                </script>
             </p>
 
 
@@ -149,10 +152,9 @@ if (isset($_POST['rendben'])) {
 
             <!--Elküldés és reset-->
             <input type="submit" value="Rendben" id="rendben" name="rendben">
-            <p><a href="processzor.php">Vissza az oldalra</a></p>
+            <p><a href="kategoria.php">Vissza az oldalra</a></p>
         </form>
     </div>
-
 </body>
 
 </html>
