@@ -72,7 +72,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
             <ul>
                 <li><a href="index.php">Főoldal</a></li>
                 <li><a href="kapcsolat.html">Kapcsolat</a></li>
-              <li><a href="alaplap.php" class='Vissza'>Vissza a Webshopra</a></li>
+              <li><a href="alaplap.php" class='Vissza'>Vissza a termékekhez</a></li>
               <!-- <p>Magok száma: {$sor['cpu_foglalat']}</p>
                 <p>Szálak száma: {$sor['memoria']}</p>
                 <p>Processzor foglalat: {$sor['processzor_gyarto']}</p>
