@@ -162,7 +162,7 @@ URLAP;
     
 
 
-    <table class='tulajdonsagok'>
+    <!-- <table class='tulajdonsagok'>
         <tr>
         <th colspan="2"><img src='../img/notes.png' alt="">Tulajdonságok</th>
        
@@ -190,7 +190,7 @@ URLAP;
            <td>Támogaott memóriatípus     <b>  DDR4, DDR5</b></td>
            <td>Felhasználási terület: <b> Asztali PC </b></td>
         </tr>
-      </table>
+      </table> -->
 
 
 
@@ -198,6 +198,3 @@ URLAP;
     <script src="../js/script.js"></script>
 </body>
 </html>
-        <tr>
-            <td>Támogatott memóriatípus: <b> DDR4</b></td>
-            <td>Integrált videókártya típ

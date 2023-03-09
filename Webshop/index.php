@@ -95,7 +95,7 @@ session_start();
       </ul>
       <div class="centered">
         <h1>Üdvözöllek az oldalon</h1>
-        <p>Termék kategóriáink megtekintése</p>
+        <p class="udvozloP">Termék kategóriáink megtekintése</p>
         <a href="#main"><i class="fa fa-chevron-circle-down" style="font-size:36px"></i></a>
       </div>
     </div>

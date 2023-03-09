@@ -162,35 +162,7 @@ URLAP;
     
 
 
-    <table class='tulajdonsagok'>
-        <tr>
-        <th colspan="2"><img src='../img/notes.png' alt="">Tulajdonságok</th>
-       
-        </tr>
-        <tr>
-       <td>Processzor sorozat: <b> Intel Core i5</b></td>
-        <td> Processzormagok száma: <b> 6 ×</b></td>
-        
-        </tr>
-        <tr>
-        <td>Szálak száma: <b> 12 ×</b> </td>
-        <td>Túlhajható:  <b> Igen</b></td>
-        
-        </tr>
-        <tr>
-        <td>Hőmérséklet: <b> Max 95°C hőmérséklet</b></td>
-        <td>Mikroarchitektúra: <b> Golden Cove</b></td>
-        
-        </tr>
-        <tr>
-        <td>Modellmegjelölés: <b> Intel Core i5-12400F</b></td>
-        <td>Támogatott memóriatípus: <b> DDR4 </b></td>
-        
-        </tr>
-           <td>Támogaott memóriatípus     <b>  DDR4, DDR5</b></td>
-           <td>Felhasználási terület: <b> Asztali PC </b></td>
-        </tr>
-      </table>
+    
 
 
 
@@ -198,6 +170,3 @@ URLAP;
     <script src="../js/script.js"></script>
 </body>
 </html>
-        <tr>
-            <td>Támogatott memóriatípus: <b> DDR4</b></td>
-            <td>Integrált videókártya típ

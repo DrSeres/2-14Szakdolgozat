@@ -144,6 +144,14 @@ window.onload = function () {
         .catch((error) => console.log(error));
     }
 
+
+
+
+
+
+
+
+
     // adatok.append("rendelesDb", darab[0]);
     // adatok.append("prices", price[0]);
 

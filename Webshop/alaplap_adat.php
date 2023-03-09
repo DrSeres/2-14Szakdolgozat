@@ -62,6 +62,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     <link rel="stylesheet" href="../css/oldal.css">
     <!-- <link rel="stylesheet" href="flexbox.css"> -->
     <link rel="stylesheet" href="../css/grid.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title><?php print_r($cim);?></title>
 </head>
 
