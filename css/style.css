@@ -187,3 +187,9 @@ table {
     background: #051923;
     border-radius: 5px; 
   }
+
+
+
+.fa-address-book{
+    cursor: pointer;   
+}

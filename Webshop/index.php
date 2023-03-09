@@ -22,6 +22,7 @@ session_start();
   <!-- <link rel="stylesheet" href="../css/flexbox.css">
   <link rel="stylesheet" href="../css/sablon.css"> -->
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/feliratkozas.css">
   <!-- <link rel="stylesheet" href="../css/oldal.css"> -->
   <title>Számítógép webshop</title>
 </head>
@@ -31,7 +32,6 @@ session_start();
     <nav>
       <ul>
         <li><a href="index.php">Főoldal</a></li>
-        <li><a href="">Üzleteink</a></li>
         <li><a href="kapcsolat.html">Kapcsolat</a></li>
   
         <?php 
@@ -48,19 +48,26 @@ session_start();
         ?>
  
         
-        <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<span style='color:blue'> Üdvözöllek </span>" . $_SESSION['name'] : "<span style='color:red'> Üdvözöllek Admin </span>" . $_SESSION['name']) : "") ; ?> </a></li>
+        <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<span style='color:blue'> Üdvözöllek </span>" . $_SESSION['name'] : "<span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "<li><a href = ../LAZs/Szakdolgozat/admin/kategoria.php style='color:red'>Admin oldal</a></li>") : "") ; ?> </a></li>
         
         <?php 
         
         if(isset($_SESSION['user_type'])){
           if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
-            echo '<li><a href="Kijelentkezes.php" class="logout">Kijelentkezés</a></li>';
+            echo '<li style="float:right"><a href="Kijelentkezes.php" class="logout">Kijelentkezés</a></li>';
         }
       }
         ?>
       </ul>
 
     </nav>"
+    <table id="show" style="display: none;">
+      <tr>
+        <td>SZIA</td>
+        <td>SZIA</td>
+        <td>SZIA</td>
+      </tr>
+    </table>
   </header>
   <!-- <div class="topnav" id="myTopnav">
 
@@ -107,7 +114,7 @@ session_start();
     <!-- <div class='console-container'><span id='text' style="font-weight: 900;"></span><div class='console-underscore' id='console'>&#95;</div></div> -->
   </div>
 
-
+<a href="../LAZs/Szakdolgozat/admin/kategoria.php"></a>
 
 
 
@@ -353,8 +360,8 @@ session_start();
 
 
 
-
-  <script src="../js/script.js"></script>
+  <script src="../js/kijelentkezes.js"></script>
+  <!-- <script src="../js/script.js"></script> -->
 </body>
 
 </html>
