@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="css/gombok.css">
   <link rel="stylesheet" href="css/table.css">
   
-  <title>Számítógép webshop</title>
+  <title>Admin oldal</title>
   <script src="/js/input.js"></script>
 </head>
 
