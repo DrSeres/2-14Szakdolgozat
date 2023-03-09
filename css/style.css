@@ -163,8 +163,9 @@ table {
 .cart {
     background-color: #145b7f;
 }
-.itemInfo {
+.itemInfo{
     margin: 10px;
+
 }
 #quantity {
     padding: 8px;
@@ -173,7 +174,6 @@ table {
     border-radius: 15px;
     font-size: 1.3rem;
 }
-
 
 .termekek {
     text-align: center;
