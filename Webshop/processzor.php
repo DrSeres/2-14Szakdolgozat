@@ -84,8 +84,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     <article>
     <div class="border">
     <a href=processzor_adat.php?id={$sor['id']}">
-    <img src="../img/processzor/{$sor['foto']}" alt="{$sor['foto']} "></a>
-    
+    <img src="../img/processzor/{$sor['foto']}" alt="{$sor['foto']} "></a><i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
     </div>
     <div class="itemInfo">
     

@@ -1,4 +1,6 @@
 window.onload = function () {
+
+ 
   const kosaricon = document.querySelector(".kosaricon");
   console.log(kosaricon);
   //Ez az x amivel bezárjuk a felugró ablakot
@@ -6,6 +8,51 @@ window.onload = function () {
   //kosar tartalma
   const cartBox = document.querySelector(".cartBox");
   console.log(cartBox);
+
+
+  //kedvenc termék hozzáadása az adatbázishoz
+  const heartBtn = document.querySelectorAll(".fa-heart");
+  console.log(heartBtn);
+
+
+heartBtn.forEach(element => {
+  
+  element.addEventListener("click", () => {
+      console.log(element.dataset.id);
+      element.style.color = "red";
+      let adatok = new FormData();
+      adatok.append("id", element.dataset.id);
+    fetch("heart.php", {
+      method: "POST",
+      body: adatok,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  });
+});
+heartBtn.forEach(element => {
+  
+  element.addEventListener("dblclick", () => {
+      console.log(element.dataset.id);
+      element.style.color = "white";
+      let adatok = new FormData();
+      adatok.append("id", element.dataset.id);
+    fetch("heart.php", {
+      method: "POST",
+      body: adatok,
+    })
+      .then((response) => response.text())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.log(error));
+  });
+});
+
+
   //a felugró ablak megjelenítése
 
   kosaricon.addEventListener("click", function () {
