@@ -42,12 +42,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     $kimenet = "<table>
     <tr>
-        <th>Kép</th>
-        <th>Kategória</th>
-        <th>Márka</th>
-        <th>Modell</th>
-        <th>Ár</th>
-        <th></th>
+        <th style='padding:10px'>Nem találtam meg az Ön által keresett terméket</th>
     </tr>";
     echo $kimenet;
 }
