@@ -2,7 +2,7 @@
 
 require("kapcsolat.php");
 session_start();
-$select = "SELECT * FROM termek INNER JOIN WHERE id = '{$id}'";
+$select = "SELECT * FROM termek INNER JOIN kedvencek WHERE id = '{$id}'";
 $query = mysqli_query($dbconnect, $select);
 
 
