@@ -43,12 +43,7 @@
           <a href="#main"><i class="fa fa-chevron-circle-down" style="font-size:36px"></i></a>
         </div>
       </div>
-      <!-- <img src="../img/gaming header Oldal.jpg" alt="gaming header" title="gaming header" width="100%"> -->
-
-
-
-
-      <!-- <div class='console-container'><span id='text' style="font-weight: 900;"></span><div class='console-underscore' id='console'>&#95;</div></div> -->
+      
     </div>
 
 
@@ -56,12 +51,7 @@
 
 
 
-  <!-- <div class="bg"></div>
-    
-    <div class="star-field">
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div> -->
+  
   <main id="main">
     <!-- <hr> -->
     <h2 id="kategoria">Táblák</h2>

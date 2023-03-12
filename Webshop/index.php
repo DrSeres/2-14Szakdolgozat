@@ -18,12 +18,9 @@ session_start();
   <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/flexbox.css">
   <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/sablon.css">
   <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/oldal.css">
-  <!-- <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/style.css"> -->
-  <!-- <link rel="stylesheet" href="../css/flexbox.css">
-  <link rel="stylesheet" href="../css/sablon.css"> -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feliratkozas.css">
-  <!-- <link rel="stylesheet" href="../css/oldal.css"> -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>Számítógép webshop</title>
 </head>
 
@@ -54,37 +51,15 @@ session_start();
         
         if(isset($_SESSION['user_type'])){
           if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
-            echo '<li style="float:right"><a href="Kijelentkezes.php" class="logout">Kijelentkezés</a></li>';
+            echo '<li style="float:right"><a href="Kijelentkezes.php" class="logout">Kijelentkezés</a></li> ';
         }
       }
         ?>
       </ul>
 
     </nav>"
-    <table id="show" style="display: none;">
-      <tr>
-        <td>SZIA</td>
-        <td>SZIA</td>
-        <td>SZIA</td>
-      </tr>
-    </table>
+    
   </header>
-  <!-- <div class="topnav" id="myTopnav">
-
-      <a href="#index.html" class="active">Főoldal</a>
-      <a href="#webshop.html">Webshop</a>
-      <a href="#kapcsolatFelvetel.html">Kapcsolat</a>
-      <a href="#about">About</a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-      </a>
-      <a href="kosar.html" style="float: right; margin-right: 30px; border: none;"><i
-          class="fa fa-shopping-cart"></i></a>
-      <a href="" style="float: right; margin-right: 30px; border: none;"><i class="fas fa-user-alt"
-          onclick="openForm()"></i></a>
-
-    </div> -->
-
   <div class="oldalLogo">
     <div class="area">
       <ul class="circles">
@@ -106,110 +81,13 @@ session_start();
         <a href="#main"><i class="fa fa-chevron-circle-down" style="font-size:36px"></i></a>
       </div>
     </div>
-    <!-- <img src="../img/gaming header Oldal.jpg" alt="gaming header" title="gaming header" width="100%"> -->
-
-
-
-
-    <!-- <div class='console-container'><span id='text' style="font-weight: 900;"></span><div class='console-underscore' id='console'>&#95;</div></div> -->
   </div>
 
 <a href="../LAZs/Szakdolgozat/admin/kategoria.php"></a>
-
-
-
-
-  <!-- <div class="bg"></div>
-    
-    <div class="star-field">
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div> -->
   <main id="main">
     <!-- <hr> -->
     <h2 id="kategoria">Kategóriák</h2>
     <div class="main">
-      <!-- <div class="grid-container">
-        <div class="oszlop1 hover-img">
-          <a href="asd"><img src="img/processzorok-1920x960.jpg" alt="" width="100%"></a>
-          <figcaption>
-            <a href="processzor.php">
-              <h3>Processzor</h3>
-            </a>
-          </figcaption>
-        </div>
-        <div class="oszlop2 hover-img">
-          <a href="asd"><img src="img/procHuto.jpg" alt="" width="100%"></a>
-          <figcaption>
-            <a href="processzorHuto.php">
-              <h3>Processzorhűtő</h3>
-            </a>
-          </figcaption>
-        </div>
-        <div class="oszlop3 hover-img">
-          <a href="asd"><img src="img/alaplap.jpg" alt="" width="100%"></a>
-          <figcaption>
-            <a href="alaplap.php">
-              <h3>Alaplap</h3>
-            </a>
-          </figcaption>
-        </div>
-      
-      
-        <div class="oszlop4 hover-img">
-          <a href="asd"><img src="img/videokartya.jpg" alt="" width="100%"></a>
-          <figcaption>
-
-            <a href="videokartya.php">
-              <h3>Videókártya</h3>
-            </a>
-          </figcaption>
-        </div>
-        <div class="oszlop5 hover-img">
-          <a href="asd"><img src="img/memoria.jpg" alt="" width="100%" style="background: transparent;"></a>
-          <figcaption>
-
-            <a href="ram.php">
-              <h3>Memória</h3>
-            </a>
-          </figcaption>
-        </div>
-        <div class="oszlop6 hover-img">
-          <a href="asd"><img src="img/rendszerhuto.jpg" alt="" width="100%"></a>
-          <figcaption>
-            <a href="rendszerHuto.php">
-              <h3>Rendszerhűtő</h3>
-            </a>
-          </figcaption>
-        </div>
-      
-      
-        <div class="oszlop7 hover-img ">
-          <a href="asd"><img src="img/ssd.jpg" alt="" width="100%"></a>
-          <figcaption>
-            <a href="ssd.php">
-              <h3>SSD</h3>
-            </a>
-          </figcaption>
-        </div>
-        <div class="oszlop8 hover-img">
-          <img src="img/tapegyseg.jpg" alt="" width="100%">
-          <figcaption>
-            <a href="tapegyseg.php">
-              <h3>Tápegység</h3>
-            </a>
-
-          </figcaption>
-        </div>
-        <div class="oszlop9 hover-img">
-          <a href="asd"><img src="img/gephaz.jpg" alt="" width="100%"></a>
-          <figcaption>
-            <a href="gephaz.php">
-              <h3>Számítógépház</h3>
-            </a>
-          </figcaption>
-        </div> -->
-      
         <div class="grid-container">
       <div class="hover-img oszlop1">
         <a href="asd"><img src="../img/processzorok-1920x960.jpg" alt="" width="100%"></a>
@@ -272,7 +150,6 @@ session_start();
 
         </div>
     </div>
-    <!-- <hr> -->
     <div class="vasarlas feliratkozas" style="background-image: url(../img/wallpaper.png);">
             <h2>Iratkozzon fel hírlevelünkre</h2>
             <input type="email" name="email" id="email" placeholder='Írja be E-mail címet' required >

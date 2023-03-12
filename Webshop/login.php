@@ -17,12 +17,6 @@ print($select);
 $result = mysqli_query($dbconnect, $select);
 $eredmeny = mysqli_fetch_array($result);
 
-/*
-// Perform a query, check for error
-if (!$dbconnect -> query($select)) {
-    echo("Error description: " . $dbconnect -> error);
-}
-*/
 
 echo" az eredmény: <pre>";
 print_r(count($eredmeny));

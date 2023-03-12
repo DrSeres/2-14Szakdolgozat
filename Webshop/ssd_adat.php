@@ -62,7 +62,6 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../css/oldal.css">
-    <!-- <link rel="stylesheet" href="flexbox.css"> -->
     <link rel="stylesheet" href="../css/grid.css">
     <link rel="stylesheet" href="../css/style.css">
     <title><?php print_r($cim);?></title>
@@ -75,11 +74,6 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
                 <li><a href="index.php">Főoldal</a></li>
                 <li><a href="kapcsolat.html">Kapcsolat</a></li>
               <li><a href="ssd.php" class='Vissza'>Vissza a termékekhez</a></li>
-              <!-- <p>Magok száma: {$sor['kapacitas']}</p>
-                <p>Szálak száma: {$sor['max_olvas']}</p>
-                <p>Processzor foglalat: {$sor['csatlakozo']}</p>
-                <p>Processzor foglalat: {$sor['csatlakozo']}</p>
-                <p>Processzor foglalat: {$sor['csatlakozo']}</p> -->
             </ul>
         </nav>
         <?php 

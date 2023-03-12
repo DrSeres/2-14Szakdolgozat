@@ -62,7 +62,6 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="../css/oldal.css">
-    <!-- <link rel="stylesheet" href="flexbox.css"> -->
     <link rel="stylesheet" href="../css/grid.css">
     <link rel="stylesheet" href="../css/style.css">
     <title><?php print_r($cim);?></title>
@@ -175,35 +174,6 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
       </div>
     </div>
  </footer>
- <table class='tulajdonsagok'>
-        <tr>
-        <th colspan="2"><img src='../img/notes.png' alt="">Tulajdonságok</th>
-       
-        </tr>
-        <tr>
-       <td>Foglalat:  <b> AMD AM4</b></td>
-        <td> Lapkakészlet:  <b> AMD B550</b></td>
-        
-        </tr>
-        <tr>
-        <td>Alaplap formátum <b>ATX </b> </td>
-        <td>Memória típusa  <b> DDR4</b></td>
-        
-        </tr>
-        <tr>
-        <td>Csatlakozás mód: <b>  Dual-channel</b></td>
-        <td>Hátlapi audió:  <b> Audio jack + Optical S/PDIF out</b></td>
-        
-        </tr>
-        <tr>
-        <td>Max. frekvencia (OC):  <b> 4 800 MHz</b></td>
-        <td>Sorozat:   <b>Asus ROG Strix</b></td>
-        
-        </tr>
-           <td> SATA 3 csatlakozó:  <b>4 db</b></td>
-           <td>Hangkártya típusa: <b> SupremeFX S1220A</b></td>
-        </tr>
-      </table>
  <script src="../js/script.js"></script>
 </body>
     

@@ -116,7 +116,6 @@ URLAP;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Processzor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/sablon.css">
     <link rel="stylesheet" href="../css/oldal.css">
@@ -161,17 +160,11 @@ URLAP;
       </ul>
       <div class="centered">
         <h1>Processzorok</h1>
-        <!-- <a href="#main"><i class="fa fa-chevron-circle-down" style="font-size:36px;"></i></a> -->
+        
       </div>
 
       
 </div >
-       <!-- <img src="../img/gaming header Oldal.jpg" alt="gaming header" title="gaming header" width="100%"> -->
-      
-        
-
-
-      <!-- <div class='console-container'><span id='text' style="font-weight: 900;"></span><div class='console-underscore' id='console'>&#95;</div></div> -->
     </div>
         <main>
         <div class="termekek">
@@ -195,9 +188,6 @@ URLAP;
                     }
 
                     </script>';
-                    //echo '<script>let div = document.getElementById("show"); console.log("ez"); console.log(div)</script>';
-                
-                    //echo '<script>alert("Szia")</script>';
                 }
                 
                 

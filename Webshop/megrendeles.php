@@ -34,12 +34,11 @@ if(isset($_POST['rendben'])){
   }
   
   
-  // $email = $eredmeny['email'];
-  // print_r($email);
+  
 
     
 
-    // $update = "UPDATE `termek`INNER JOIN megrendeles ON  SET = `darab`='[value-6]-10' WHERE termek.termekNev = megrendeles.nev";
+    
 
 }
 
