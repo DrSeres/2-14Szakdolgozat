@@ -69,6 +69,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
 </head>
 
 <body>
+  
     <header>
     <nav>
             <ul>

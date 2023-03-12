@@ -220,7 +220,7 @@ input {
     left: 0;
     transform: translateY(-50%);
     font-size: 16px;
-    font-weight: 600px;
+    font-weight: 600;
     pointer-events: none;
     transition: .5s ease;
 
@@ -275,7 +275,7 @@ input {
 }
 .create-account p a{
     color: #fff;
-    font-weight: 600px;
+    font-weight: 600;
     text-decoration: none;
 }
 .create-account p a:hover{

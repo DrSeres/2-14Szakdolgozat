@@ -84,8 +84,9 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     <article>
     <div class="border">
     <a href=processzor_adat.php?id={$sor['id']}">
-    <img src="../img/processzor/{$sor['foto']}" alt="{$sor['foto']} "></a><i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
+    <img src="../img/processzor/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
+    <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
     <div class="itemInfo">
     
         <h2>{$sor['gyartoNev']} {$sor['termekNev']}</h2>
@@ -170,7 +171,6 @@ URLAP;
         <div class="termekek">
         
                 <?php print($kimenet); 
-                
                 if(isset($_SESSION['user_type'])){
                     if($_SESSION['user_type'] == "user"){
                         //echo '<script>document.getElementById("show").classList.remove("hidden");</script>';

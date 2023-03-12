@@ -14,43 +14,43 @@ window.onload = function () {
   const heartBtn = document.querySelectorAll(".fa-heart");
   console.log(heartBtn);
 
+  heartBtn.forEach(element => {
+  
+    element.addEventListener("click", () => {
+        console.log(element.dataset.id);
+        element.style.color = "red";
+        let adatok = new FormData();
+        adatok.append("id", element.dataset.id);
+      fetch("heart.php", {
+        method: "POST",
+        body: adatok,
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => console.log(error));
+    });
+  });
+  heartBtn.forEach(element => {
 
-heartBtn.forEach(element => {
-  
-  element.addEventListener("click", () => {
-      console.log(element.dataset.id);
-      element.style.color = "red";
-      let adatok = new FormData();
-      adatok.append("id", element.dataset.id);
-    fetch("heart.php", {
-      method: "POST",
-      body: adatok,
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
+    element.addEventListener("dblclick", () => {
+        console.log(element.dataset.id);
+        element.style.color = "white";
+        let adatok = new FormData();
+        adatok.append("id", element.dataset.id);
+      fetch("heart.php", {
+        method: "POST",
+        body: adatok,
       })
-      .catch((error) => console.log(error));
+        .then((response) => response.text())
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => console.log(error));
+    });
   });
-});
-heartBtn.forEach(element => {
-  
-  element.addEventListener("dblclick", () => {
-      console.log(element.dataset.id);
-      element.style.color = "white";
-      let adatok = new FormData();
-      adatok.append("id", element.dataset.id);
-    fetch("heart.php", {
-      method: "POST",
-      body: adatok,
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => console.log(error));
-  });
-});
+
 
 
   //a felugró ablak megjelenítése
@@ -112,6 +112,7 @@ heartBtn.forEach(element => {
       }
     });
   }
+ 
   //rendelés hozzáadása a kosárhoz
   const kosarikonP = document.querySelector(".kosaricon p");
   console.log(kosarikonP);
@@ -190,8 +191,7 @@ heartBtn.forEach(element => {
         })
         .catch((error) => console.log(error));
     }
-
-
+    
 
 
 
@@ -204,7 +204,9 @@ heartBtn.forEach(element => {
 
     console.log(adatok);
   });
+  
 };
+
 
 //törlés
 function Delete(elem) {
