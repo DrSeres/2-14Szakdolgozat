@@ -70,6 +70,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     <nav>
             <ul>
                 <li><a href="index.php">Főoldal</a></li>
+                <li><a href="kedvenctermek.php">Kedvenc termékek</a></li>
                 <li><a href="kapcsolat.html">Kapcsolat</a></li>
               <li><a href="processzor.php" class='Vissza'>Vissza a termékekhez</a></li>
                 
