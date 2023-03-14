@@ -9,8 +9,8 @@ require 'kapcsolat.php';
 
 $name = mysqli_real_escape_string($dbconnect, $_POST['name']);
 $email = mysqli_real_escape_string($dbconnect, $_POST['email']);
-$pass = md5($_POST['password']);
-$cpass = md5($_POST['passwordAgain']);
+$pass = sha1($_POST['password']);
+$cpass = sha1($_POST['passwordAgain']);
 
 $select = " SELECT * FROM users WHERE email = '$email' && password = '$pass' ";
 

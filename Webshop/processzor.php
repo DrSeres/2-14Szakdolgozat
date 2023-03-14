@@ -19,7 +19,7 @@ error_reporting(E_ALL);
 // }
 
 
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 1";
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 1;";
 $eredmeny = mysqli_query($dbconnect, $sql);
 //szükséges adatok a számításhoz
 $mennyit = 8; //ennyi kártyát akarok látni egy oldalon
@@ -61,7 +61,7 @@ $lapozo .= ($aktualis != $lapok) ? "<li><a href=\"?oldal=".($lapok)."\">Utolsó<
 $lapozo .= "</ul>";
 $lapozo .= "</nav>";
 
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 1 ORDER BY gyarto.gyartoId ASC 
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 1 ORDER BY 1 ASC 
 LIMIT {$honnan}, {$mennyit}";
 $eredmeny = mysqli_query($dbconnect, $sql);
 

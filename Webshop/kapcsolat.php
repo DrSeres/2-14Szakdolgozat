@@ -1,6 +1,6 @@
 <?php 
 
-$dbconnect = mysqli_connect("localhost", "root", "", "webshopv2");
+$dbconnect = mysqli_connect("localhost", "root", "", "webshopv3");
 
 // if (!$dbconnect) {
 //     die("Connection failed: " . mysqli_connect_error());
