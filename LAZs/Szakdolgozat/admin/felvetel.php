@@ -49,18 +49,25 @@ if (isset($_POST['rendben'])) {
         $kimenet .= "</ul>\n";
     } else {
         //felvitel az adatbázisba
-        require("kapcsolat.php");
+
+
+
+        //UTOLSÓ FELVETT ID MEGKERESÉSE:
+
         $sql = "INSERT INTO gyarto
                 (gyartoId, gyartoNev)
                 VALUES
                 ('', '{$gyartoNev}');";
-        mysqli_query($dbconn, $sql);
+        echo "<pre>";
+        echo $querys = mysqli_query($dbconn, $sql);
+        echo $utolsoId = mysqli_insert_id($dbconn);
+        echo "</pre>";
 
        
-
-        $sqls = " INSERT INTO gyartokategoria (gyartoKategoriaId, kategoriaID, gyartoId) VALUES ('', '{$kategoriaID}', '100')";
-        mysqli_query($dbconn, $sqls);
-        header("location: kategoria.php");
+        $sqls = " INSERT INTO gyartokategoria (gyartoKategoriaId, kategoriaID, gyartoId) VALUES ('', '{$kategoriaID}', '{$utolsoId}')";
+        $eredmenyek = mysqli_query($dbconn, $sqls);
+        // mysqli_query($dbconn, $sqls);
+        // header("location: kategoria.php");
     }
 }
 

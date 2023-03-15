@@ -3,8 +3,7 @@
 //Űrlap feldolgozása
 
 require("kapcsolat.php");
-$sql = "SELECT * FROM kategoria
-        INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID";
+$sql = "SELECT * FROM `gyartokategoria` INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId";
 
 $eredmeny = mysqli_query($dbconn, $sql);
 
@@ -12,13 +11,13 @@ $eredmeny = mysqli_query($dbconn, $sql);
 $kiir = "";
 while($sor = mysqli_fetch_assoc($eredmeny)){
     $kiir.= "
-    <option value=\"{$sor['gyartoId']}\">{$sor['gyartoNev']} ({$sor['kategoriaNev']})</option>";
+    <option value=\"{$sor['gyartoKategoriaId']}\"> {$sor['kategoriaNev']} ({$sor['gyartoNev']})</option>";
 }
 
 
 
 if (isset($_POST['rendben'])) {
-    $markaId = $_POST['markaId'];
+    $gyartoKategoriaId = $_POST['gyartoKategoriaId'];
     $termekNev = strip_tags(trim($_POST['termekNev']));
     $leiras = $_POST['leiras'];
     $ar = $_POST['ar'];
@@ -57,15 +56,12 @@ if (isset($_POST['rendben'])) {
             $kit = ".jpg";
     }
 
-    $sql = "SELECT kategoria.kategoriaID FROM kategoria
-        INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID
-        INNER JOIN termek ON gyarto.gyartoId = termek.markaId
-        WHERE termek.markaId = {$markaId}";
+    $sql = "SELECT * FROM gyartokategoria WHERE  gyartoKategoriaId = {$gyartoKategoriaId}";
 
     $eredmeny = mysqli_query($dbconn, $sql);
 
     $sor = mysqli_fetch_array($eredmeny);
-    $kategoriaID = $sor['kategoriaID'];
+    $kategoriaID = $sor['gyartoKategoriaId'];
 
 
     $foto = $kategoriaID . "_" . date('U') . $kit;
@@ -79,15 +75,14 @@ if (isset($_POST['rendben'])) {
     } else {
         //felvitel az adatbázisba
 
-
-        $sql = "INSERT INTO `termek`(`markaId`, `termekNev`, `foto`, `leiras`, `darab`, `ar`)
-        VALUES ('{$markaId}','{$termekNev}','{$foto}','{$leiras}','{$darab}','{$ar}');";
+        
+        $sql = "INSERT INTO `termek`(`id`, `gyartoKategoriaId`, `termekNev`, `foto`, `leiras`, `darab`, `ar`) VALUES ('','{$gyartoKategoriaId}','{$termekNev}','{$foto}','{$leiras}','{$darab}','{$ar}')";
         mysqli_query($dbconn, $sql);
 
 
 
         //kép mozgatása a végleges helyére
-        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekek/{$foto}");
+        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekekuj/{$foto}");
         header("location: kategoria.php");
     }
 }
@@ -112,8 +107,8 @@ if (isset($_POST['rendben'])) {
 
             <?php if (isset($kimenet)) print $kimenet; ?>
 
-            <p><label for="markaId">Kategória kiválasztása*: </label>
-                <select id="markaId" name="markaId">
+            <p><label for="gyartoKategoriaId">Kategória kiválasztása*: </label>
+                <select id="gyartoKategoriaId" name="gyartoKategoriaId">
                     <?php print_r($kiir);?>
                 </select>
             </p>

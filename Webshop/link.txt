@@ -4,3 +4,4 @@
  https://stackoverflow.com/questions/44102855/remove-class-using-javascript-inside-of-php
  https://stackoverflow.com/questions/20728839/get-element-by-classname-with-domdocument-method
  https://stackoverflow.com/questions/2108663/in-php-how-to-remove-specific-class-from-html-tag
+ https://stackoverflow.com/questions/1685860/how-do-i-get-the-last-inserted-id-of-a-mysql-table-in-php
