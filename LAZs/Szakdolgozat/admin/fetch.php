@@ -4,16 +4,12 @@ require("kapcsolat.php");
 $output = '';
 if (isset($_POST["query"])) {
     $search = mysqli_real_escape_string($dbconn, $_POST["query"]);
-    $query = "SELECT termek.id, gyarto.gyartoNev, termek.termekNev, termek.foto, termek.leiras, termek.ar, kategoria.kategoriaNev FROM `kategoria`
-    INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID
-    INNER JOIN termek ON gyarto.gyartoId = termek.markaId
+    $query = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID
     WHERE termek.termekNev LIKE '%{$search}%'
-    OR kategoria.kategoriaNev LIKE '%{$search}%'";
+    OR gyarto.gyartoNev LIKE '%{$search}%'
+    OR  kategoria.kategoriaNev LIKE '%{$search}%'";
 } else {
-    $query = "SELECT termek.id, gyarto.gyartoNev, termek.termekNev, termek.foto, termek.leiras, termek.ar, kategoria.kategoriaNev FROM `kategoria`
-    INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID
-    INNER JOIN termek ON gyarto.gyartoId = termek.markaId ORDER BY termek.id;
- ";
+    $query = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID ORDER BY termek.id";
 }
 $result = mysqli_query($dbconn, $query);
 if (mysqli_num_rows($result) > 0) {
@@ -21,15 +17,15 @@ if (mysqli_num_rows($result) > 0) {
     <tr>
         <th>Kép</th>
         <th>Kategória</th>
-        <th>Márka</th>
-        <th>Modell</th>
+        <th>Gyártó</th>
+        <th>Termék</th>
         <th>Ár</th>
-        <th></th>
+        <th>Műveletek</th>
     </tr>
  ";
     while ($sor = mysqli_fetch_array($result)) {
         $kimenet .= "<tr>
-        <td><img src=\"../img/termekek/{$sor['foto']}\" alt=\"pro\"></td>
+        <td><img src=\"../img/termekekuj/{$sor['foto']}\" alt=\"pro\"></td>
         <td>{$sor['kategoriaNev']}</td>
         <td>{$sor['gyartoNev']}</td>
         <td>{$sor['termekNev']}</td>
@@ -42,7 +38,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     $kimenet = "<table>
     <tr>
-        <th style='padding:10px'>Nem találtam meg az Ön által keresett terméket</th>
+        <th style='padding:10px'>Nem található az Ön által keresett termék</th>
     </tr>";
     echo $kimenet;
 }

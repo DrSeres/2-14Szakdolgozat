@@ -2,11 +2,9 @@
 
 require("kapcsolat.php");
 
-$sql = "SELECT kategoria.kategoriaNev, gyarto.gyartoNev FROM `kategoria`
-INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID;";
+$sql = "SELECT kategoria.kategoriaNev, gyarto.gyartoNev, gyarto.gyartoId FROM gyartokategoria INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId INNER JOIN kategoria ON kategoria.kategoriaID=gyartokategoria.kategoriaID WHERE gyartokategoria.kategoriaID=kategoria.kategoriaID";
 
 $eredmeny = mysqli_query($dbconn, $sql);
-
 
 
 $sorok = "<table class='gyKtable'>
@@ -14,12 +12,12 @@ $sorok = "<table class='gyKtable'>
     <th>Gyártó</th>
     <th>Kategória</th>
 </tr>";
-while($sor = mysqli_fetch_assoc($eredmeny)) {
-    $sorok.= "<tr>
+while ($sor = mysqli_fetch_assoc($eredmeny)) {
+    $sorok .= "<tr>
     <td>{$sor['gyartoNev']}</td>
     <td>{$sor['kategoriaNev']}</td>";
 }
-$sorok.="</table>";
+$sorok .= "</table>";
 
 
 
@@ -53,12 +51,15 @@ if (isset($_POST['rendben'])) {
         //felvitel az adatbázisba
         require("kapcsolat.php");
         $sql = "INSERT INTO gyarto
-                (kategoriaID, gyartoNev)
+                (gyartoId, gyartoNev)
                 VALUES
-                ('{$kategoriaID}', '{$gyartoNev}');";
+                ('', '{$gyartoNev}');";
         mysqli_query($dbconn, $sql);
 
-        
+       
+
+        $sqls = " INSERT INTO gyartokategoria (gyartoKategoriaId, kategoriaID, gyartoId) VALUES ('', '{$kategoriaID}', '100')";
+        mysqli_query($dbconn, $sqls);
         header("location: kategoria.php");
     }
 }
@@ -109,7 +110,7 @@ if (isset($_POST['rendben'])) {
                 <summary>Meglévő táblák megtekintése</summary>
                 <?php if (isset($sorok)) print $sorok; ?>
             </details>
-            
+
         </form>
     </div>
 

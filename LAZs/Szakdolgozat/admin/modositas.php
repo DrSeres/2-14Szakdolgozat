@@ -3,8 +3,7 @@
 //Űrlap feldolgozása
 
 require("kapcsolat.php");
-$sql = "SELECT * FROM kategoria
-        INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID";
+$sql = "SELECT * FROM kategoria";
 
 $eredmeny = mysqli_query($dbconn, $sql);
 
