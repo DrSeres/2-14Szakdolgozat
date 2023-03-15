@@ -1,7 +1,7 @@
 <?php
 require("kapcsolat.php");
 session_start();
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 4;";
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 4";
 $eredmeny = mysqli_query($dbconnect, $sql);
 
 //szükséges adatok a számításhoz
@@ -50,7 +50,7 @@ $lapozo .= "</nav>";
 
 
 
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 4 ORDER BY gyarto.gyartoId ASC 
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 4 ORDER BY 1 ASC 
 LIMIT {$honnan}, {$mennyit}";
 $eredmeny = mysqli_query($dbconnect, $sql);
 
