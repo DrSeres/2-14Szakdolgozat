@@ -88,8 +88,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     </div>
     <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
     <div class="itemInfo">
-    
-        <h2>{$sor['gyartoNev']} {$sor['termekNev']}</h2>
+        <h2>{$sor['termekNev']}</h2>
         <hr>
         <p class='price'>{$sor['ar']}<span>Ft</span></p>
         <div class='appear' id='show'>
