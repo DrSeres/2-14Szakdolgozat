@@ -21,22 +21,7 @@ if(isset($_POST['rendben'])){
   $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
   $sql;
   $eredmeny = mysqli_query($dbconnect, $sql);
-
-  
   }
-  
-  
-  
-
-    
-
-    
-
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
