@@ -17,7 +17,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     <div class=\"main\">
         <div class=\"grid-container\">
             <div class=\"adat\">
-            <img src='../img/procHuto/{$sor['foto']}' class='kep'>
+            <img src='../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}' class='kep'>
             </div>
             <div class=\"adat\">
             <h2 id=\"kategoria\">{$sor['gyartoNev']} {$sor['termekNev']}</h2>

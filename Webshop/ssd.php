@@ -66,7 +66,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     <article>
     <div class="border">
     <a href=ssd_adat.php?id={$sor['id']}">
-    <img src="../img/ssd/{$sor['foto']}" alt="{$sor['foto']} "></a>
+    <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     
     </div>
     <div class="itemInfo">

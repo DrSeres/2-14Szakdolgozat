@@ -69,12 +69,12 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     <article>
     <div class="border">
     <a href=videokartya_adat.php?id={$sor['id']}">
-    <img src="../img/videokartya/{$sor['foto']}" alt="{$sor['foto']} "></a>
+    <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     
     </div>
     <div class="itemInfo">
     
-        <h2>{$sor['gyartoNev']} {$sor['termekNev']}</h2>
+        <h2>{$sor['termekNev']}</h2>
         <hr>
         <p class='price'>{$sor['ar']}<span>Ft</span></p>
         <div class='appear' id='show'>

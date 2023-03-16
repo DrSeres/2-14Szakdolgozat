@@ -84,7 +84,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     <article>
     <div class="border">
     <a href=processzor_adat.php?id={$sor['id']}">
-    <img src="../img/processzor/{$sor['foto']}" alt="{$sor['foto']} "></a>
+    <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
     <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
     <div class="itemInfo">
@@ -122,7 +122,6 @@ URLAP;
     <link rel="stylesheet" href="../css/oldal.css">
 </head>
 <body>
-        
     <header>
         <nav>
             <ul>
@@ -161,7 +160,8 @@ URLAP;
       </ul>
       <div class="centered">
         <h1>Processzorok</h1>
-        
+            <!-- Image Logo. -->
+            <img class="imgLogo" src="../LAZs/Szakdolgozat/img/termekekuj/" alt="Logo">
       </div>
 
       

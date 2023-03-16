@@ -16,21 +16,13 @@ if(isset($_POST['rendben'])){
     $cim = $_POST['cim'];
     $varos = $_POST['varos'];
     $megye = $_POST['megye'];
-    echo hash_hmac('ripemd160', 'The quick brown fox jumped over the lazy dog.', 'secret');
+  
 
+  $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
+  $sql;
+  $eredmeny = mysqli_query($dbconnect, $sql);
 
-
-
-  $result = $dbconnect->query("SELECT megrendeles.id, megrendeles.emailNev, megrendeles.nev, users.email FROM megrendeles INNER JOIN users ON users.email=megrendeles.emailNev WHERE megrendeles.emailNev = users.email AND users.name = '{$_SESSION['name']}' GROUP BY megrendeles.id;");
-
-  $rows = $result->fetch_all(MYSQLI_ASSOC);
-  foreach ($rows as $row) {
-      echo " ".$row["id"]. " ";
-      $insert = "INSERT INTO `megrendelesveglegesitese`(`megrendelesId`, `keresztNev`, `vezetekNev`, `emailId`, `kartyaszam`, `kod`, `telefonSzam`, `szallitasiCim`, `Varos`, `Megye`) VALUES ('','{$kernev}','{$veznev}','{$row['id']}','{$kartyaszam}','{$kod}','{$telefon}','{$cim}','{$varos}','{$megye}')";
-    $eredmeny = mysqli_query($dbconnect, $insert);
-    print "<pre>";
-    print_r($eredmeny);
-    print "</pre>";
+  
   }
   
   
@@ -40,7 +32,7 @@ if(isset($_POST['rendben'])){
 
     
 
-}
+
 
 
 
