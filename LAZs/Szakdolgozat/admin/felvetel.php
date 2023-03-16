@@ -62,7 +62,7 @@ if (isset($_POST['rendben'])) {
         echo $querys = mysqli_query($dbconn, $sql);
         echo $utolsoId = mysqli_insert_id($dbconn);
         echo "</pre>";
-
+        
        
         $sqls = " INSERT INTO gyartokategoria (gyartoKategoriaId, kategoriaID, gyartoId) VALUES ('', '{$kategoriaID}', '{$utolsoId}')";
         $eredmenyek = mysqli_query($dbconn, $sqls);

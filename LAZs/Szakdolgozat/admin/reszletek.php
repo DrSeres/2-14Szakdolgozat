@@ -11,19 +11,16 @@ require("kapcsolat.php");
 $id = (int)$_GET['id'];
 $sql = "SELECT*
         FROM termek
-        INNER JOIN gyarto ON gyarto.gyartoId = termek.markaId
         WHERE id = {$id}";
 $eredmeny = mysqli_query($dbconn, $sql);
 $sor = mysqli_fetch_assoc($eredmeny);
 
-$gyartoNev = $sor['gyartoNev'];
-$termekNev = $sor['termekNev'];
+
 $leiras = $sor['leiras'];
 $ar = $sor['ar'];
-$darab = $sor['darab'];
-$foto = ($sor['foto']) != "nincskep.png" ? $sor['foto'] : "nincskep.png";
 
-$cim = $sor['gyartoNev'] . " " . $sor['termekNev'];
+
+
 ?>
 
 
@@ -37,18 +34,21 @@ $cim = $sor['gyartoNev'] . " " . $sor['termekNev'];
     <link rel="stylesheet" href="css/felv_mod.css">
     <link rel="stylesheet" href="css/table.css">
     <title> <?php print $cim ?></title>
+    <script src="ckeditor.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <h1><?php print $gyartoNev ?> <?php print $termekNev ?></h1>
+        
         <form method="post" enctype="multipart/form-data">
 
-            <?php print $leiras; ?>
+           <textarea name="leiras" id="editor" cols="30" rows="10"><?php print $leiras;?></textarea>
             <p><a href="kategoria.php">Vissza az oldalra</a></p>
         </form>
     </div>
-
+<script>
+    CKEDITOR.replace('editor');
+</script>
 </body>
 
 </html>

@@ -3,7 +3,7 @@
 //Űrlap feldolgozása
 
 require("kapcsolat.php");
-$sql = "SELECT * FROM kategoria";
+$sql = "SELECT * FROM `gyartokategoria` INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId";
 
 $eredmeny = mysqli_query($dbconn, $sql);
 
@@ -17,7 +17,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
 
 
 if (isset($_POST['rendben'])) {
-    $markaId = $_POST['markaId'];
+    $gyartoKategoriaId = $_POST['gyartoKategoriaId'];
     $termekNev = strip_tags(trim($_POST['termekNev']));
     $leiras = $_POST['leiras'];
     $ar = $_POST['ar'];
@@ -56,10 +56,7 @@ if (isset($_POST['rendben'])) {
             $kit = ".jpg";
     }
 
-    $sql = "SELECT kategoria.kategoriaID FROM kategoria
-        INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID
-        INNER JOIN termek ON gyarto.gyartoId = termek.markaId
-        WHERE termek.markaId = {$markaId}";
+    $sql = "SELECT * FROM gyartokategoria WHERE  gyartoKategoriaId = {$gyartoKategoriaId}";
 
     $eredmeny = mysqli_query($dbconn, $sql);
 
@@ -80,27 +77,25 @@ if (isset($_POST['rendben'])) {
         $id = (int)$_GET['id'];
         
         $sql = "UPDATE termek
-                SET markaId = '{$markaId}', termekNev = '{$termekNev}', foto = '{$foto}', leiras = '{$leiras}', darab = '{$darab}', ar = '{$ar}'
+                SET gyartoKategoriaId = '{$gyartoKategoriaId}', termekNev = '{$termekNev}', foto = '{$foto}', leiras = '{$leiras}', darab = '{$darab}', ar = '{$ar}'
                 WHERE id = {$id}";
         mysqli_query($dbconn, $sql);
 
 
 
         //kép mozgatása a végleges helyére
-        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekek/{$foto}");
+        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekekuj/{$foto}");
         header("location: kategoria.php");
     }
 }
 else{
     $id = (int)$_GET['id'];
-    $sql = "SELECT *
-            FROM termek INNER JOIN gyarto ON gyarto.gyartoId = termek.markaId
+    $sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON gyartokategoria.gyartoKategoriaId=termek.gyartoKategoriaId INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID
             WHERE id = {$id}";
     $eredmeny = mysqli_query($dbconn, $sql);
     $sor = mysqli_fetch_assoc($eredmeny);
-
-    $gyartoNev = $sor['gyartoNev'];
-    $gyartoId = $sor['gyartoId'];
+    $gyartoId = $sor['gyartoKategoriaId'];
+    $gyartoNev = $sor['kategoriaNev'];
     $termekNev = $sor['termekNev'];
     $leiras = $sor['leiras'];
     $ar = $sor['ar'];
@@ -117,29 +112,32 @@ else{
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/felv_mod.css">
-    <title><?php print $gyartoNev . " " .$termekNev?></title>
+    <title><?php echo $termekNev?></title>
+    <script src="ckeditor.js"></script>
+    
 </head>
 
 <body>
     <div class="container">
-        <h1> <?php print $gyartoNev . " " . $termekNev?> módosítása</h1>
+        <h1> <?php  echo $termekNev?> módosítása</h1>
         <form method="post" enctype="multipart/form-data">
 
             <?php if (isset($kimenet)) print $kimenet; ?>
 
-            <p><label for="markaId">Kategória kiválasztása*: </label>
-                <select id="markaId" name="markaId">
-                    <option value="<?php print $gyartoId;?>"><?php print $gyartoId;?></option>
-                    <?php print_r($kiir);?>
+            <p><label for="gyartoKategoriaId">Kategória*: </label>
+                    <input type="text" name="gyartoKategoriaId" id="gyartoKategoriaId" value="<?php print $gyartoNev;?>"disabled>
+                    
                 </select>
             </p>
 
             <p><label for="termekNev">Modell*: </label>
-                <input type="text" name="termekNev" id="termekNev" value="<?php print $termekNev;?>">
+                <input type="text" name="termekNev" id="termekNev" value="<?php print $termekNev;?>" disabled>
             </p>
 
             <p><label for="leiras">Leírás*: </label>
-                <textarea name="leiras" id="leiras" cols="50" rows="15"><?php print $leiras;?></textarea>
+            
+                <textarea name="leiras" id="editor" cols="30" rows="50"><?php print $leiras;?></textarea>
+                
             </p>
 
             <p><label for="ar">Ára (Ft)*: </label>
@@ -154,7 +152,7 @@ else{
 
 
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-            <img src="../img/termekek/<?php print $foto;?>" id="termekFoto">
+            <img src="../img/termekekuj/<?php print $foto;?>" id="termekFoto">
             <p><label for="foto">Fotó feltöltése</label>
                 <input type="file" name="foto" id="foto">
             </p>
@@ -168,8 +166,12 @@ else{
             <input type="submit" value="Rendben" id="rendben" name="rendben">
             <p><a href="kategoria.php">Vissza az oldalra</a></p>
         </form>
+        
     </div>
-
+    <script>
+    // Replace the <textarea> with a CKEditor
+    CKEDITOR.replace('editor');
+</script>
 </body>
 
 </html>

@@ -98,6 +98,7 @@ if (isset($_POST['rendben'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/felv_mod.css">
     <title>Új adat hozzáadása</title>
+    <script src="ckeditor.js"></script>
 </head>
 
 <body>
@@ -118,7 +119,9 @@ if (isset($_POST['rendben'])) {
             </p>
 
             <p><label for="leiras">Leírás*: </label>
-                <textarea name="leiras" id="leiras" cols="50" rows="15"></textarea>
+            
+                <textarea name="leiras" id="editor" cols="500" rows="15"></textarea>
+                
             </p>
 
             <p><label for="ar">Ára (Ft)*: </label>
@@ -147,6 +150,10 @@ if (isset($_POST['rendben'])) {
             <p><a href="kategoria.php">Vissza az oldalra</a></p>
         </form>
     </div>
+    <script>
+        CKEDITOR.replace('editor');
+    </script>
 </body>
+
 
 </html>

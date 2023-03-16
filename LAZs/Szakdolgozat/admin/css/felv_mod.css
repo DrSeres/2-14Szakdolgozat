@@ -41,7 +41,6 @@ input {
     color: white;
     padding: 3px;
 }
-
 #rendben {
     padding: 7px;
     cursor: pointer;
@@ -65,8 +64,8 @@ a:hover{
 }
 textarea{
     background: #003554;
-    color: white;
-    resize: none;
+    color: black;
+    overflow-x: hidden;
 }
 details{
     text-align: center;
