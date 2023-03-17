@@ -2,12 +2,23 @@
 
 require("kapcsolat.php");
 session_start();
-$select = "SELECT kedvenctermekek.id, termek.termekNev, termek.ar FROM kedvenctermekek INNER JOIN termek ON kedvenctermekek.termekid=termek.id INNER JOIN users ON kedvenctermekek.usersId= users.id WHERE usersId = users.id";
+
+$sql = "SELECT * FROM users WHERE name = '{$_SESSION['name']}'";
+
+$eredmeny = mysqli_query($dbconnect, $sql);
+$sor = mysqli_fetch_array($eredmeny);
+$usersid = $sor['id'];
+
+
+$select = "SELECT kedvenctermekek.id, termek.termekNev, termek.ar, termek.foto FROM kedvenctermekek INNER JOIN termek ON kedvenctermekek.termekid=termek.id INNER JOIN users ON kedvenctermekek.usersId= users.id WHERE kedvenctermekek.usersId = {$usersid}";
 $eredmeny = mysqli_query($dbconnect, $select);
+
+
 
 if (mysqli_num_rows($eredmeny) > 0) {
     $kimenet = "<table>
     <tr>
+        <th>Fotó</th>
         <th>Termék neve</th>
         <th>Termék ára</th>
         <th>Művelet</th>
@@ -15,6 +26,7 @@ if (mysqli_num_rows($eredmeny) > 0) {
  ";
     while ($sor = mysqli_fetch_array($eredmeny)) {
         $kimenet .= "<tr>
+        <td><img src='../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}'></td>
         <td>{$sor['termekNev']}</td>
         <td>{$sor['ar']}</td>
         <td><a href=\"torles.php?id={$sor['id']}\" id=\'torles\'>Törlés</a></td>

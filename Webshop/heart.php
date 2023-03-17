@@ -25,22 +25,33 @@ $usersid = $sor['id'];
 // $kedvencId = $sorozat['id'];
 // print(" ");
 // print($kedvencId);
-$sql = "SELECT * FROM kedvenctermekek";
-$ki = mysqli_query($dbconnect, $sql);
-$sor = mysqli_fetch_array($ki);
-$id = $sor['id'];
 
-$van = "SELECT * FROM kedvenctermekek WHERE id = {$id}";
+// $sql = "INSERT INTO `kedvenctermekek`(`id`, `termekId`, `usersId`) VALUES ('','{$termekid}','{$usersid}')";
+// $eredmeny = mysqli_query($dbconnect, $sql);
+
+
+$sql = "SELECT * FROM kedvenctermekek ";
+$ki = mysqli_query($dbconnect, $sql);
+// $sor = mysqli_fetch_array($ki);
+// $termekid = $sor['termekId'];
+
+
+
+
+$van = "SELECT * FROM kedvenctermekek WHERE termekId = {$termekid} AND usersId = {$usersid}";
+print $van;
 $er = mysqli_query($dbconnect, $van);
 
 
-if(mysqli_num_rows($er) < 0){
-    $update = "UPDATE kedvenctermekek SET `termekId`='{$termekid}' WHERE id = {$id}";
+if(mysqli_num_rows($er) > 0){
+    $update = "UPDATE kedvenctermekek SET `termekId`='{$termekid}' WHERE termekId = {$termekid} AND usersId = {$usersid}";
     $eredmeny = mysqli_query($dbconnect, $update);
+    print "ez történik először";
 }
 else{
     $sql = "INSERT INTO `kedvenctermekek`(`id`, `termekId`, `usersId`) VALUES ('','{$termekid}','{$usersid}')";
     $eredmeny = mysqli_query($dbconnect, $sql);
+    print "ez történik másodszor";
 }
 
 // $k = "SELECT * FROM kedvenctermekek WHERE id = {$kedvencId}";

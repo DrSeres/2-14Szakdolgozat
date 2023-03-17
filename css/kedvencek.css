@@ -86,3 +86,8 @@ a{
     text-decoration: none;
     cursor: pointer;
 }
+
+table img {
+    height: 6rem;
+    width: 8rem;
+}
