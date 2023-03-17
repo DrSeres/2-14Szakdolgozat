@@ -68,7 +68,7 @@ table img {
     height: 120px;
 }
 tr:nth-child(odd) {
-    background-color: #16a0e5;
+    background-color: #003554;
     color: black;
   }
 tr:nth-child(even) {
@@ -90,4 +90,14 @@ a{
 table img {
     height: 6rem;
     width: 8rem;
+}
+
+
+html::-webkit-scrollbar {
+    background: #16a0e5;
+    border-radius: 5px;     
+  }
+html::-webkit-scrollbar-thumb {
+    background: #003554;
+    border-radius: 5px; 
 }

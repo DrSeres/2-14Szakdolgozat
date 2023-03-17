@@ -72,6 +72,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     
     </div>
+    <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
     <div class="itemInfo">
     
         <h2>{$sor['termekNev']}</h2>
@@ -109,7 +110,17 @@ URLAP;
         <nav>
             <ul>
                 <li><a href="index.php">Főoldal</a></li>
-                <li><a href="kedvenctermek.php">Kedvenc termékek</a></li>
+                <?php 
+                
+                if(isset($_SESSION['user_type'])){
+                    if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
+                      echo '<li><a href="kedvenctermek.php">Kedvenc termékek</a></li>';
+                    }
+                  }
+                
+                
+                
+                ?>
                 <li><a href="kapcsolat.html">Kapcsolat</a></li>
             </ul>
         </nav>

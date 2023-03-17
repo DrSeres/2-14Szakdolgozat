@@ -119,13 +119,29 @@ URLAP;
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/sablon.css">
     <link rel="stylesheet" href="../css/oldal.css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <header>
         <nav>
             <ul>
                 <li><a href="index.php">Főoldal</a></li>
-                <li><a href="kedvenctermek.php">Kedvenc termékek</a></li>
+                <?php 
+                
+                if(isset($_SESSION['user_type'])){
+                    if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
+                      echo '<li><a href="kedvenctermek.php">Kedvenc termékek</a></li>';
+                    }
+                  }
+                
+                
+                
+                ?>
+                
                 <li><a href="kapcsolat.html">Kapcsolat</a></li>
             </ul>
         </nav>
@@ -217,5 +233,7 @@ URLAP;
 
 
     <script src="../js/script.js"></script>
+    
+
 </body>
 </html>

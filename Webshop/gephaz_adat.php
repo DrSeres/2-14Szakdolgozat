@@ -71,7 +71,17 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
     <nav>
       <ul>
         <li><a href="index.php">Főoldal</a></li>
-        <li><a href="kedvenctermek.php">Kedvenc termékek</a></li>
+        <?php 
+                
+                if(isset($_SESSION['user_type'])){
+                    if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
+                      echo '<li><a href="kedvenctermek.php">Kedvenc termékek</a></li>';
+                    }
+                  }
+                
+                
+                
+                ?>
         <li><a href="kapcsolat.html">Kapcsolat</a></li>
         <li><a href="gephaz.php" class='Vissza'>Vissza a termékekhez</a></li>
         
