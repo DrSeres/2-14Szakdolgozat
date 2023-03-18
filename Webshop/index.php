@@ -20,6 +20,7 @@ session_start();
   <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/oldal.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feliratkozas.css">
+  <link rel="stylesheet" href="../css/cookie.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="sweetalert2.all.min.js"></script>
@@ -213,9 +214,16 @@ session_start();
   
   
 
-
+  <div id="cookiePopup" class="hide">
+      <img src="../img/cookie.png" />
+      <p>
+      Ez a webhely a Google-tól származó cookie-kat használ szolgáltatásai biztosításához és a forgalom elemzéséhez.
+      </p>
+      <button id="acceptCookie">Elfogadom</button>
+    </div>
 
  
+  
 
 
 
@@ -243,10 +251,9 @@ session_start();
 
 
 
-
-  <div id="custom-target"></div>
   <script src="../js/kijelentkezes.js"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/index.js"></script>
   <!-- <script src="../js/script.js"></script> -->
 </body>
 

@@ -1,17 +1,7 @@
 
 window.onload = function () {
     
-      Swal.fire({
-    
-        text: 'Ez a webhely a Google-tól származó cookie-kat használ szolgáltatásai biztosításához és a forgalom elemzéséhez.',
-        icon:'info',
-        target: '#custom-target',
-        customClass: {
-          container: 'position-absolute'
-        },
-        toast: true,
-        position: 'bottom-right'
-      })
+      
 
     
 
