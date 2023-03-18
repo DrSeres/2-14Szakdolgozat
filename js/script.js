@@ -1,14 +1,21 @@
+
 window.onload = function () {
-  Swal.fire({
-    text: 'Ez a webhely a Google-tól származó cookie-kat használ szolgáltatásai biztosításához és a forgalom elemzéséhez.',
-    target: '#custom-target',
-    customClass: {
-      container: 'position-absolute'
-    },
-    toast: true,
-    position: 'bottom-right'
-  })
- 
+    
+      Swal.fire({
+    
+        text: 'Ez a webhely a Google-tól származó cookie-kat használ szolgáltatásai biztosításához és a forgalom elemzéséhez.',
+        icon:'info',
+        target: '#custom-target',
+        customClass: {
+          container: 'position-absolute'
+        },
+        toast: true,
+        position: 'bottom-right'
+      })
+
+    
+
+
   const kosaricon = document.querySelector(".kosaricon");
   console.log(kosaricon);
   //Ez az x amivel bezárjuk a felugró ablakot
@@ -173,46 +180,72 @@ window.onload = function () {
     sum += data.no * data.price;
   });
   tableData +=
-    `<tr><th colspan="3" class='megrendeles'><a href="#" onclick=Megrendeles(); id='kuldes'>Megrendelés elküldése</th><th class='fizetes'>` +
+    `<tr><th colspan="3" class='megrendeles'><a href="#" id='kuldes'>Megrendelés elküldése</th><th class='fizetes'>` +
     sum +
     ` Ft</th ><th class='osszesTorles'><a href="#" onclick=allDelete(this)>Összes törlése</a></th></tr>`;
 
   cartBoxTable.innerHTML = tableData;
 
   let gomb = document.getElementById("kuldes");
-  console.log(gomb);
-  gomb.addEventListener("click", () => {
-    console.log("szia");
-    let adatok = new FormData();
-    for (n of nev) {
-      adatok.append("nev", n);
-      nevDb++;
-      adatok.append("rendelesDb", darab[nevDb]);
-      adatok.append("prices", price[nevDb]);
-      fetch("feltoltes.php", {
-        method: "POST",
-        body: adatok,
-      })
-        .then((response) => response.text())
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => console.log(error));
-    }
+  gomb.addEventListener('click', () => {
+    Swal.fire({
+      title: 'Biztosan megrendeled a termékeket?',
+      text: "Nem fogod tudni visszavonni ha már rákattintottál a megrendelés gombra!",
+      icon: 'warning',
+      iconColor:'red',
+      background: '#003554',
+      color:'white',
+      showCancelButton: true,
+      cancelButtonText: 'Mégsem',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Igen, megrendelem'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          background:'#003554',
+          title:'Átirányítás a rendelés fizetése menüponthoz!',
+          icon:'success',
+          color:'white',
+        },
+          
+        )
+        let okButton = document.getElementsByClassName('swal2-confirm');
+        console.log(okButton);
+        for(let i = 0; i < okButton.length; i++) {
+          okButton[i].addEventListener("click", function() {
+            let adatok = new FormData();
+            for (n of nev) {
+              adatok.append("nev", n);
+              nevDb++;
+              adatok.append("rendelesDb", darab[nevDb]);
+              adatok.append("prices", price[nevDb]);
+              fetch("feltoltes.php", {
+                method: "POST",
+                body: adatok,
+              })
+                .then((response) => window.location.href='megrendeles.php')
+                .then((data) => {
+                  console.log(data);
+                })
+                .catch((error) => console.log(error));
+            }
+          })
+        }
     
-
-
-
-
-
-
-
-    // adatok.append("rendelesDb", darab[0]);
-    // adatok.append("prices", price[0]);
-
-    console.log(adatok);
+      }
+    })
   });
   
+
+
+
+  // let confirm = document.getElementsByClassName("swal2-confirm");
+  // confirm.addEventListener("click", () => {
+  //   console.log("szia");
+    
+
+  // }
 };
 
 
@@ -237,6 +270,8 @@ function allDelete(elem) {
   window.location.reload();
 }
 
-function Megrendeles() {
-  window.location.href = "megrendeles.php";
-}
+// function Megrendeles() {
+//   window.location.href = "megrendeles.php";
+// }
+
+
