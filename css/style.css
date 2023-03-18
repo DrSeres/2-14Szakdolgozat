@@ -193,3 +193,33 @@ table {
 .fa-address-book{
     cursor: pointer;   
 }
+
+
+
+
+#custom-target {
+    position: relative;
+    width: 600px;
+    
+  }
+
+.swal2-popup.swal2-toast .swal2-html-container {
+    margin: 0.5em 1em;
+    padding: 0;
+    overflow: initial;
+    font-size: 1.5rem !important;
+    color: white;
+}
+.swal2-styled.swal2-confirm {
+    border: 0 !important;
+    border-radius: 0.25em !important;
+    background: initial !important;
+    background-color: #0a86d9 !important;
+    color: #fff !important;
+    font-size: 1.6rem !important;
+    margin: auto !important;
+    width: 10rem !important;
+}
+.swal2-toast {
+    background: #051923 !important;
+}

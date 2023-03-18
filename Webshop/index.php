@@ -21,7 +21,15 @@ session_start();
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feliratkozas.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <title>Számítógép webshop</title>
+  <style>
+    
+  </style>
 </head>
 
 <body>
@@ -60,6 +68,7 @@ session_start();
     </nav>"
     
   </header>
+  
   <div class="oldalLogo">
     <div class="area">
       <ul class="circles">
@@ -157,7 +166,7 @@ session_start();
         </div>
   </main>
 
-
+  
   <footer class="footer">
     <div class="container">
       <div class="sor">
@@ -201,6 +210,12 @@ session_start();
       </div>
     </div>
   </footer>
+  
+  
+
+
+
+ 
 
 
 
@@ -229,15 +244,9 @@ session_start();
 
 
 
-
-
-
-
-
-
-
-
+  <div id="custom-target"></div>
   <script src="../js/kijelentkezes.js"></script>
+  <script src="../js/script.js"></script>
   <!-- <script src="../js/script.js"></script> -->
 </body>
 
