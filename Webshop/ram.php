@@ -1,7 +1,14 @@
 <?php
 require("kapcsolat.php");
 session_start();
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 6;";
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 6;";
 $eredmeny = mysqli_query($dbconnect, $sql);
 
 //szükséges adatok a számításhoz
@@ -47,7 +54,7 @@ $lapozo .= "</nav>";
 
 
 
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 6 ORDER BY gyarto.gyartoId ASC 
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 6 ORDER BY 1 ASC 
 LIMIT {$honnan}, {$mennyit}";
 $eredmeny = mysqli_query($dbconnect, $sql);
 if((mysqli_num_rows($eredmeny)) < 1)

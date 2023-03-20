@@ -17,10 +17,40 @@ if(isset($_POST['rendben'])){
     $varos = $_POST['varos'];
     $megye = $_POST['megye'];
   
+  //Kártyaszám hosszának ellenőrzése
+  if (strlen($kartyaszam) > 19){
+    $hibak[] = "Túl hosszú bankkártyaszámnak!";
+  } elseif (strlen($kartyaszam) < 19) {
+    $hibak[] = "Túl rövid bankkártyaszámnak!";
+  }
 
-  $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
-  $sql;
-  $eredmeny = mysqli_query($dbconnect, $sql);
+  //telefonszám hosszának ellenőrzése
+  if (strlen($telefon) != 11) {
+    $hibak[] = "Ez nem magyar telefonszám!";
+  }
+
+  //CVV kód hosszának ellenőrzése
+  if (strlen($kod) != 3) {
+    $hibak[] = "3 számjegynek kell szerepelnie!";
+  }
+
+  if (isset($hibak)) {
+    $kimenet = "<div style=\"background-color: #A50000\">";
+    $kimenet.= "<h2 style=\"color: white; margin: 0px;\">HIBÁS ADATOK VANNAK MEGADVA! :(</h2>";
+    foreach ($hibak as $hiba) {
+        $kimenet .= "<p style=\"color: white;\">-X- {$hiba}</p>";
+    }
+    $kimenet.= "</div>";
+  } else {
+    $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
+    $sql;
+    $eredmeny = mysqli_query($dbconnect, $sql);
+  } 
+
+
+
+
+  
   }
 ?>
 
@@ -38,6 +68,7 @@ if(isset($_POST['rendben'])){
     <div id="container">    
     
       <div class="form-box login-section">
+        <?php if (isset($kimenet)) print $kimenet; ?>
         
         <form class="c-form login" name="c-form" method="post">
           <div class="two-columns">
