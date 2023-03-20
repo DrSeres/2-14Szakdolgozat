@@ -12,18 +12,22 @@ $email = mysqli_real_escape_string($dbconnect, $_POST['email']);
 $pass = sha1($_POST['password']);
 $cpass = sha1($_POST['passwordAgain']);
 
-$select = " SELECT * FROM users WHERE email = '$email' && password = '$pass' ";
+// $select = " SELECT * FROM users WHERE email = '$email' && password = '$pass' ";
 
-$eredmeny = mysqli_query($dbconnect, $select);
-if (mysqli_num_rows($eredmeny) > 0) {
-    $hibak[] = 'Létezik már egy olyan felhasználó!';
-} else {
-    if ($pass != $cpass) {
-        $hibak[] = "Nem egyezik meg a két jelszó!";
-    } else {
-        $insert = "INSERT INTO users(name, email, password) VALUES('$name','$email','$pass')";
-        mysqli_query($dbconnect, $insert);
-    }
-}
+// $eredmeny = mysqli_query($dbconnect, $select);
+// if (mysqli_num_rows($eredmeny) > 0) {
+//     $hibak[] = 'Létezik már egy olyan felhasználó!';
+// } else {
+//     if ($pass != $cpass) {
+//         $hibak[] = "Nem egyezik meg a két jelszó!";
+//     } else {
+//         $insert = "INSERT INTO users(name, email, password) VALUES('$name','$email','$pass')";
+//         mysqli_query($dbconnect, $insert);
+//     }
+// }
+
+$insert = "INSERT INTO users(name, email, password) VALUES('$name','$email','$pass')";
+mysqli_query($dbconnect, $insert);
+
 header("location:foBejelentkezes.php");
 ?>

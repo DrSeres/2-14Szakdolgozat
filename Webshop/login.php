@@ -34,18 +34,16 @@ if (count($eredmeny) > 0) {
         $_SESSION['name'] = $sor['name'];
         $_SESSION['user_type'] = $sor['user_type'];
         // echo $_SESSION['admin_name'];
-        header('location:index.php');
+        //header('location:index.php');
     } else if ($sor['user_type'] == 'user') {
         echo "Sima user";
         $_SESSION['name'] = $sor['name'];
         $_SESSION['user_type'] = $sor['user_type'];
         //echo $_SESSION['user_name'];
-        header("location:index.php");
+        //header("location:index.php");
     }
-} else {
-    $hibak[] = "Nem jó felhasználónév vagy jelszó!";
-    echo "Lekérdezett sorok száma: 0";
 }
-// header("location:index.php")
+
+header("location:index.php")
 
 ?>

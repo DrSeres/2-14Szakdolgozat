@@ -48,23 +48,24 @@ session_start();
                 </div>
             </div>
         </div>
+        <div id='error-message'>&nbsp;</div>
         <div class="login-section">
             <div class="form-box login">
-                <form action="login.php" method="post">
+                <form action="login.php" id='login-form' method="post" onsubmit="event.preventDefault();">
                     <input name="action" id="action" type="hidden" value="login" readonly disabled>
                     <h2>Bejelentkezés</h2>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-envelope'></i></span>
-                        <input type="email" name="email" required>
+                        <input type="email" id="login-email" name="email" required>
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                        <input type="password" name="password" required>
+                        <input type="password" id="login-password" name="password" required>
                         <label>Jelszó</label>
                     </div>
                     <div class="remember-password">
-                        <label for=""><input type="checkbox">Emlékezz rám</label>
+                        <label for="elfelejtett-jelszo"><input id="elfelejtett-jelszo" type="checkbox">Emlékezz rám</label>
                         <a href="#">Elfelejtett jelszó</a>
                     </div>
                     <button class="btn" id="be" type="submit">Bejelentkezés</button>
@@ -74,28 +75,28 @@ session_start();
                 </form>
             </div>
             <div class="form-box register">
-                <form action="register.php" method="post">
+                <form action="register.php" id="reg-form" method="post" onsubmit="event.preventDefault();">
                     <input name="action" id="action" type="hidden" value="register" readonly disabled>
                     <h2>Regisztráció</h2>
-
                     <div class="input-box">
+                        
                         <span class="icon"><i class='bx bxs-user'></i></span>
-                        <input type="text" name="name" required>
+                        <input type="text" id="name" name="name" required>
                         <label>Felhasználónév</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-envelope'></i></span>
-                        <input type="email" name="email" required>
+                        <input type="email" id="reg-email" name="email" required>
                         <label>Email</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                        <input type="password" name="password" required>
+                        <input type="password" id="reg-password" name="password" required>
                         <label>Jelszó</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                        <input type="password" name="passwordAgain" required>
+                        <input type="password"id="passwordAgain" name="passwordAgain" required>
                         <label>Jelszó megerősítése</label>
                     </div>
                     <div class="remember-password">
