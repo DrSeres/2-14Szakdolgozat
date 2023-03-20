@@ -27,7 +27,7 @@ $aktualis = (isset($_GET['oldal'])) ? (int)$_GET['oldal'] : 1;
  * 20, 10 - 3ik oldal
 */
 
-$honnan = ($aktualis -1) * $mennyit >= 1 ? ($aktualis -1) * $mennyit : 1;
+$honnan = ($aktualis -1) * $mennyit >= 1 ? ($aktualis -1) * $mennyit : 0;
 //print_r($honnan);
 
 

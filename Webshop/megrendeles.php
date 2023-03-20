@@ -38,7 +38,7 @@ if(isset($_POST['rendben'])){
     $kimenet = "<div style=\"background-color: #A50000\">";
     $kimenet.= "<h2 style=\"color: white; margin: 0px;\">HIBÁS ADATOK VANNAK MEGADVA! :(</h2>";
     foreach ($hibak as $hiba) {
-        $kimenet .= "<p style=\"color: white;\">-X- {$hiba}</p>";
+        $kimenet .= "<p style=\"color: white;\"><b>X</b> {$hiba}</p>";
     }
     $kimenet.= "</div>";
   } else {
