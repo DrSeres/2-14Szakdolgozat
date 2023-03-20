@@ -21,7 +21,7 @@ $aktualis = (isset($_GET['oldal'])) ? (int)$_GET['oldal'] : 1;
  * 20, 10 - 3ik oldal
 */
 
-$honnan = ($aktualis -1) * $mennyit >= 1 ? ($aktualis -1) * $mennyit : 1;
+$honnan = ($aktualis -1) * $mennyit >= 1 ? ($aktualis -1) * $mennyit : 0;
 //print_r($honnan);
 
 
@@ -106,6 +106,13 @@ URLAP;
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/sablon.css">
     <link rel="stylesheet" href="../css/oldal.css">
+
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
 
