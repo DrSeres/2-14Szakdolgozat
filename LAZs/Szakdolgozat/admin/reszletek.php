@@ -2,7 +2,15 @@
 
 //Űrlap feldolgozása
 
-require("kapcsolat.php");
+require("kapcsolat.php"); 
+
+if(!isset($_SESSION['user_type']) == 'admin'){
+  header("location:false.php");
+}
+
+
+
+
 // $sql = "SELECT * FROM kategoria
 //         INNER JOIN gyarto ON kategoria.kategoriaID = gyarto.kategoriaID";
 
