@@ -2,7 +2,13 @@
 require("kapcsolat.php");
 session_start();
 
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 5;";
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 5;";
 $eredmeny = mysqli_query($dbconnect, $sql);
 //szükséges adatok a számításhoz
 $mennyit = 8; //ennyi kártyát akarok látni egy oldalon
@@ -44,7 +50,7 @@ $lapozo .= ($aktualis != $lapok) ? "<li><a href=\"?oldal=".($lapok)."\">Utolsó<
 $lapozo .= "</ul>";
 $lapozo .= "</nav>";
 
-$sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 5 ORDER BY gyarto.gyartoId ASC 
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 5 ORDER BY 1 ASC 
 LIMIT {$honnan}, {$mennyit}";
 $eredmeny = mysqli_query($dbconnect, $sql);
 
@@ -99,6 +105,13 @@ URLAP;
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/sablon.css">
     <link rel="stylesheet" href="../css/oldal.css">
+
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 <body>
     
