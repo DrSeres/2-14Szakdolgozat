@@ -1,3 +1,12 @@
+<?php 
+
+if(!isset($_SESSION['user_type']) == 'admin'){
+  header("location:false.php");
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 

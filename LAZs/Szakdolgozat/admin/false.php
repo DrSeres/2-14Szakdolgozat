@@ -14,7 +14,7 @@
         <h1>FIGYELMEZTETÉS!</h1>
         <h2>TE EGY ÁTLAGOS FELHASZNÁLÓ VAGY!</h2>
         <p>Ez az oldal csak kizárólad rendszergazda tud hozzáférni! Kérem jelentkezzen be!</p>
-        <button class="back">Vissza a bejelentkezés felületre</button>
+        <a href="../../../Webshop/foBejelentkezes.php"><button class="back">Vissza a bejelentkezés felületre</button></a>
     </div>
 </body>
 </html>

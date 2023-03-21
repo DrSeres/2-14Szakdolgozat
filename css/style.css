@@ -25,6 +25,11 @@ li a {
     font-size: 18px;
     font-weight: 600;
 }
+nav a:hover{
+    text-decoration: underline;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
 .kosaricon {
     cursor: pointer;
     float: right;

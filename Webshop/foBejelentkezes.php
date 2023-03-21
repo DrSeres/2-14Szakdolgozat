@@ -22,12 +22,8 @@ session_start();
     <!-- NAVBAR CREATION -->
     <header class="header">
         <nav class="navbar">
-            <a href="#">Főoldal</a>
+            <a href="index.php">Főoldal</a>
         </nav>
-        <form action="" class="search-bar">
-            <input type="text" placeholder="Search...">
-            <button><i class='bx bx-search'></i></button>
-        </form>
     </header>
     <!-- LOGIN FORM CREATION -->
     <div class="background"></div>

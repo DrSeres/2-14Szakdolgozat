@@ -2,6 +2,14 @@
 
 require("kapcsolat.php");
 
+
+if(!isset($_SESSION['user_type']) == 'admin'){
+  header("location:false.php");
+}
+
+
+
+
 $sql = "SELECT kategoria.kategoriaNev, gyarto.gyartoNev, gyarto.gyartoId FROM gyartokategoria INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId INNER JOIN kategoria ON kategoria.kategoriaID=gyartokategoria.kategoriaID WHERE gyartokategoria.kategoriaID=kategoria.kategoriaID";
 
 $eredmeny = mysqli_query($dbconn, $sql);
