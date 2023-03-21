@@ -135,3 +135,18 @@
     transform: translateX(1500px);
     transition-delay: 0s;
 }
+
+.veglegesitesTermek{
+  text-align:center;
+  color: white;
+  font-size: 1.4rem;
+  padding-bottom: 1.6rem;
+}
+#torles{
+  background: #003554;
+  color: red;
+}
+#torles:hover{
+  background: #0582CA;
+  
+}

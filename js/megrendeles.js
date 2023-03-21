@@ -2,6 +2,7 @@ console.log("sadas");
 function GombFunction(){
     
 let gomb = document.getElementById("rendben");
+console.log(gomb);
 
 let knev = document.getElementById("last-name").value;
 console.log(knev);
@@ -31,15 +32,20 @@ else{
             color: "white",
             timerProgressBar: true,
             didOpen: () => {
-                Swal.showLoading();
+                Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+              b.textContent = Swal.getTimerLeft()
+            }, 500)
             },
             willClose: () => {
                 clearInterval(timerInterval);
             },
         }).then((result) => {
+            
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
-                //window.location.href='index.php';
+                window.location.href='index.php';
             }
         });
     }
