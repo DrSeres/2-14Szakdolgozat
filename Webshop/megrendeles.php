@@ -15,7 +15,7 @@ if(isset($_POST['rendben'])){
     $telefon = $_POST['phone'];
     $cim = $_POST['cim'];
     $varos = $_POST['varos'];
-    $megye = $_POST['megye'];
+    $megye = $_POST['megye']; 
   
   //Kártyaszám hosszának ellenőrzése
   if (strlen($kartyaszam) > 19){
