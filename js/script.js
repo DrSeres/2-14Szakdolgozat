@@ -55,8 +55,7 @@ window.onload = function () {
         .catch((error) => console.log(error));
     });
   });
-
-
+  
 
   //a felugró ablak megjelenítése
 
