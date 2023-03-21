@@ -1,11 +1,5 @@
 
 window.onload = function () {
-    
-      
-
-    
-
-
   const kosaricon = document.querySelector(".kosaricon");
   console.log(kosaricon);
   //Ez az x amivel bezárjuk a felugró ablakot
@@ -196,31 +190,48 @@ window.onload = function () {
           title:'Átirányítás a rendelés fizetése menüponthoz!',
           icon:'success',
           color:'white',
+          timer: 4000,
+          timerProgressBar: true,
+          didOpen: () => {
+            Swal.showLoading()
+            const b = Swal.getHtmlContainer().querySelector('b')
+            timerInterval = setInterval(() => {
+              b.textContent = Swal.getTimerLeft()
+            }, 100)
+          },
+          willClose: () => {
+            clearInterval(timerInterval)
+          }
         },
           
-        )
-        let okButton = document.getElementsByClassName('swal2-confirm');
-        console.log(okButton);
-        for(let i = 0; i < okButton.length; i++) {
-          okButton[i].addEventListener("click", function() {
-            let adatok = new FormData();
-            for (n of nev) {
-              adatok.append("nev", n);
-              nevDb++;
-              adatok.append("rendelesDb", darab[nevDb]);
-              adatok.append("prices", price[nevDb]);
-              fetch("feltoltes.php", {
-                method: "POST",
-                body: adatok,
-              })
-                .then((response) => window.location.href='megrendeles.php')
-                .then((data) => {
-                  console.log(data);
-                })
-                .catch((error) => console.log(error));
-            }
-          })
-        }
+        ).then((result) => {
+          /* Read more about handling dismissals below */
+          
+          if (result.dismiss === Swal.DismissReason.timer) {
+            
+              
+                let adatok = new FormData();
+                for (n of nev) {
+                  adatok.append("nev", n);
+                  nevDb++;
+                  adatok.append("rendelesDb", darab[nevDb]);
+                  adatok.append("prices", price[nevDb]);
+                  fetch("feltoltes.php", {
+                    method: "POST",
+                    body: adatok,
+                  })
+                    .then((response) => window.location.href='megrendeles.php')
+                    .then((data) => {
+                      console.log(data);
+                    })
+                    .catch((error) => console.log(error));
+                }
+              
+            
+          }
+        })
+        
+        
     
       }
     })

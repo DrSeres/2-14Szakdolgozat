@@ -7,6 +7,8 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
+
+
 if(isset($_POST['rendben'])){
     $veznev = $_POST['last-name'];
     $kernev = $_POST['first-name'];
@@ -16,7 +18,6 @@ if(isset($_POST['rendben'])){
     $cim = $_POST['cim'];
     $varos = $_POST['varos'];
     $megye = $_POST['megye']; 
-  
   //Kártyaszám hosszának ellenőrzése
   if (strlen($kartyaszam) > 19){
     $hibak[] = "Túl hosszú bankkártyaszámnak!";
@@ -25,7 +26,9 @@ if(isset($_POST['rendben'])){
   }
 
   //telefonszám hosszának ellenőrzése
-  if (strlen($telefon) != 11) {
+  if(!$telefon){
+    $hibak[] = "Nem adott meg telefonszámot!";
+  } else if (strlen($telefon) != 11) {
     $hibak[] = "Ez nem magyar telefonszám!";
   }
 
@@ -33,12 +36,14 @@ if(isset($_POST['rendben'])){
   if (strlen($kod) != 3) {
     $hibak[] = "3 számjegynek kell szerepelnie!";
   }
-
   if (isset($hibak)) {
+    
     $kimenet = "<div style=\"background-color: #A50000\">";
-    $kimenet.= "<h2 style=\"color: white; margin: 0px;\">HIBÁS ADATOK VANNAK MEGADVA! :(</h2>";
+    $kimenet.= "<h2 style=\"color: white; margin: 0px;\">HIBÁS ADATOK VANNAK MEGADVA!</h2>";
     foreach ($hibak as $hiba) {
+      
         $kimenet .= "<p style=\"color: white;\"><b>X</b> {$hiba}</p>";
+        
     }
     $kimenet.= "</div>";
   } else {
@@ -126,7 +131,6 @@ if(isset($_POST['rendben'])){
         </form>
       </div>
     </div>
-    <script src="../js/order.js"></script>
     <script src="../js/megrendeles.js"></script>
   </body>
 </html>
