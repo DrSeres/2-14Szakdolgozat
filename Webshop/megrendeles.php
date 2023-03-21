@@ -63,6 +63,15 @@ if(isset($_POST['rendben'])){
     <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
     <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
     <link rel="stylesheet" type="text/css" href="../css/order.css">
+
+    
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="sweetalert2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
   </head>
   <body>
     <div id="container">    
@@ -118,5 +127,6 @@ if(isset($_POST['rendben'])){
       </div>
     </div>
     <script src="../js/order.js"></script>
+    <script src="../js/megrendeles.js"></script>
   </body>
 </html>
