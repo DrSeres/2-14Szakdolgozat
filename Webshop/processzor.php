@@ -67,6 +67,10 @@ $eredmeny = mysqli_query($dbconnect, $sql);
 
 // $sql = "SELECT * FROM kategoria INNER JOIN gyarto ON kategoria.kategoriaID=gyarto.kategoriaID INNER JOIN termek ON gyarto.gyartoId=termek.markaId WHERE kategoria.kategoriaID = 1 AND gyartoNev LIKE '%{kifejezes}%' AND termekNev LIKE '%{kifejezes}%'";
 
+
+
+
+
      
 // $eredmeny = mysqli_query($dbconnect, $sql);
 if((mysqli_num_rows($eredmeny)) < 1)

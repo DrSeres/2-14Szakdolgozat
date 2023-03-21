@@ -1,8 +1,8 @@
 <?php 
 
-if(!isset($_SESSION['user_type']) == 'admin'){
-  header("location:false.php");
-}
+// if(!isset($_SESSION['user_type']) == 'admin'){
+//   header("location:false.php");
+// }
 
 
 
@@ -64,7 +64,7 @@ if(!isset($_SESSION['user_type']) == 'admin'){
   <main id="main">
     <!-- <hr> -->
     <h2 id="kategoria">Táblák</h2>
-    <p class="gombok"><a href="felvetel.php"><button>Új gyártó hozzáadása</button></a> | <a href="felvetel_2.php"><button>Új adat hozzáadása</button></a> | <a href=""><button>Kijelentkezés</button></a></p>
+    <p class="gombok"><a href="felvetel.php"><button>Új gyártó hozzáadása</button></a> | <a href="felvetel_2.php"><button>Új adat hozzáadása</button></a> | <a href="kedvenc.php"><button>Kedvenc termékek</button> | <a href=""><button>Kijelentkezés</button></a></p>
     <form method="post">
       <input type="text" name="search_text" id="search_text" placeholder="Keresés">
     </form>
