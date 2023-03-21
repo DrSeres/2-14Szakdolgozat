@@ -50,6 +50,8 @@ if(isset($_POST['rendben'])){
     $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
     $sql;
     $eredmeny = mysqli_query($dbconnect, $sql);
+    $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron WHERE megrendeles.termekId=termek.id";
+    mysqli_query($dbconnect, $update);
   } 
 
 
@@ -88,7 +90,7 @@ if(isset($_POST['rendben'])){
           <div class="two-columns">
             <fieldset>
               <label class="c-form-label" for="last-name">Keresztnév<span class="c-form-required"> *</span></label>
-              <input id="lastname" class="c-form-input" type="text" name="lastname" placeholder="Ön keresztneve" required onchange="GombFunction()">
+              <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve" required onchange="GombFunction()">
             </fieldset>
 
             <fieldset>

@@ -3,7 +3,7 @@ function GombFunction(){
     
 let gomb = document.getElementById("rendben");
 
-let knev = lastname.value;
+let knev = document.getElementById("last-name").value;
 console.log(knev);
 
         let vnev = document.getElementById("first-name").value;

@@ -21,6 +21,21 @@ error_reporting(E_ALL);
 
 $sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 1;";
 $eredmeny = mysqli_query($dbconnect, $sql);
+// while($sor = mysqli_fetch_array($eredmeny)){
+//     echo "<pre>";
+//     print_r($sor);
+//     echo "</pre>";
+//     echo "<pre>";
+//     print_r($sor['darab']);
+//     if($sor['darab'] == 28){
+//         echo "28 DARAB VAN AZ ADATBÁZISN";
+//     }
+//     echo "</pre>";
+
+// };
+
+
+
 //szükséges adatok a számításhoz
 $mennyit = 8; //ennyi kártyát akarok látni egy oldalon
 $osszesen = mysqli_num_rows($eredmeny);
