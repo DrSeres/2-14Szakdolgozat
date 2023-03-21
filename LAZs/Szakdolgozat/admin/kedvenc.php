@@ -13,7 +13,7 @@ if (mysqli_num_rows($result) > 0) {
         <th>Termék neve</th>
         <th>Raktáron</th>
         <th>Ár</th>
-        <th>Kedvelés száma</th>
+        <th>Kedvelések száma</th>
     </tr>
  ";
     while ($sor = mysqli_fetch_array($result)) {

@@ -96,7 +96,7 @@ session_start();
                         <label>Jelszó megerősítése</label>
                     </div>
                     <div class="remember-password">
-                        <label for=""><input type="checkbox">Egyetértek a szerződési feltételekkel</label>
+                        <label for="egyetertek"><input type="checkbox" id="egyetertek">Egyetértek a szerződési feltételekkel</label>
                     </div>
                     <button class="btn" id="re" type="submit">Regisztráció</button>
                     <div class="create-account">

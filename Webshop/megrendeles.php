@@ -50,32 +50,6 @@ if(isset($_POST['rendben'])){
     $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
     $sql;
     $eredmeny = mysqli_query($dbconnect, $sql);
-    echo '<script>';
-    echo "gomb.addEventListener('click', () => {
-      
-      
-      let timerInterval;
-      Swal.fire({
-          title: 'Sikeresen megrendelte a termékeit!',
-          timer: 5000,
-          icon:'success',
-          background: '#003554',
-          color: 'white',
-          timerProgressBar: true,
-          didOpen: () => {
-              Swal.showLoading();
-          },
-          willClose: () => {
-              clearInterval(timerInterval);
-          },
-      }).then((result) => {
-          /* Read more about handling dismissals below */
-          if (result.dismiss === Swal.DismissReason.timer) {
-              window.location.href='index.php';
-          }
-      });
-  }";
-    echo '</script>';
   } 
 
 
@@ -114,7 +88,7 @@ if(isset($_POST['rendben'])){
           <div class="two-columns">
             <fieldset>
               <label class="c-form-label" for="last-name">Keresztnév<span class="c-form-required"> *</span></label>
-              <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve" required>
+              <input id="lastname" class="c-form-input" type="text" name="lastname" placeholder="Ön keresztneve" required onchange="GombFunction()">
             </fieldset>
 
             <fieldset>
@@ -153,10 +127,11 @@ if(isset($_POST['rendben'])){
               <input id="megye" class="c-form-input" type="text" name="megye" placeholder="Megye" required>
             </fieldset>
           </div>
-          <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben" >
+          <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben" onsubmit="GombFunction()">
         </form>
       </div>
     </div>
     <script src="../js/megrendeles.js"></script>
   </body>
+ 
 </html>

@@ -123,7 +123,7 @@ input {
     width: calc(100% - 58%);
     height: 100%;
     color: #fff;
-    backdrop-filter: blur(6px);
+    
 }
 
 .login-section .form-box{
@@ -247,4 +247,9 @@ input {
 }
 .create-account p a:hover{
     text-decoration: underline;
+}
+#error-message{
+    text-align: right;
+    margin: 40px 160px 20px 0;
+    color: white;
 }
