@@ -53,7 +53,7 @@ $lapozo .= "</nav>";
 
 
 
-$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 9 ORDER BY gyarto.gyartoId ASC 
+$sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 9 ORDER BY 1 ASC 
 LIMIT {$honnan}, {$mennyit}";
 $eredmeny = mysqli_query($dbconnect, $sql);
 
