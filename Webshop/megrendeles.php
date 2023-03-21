@@ -50,6 +50,32 @@ if(isset($_POST['rendben'])){
     $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
     $sql;
     $eredmeny = mysqli_query($dbconnect, $sql);
+    echo '<script>';
+    echo "gomb.addEventListener('click', () => {
+      
+      
+      let timerInterval;
+      Swal.fire({
+          title: 'Sikeresen megrendelte a termékeit!',
+          timer: 5000,
+          icon:'success',
+          background: '#003554',
+          color: 'white',
+          timerProgressBar: true,
+          didOpen: () => {
+              Swal.showLoading();
+          },
+          willClose: () => {
+              clearInterval(timerInterval);
+          },
+      }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+              window.location.href='index.php';
+          }
+      });
+  }";
+    echo '</script>';
   } 
 
 

@@ -7,7 +7,9 @@
     font-size: 16px;
   }
   body {
-    background: #003554;
+    background-image: url(../img/blueWallpapper.jpg);
+    background-attachment: fixed;
+    background-size: cover;
     font-family: futura-pt, sans-serif;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
   }
