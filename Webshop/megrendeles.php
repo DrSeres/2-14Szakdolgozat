@@ -53,10 +53,13 @@ if(isset($_POST['torles'])){
     $kimenet.= "</div>";
   } else {
     $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
-    $sql;
     $eredmeny = mysqli_query($dbconnect, $sql);
+
     $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, status = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
     mysqli_query($dbconnect, $update);
+    echo "<pre>";
+    print_r($update);
+    echo "</pre>";
   } 
 
 

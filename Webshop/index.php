@@ -189,7 +189,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
 
         </div>
     </div>
-    <div class="kedvencScroll" style="background-image: url(../img/wallpaper.png); border:1px solid black;height:60rem;overflow-y:hidden;overflow-x:scroll;">
+    <div class="kedvencScroll" style="background-image: url(../img/wallpaper.png); border:1px solid black;height:60rem;overflow-y:hidden;overflow-x:scroll; -webkit-overflow-scrolling: touch;">
       <h1 class="kedvencH1">Legkedveltebb termékek</h1>
             <?php print_r($kimenet) ?>
         </div>

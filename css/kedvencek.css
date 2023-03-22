@@ -40,9 +40,9 @@ li a {
 table{
     padding: 10px;
     border-radius: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 60rem;
+    margin: auto;
+    width: 70%;
+    overflow-x:auto;
 }
 th{
     border-top-left-radius: 10px;

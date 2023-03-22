@@ -18,14 +18,16 @@ console.log(' vezetéknév', vnev);
 // }
 let gomb = document.getElementById('rendben');
 gomb.addEventListener("click", e => {
+    
     if (
         knev.value != "" && vnev.value != "" && card.value != "" &&
         cvv.value != "" && phone.value != "" && cim.value != "" &&
         varos.value != "" && megye.value != ""
     ) {
+       
         console.log("MINDEGYIK KI VAN TÖLTVE");
-        e.preventDefault();
         console.log("CLICK MŰKÖDIK");
+        e.preventDefault();
         let timerInterval;
         Swal.fire({
             background: '#003554',
@@ -37,10 +39,6 @@ gomb.addEventListener("click", e => {
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading()
-                const b = Swal.getHtmlContainer().querySelector('b')
-                timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
-                }, 100)
             },
             willClose: () => {
                 clearInterval(timerInterval)
@@ -50,6 +48,7 @@ gomb.addEventListener("click", e => {
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
                 window.location.href = 'index.php';
+                localStorage.clear();
             }
         });
     }
@@ -60,7 +59,6 @@ gomb.addEventListener("click", e => {
 
 let torles = document.getElementById('torles');
 torles.addEventListener('click', e => {
-    e.preventDefault();
     Swal.fire({
         title: 'Biztosan törlöd a terméket?',
         text: "Nem fogod tudni visszavonni ha már töröltél egy terméket!",
@@ -96,6 +94,7 @@ torles.addEventListener('click', e => {
             ).then((result) => {
                     if (result.dismiss === Swal.DismissReason.timer) {
                         window.location.href='index.php';
+                        localStorage.clear();
                     }
                 
             })

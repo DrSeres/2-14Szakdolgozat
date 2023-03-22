@@ -475,6 +475,8 @@ figcaption a {
   gap: 30px;
   padding-left: 20px;
   padding-right: 2px;
+  -webkit-overflow-scrolling: touch;
+  user-select: none; /*A felhasználó nev tudja kijelölni a termékeket*/
 }
 
 .kedvenc img{
@@ -518,6 +520,7 @@ div.scroll {
   overflow-x: auto;
   overflow-y: hidden;
   white-space: nowrap;
+  
 }
 
 

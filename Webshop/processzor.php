@@ -239,7 +239,7 @@ URLAP;
             <h1>Kosár tartalma</h1>
             <!--Táblázat, ahol a termékek kerülnek-->
             <div style="overflow-y:auto; height:350px; overflow-x:hidden;" class="tableScrollBar">
-            <table></table>
+            <table class='kosartable'></table>
             </div>
         </div>
     </div>
