@@ -9,7 +9,9 @@ session_start();
 
 
 if(isset($_POST['torles'])){
-  $delete = "DELETE FROM `megrendeles` WHERE status != 1";
+  $update = "UPDATE `megrendeles` SET `torles`='1' WHERE status != 1";
+  mysqli_query($dbconnect, $update);
+  $delete = "DELETE FROM `megrendeles` WHERE status != 1 AND torles == 1";
   mysqli_query($dbconnect, $delete);
 }
  if(isset($_POST['rendben'])){
@@ -46,7 +48,6 @@ if(isset($_POST['torles'])){
     foreach ($hibak as $hiba) {
       
         $kimenet .= "<p style=\"color: white;\"><b>X</b> {$hiba}</p>";
-        
     }
     $kimenet.= "</div>";
   } else {
@@ -133,7 +134,7 @@ if(isset($_POST['torles'])){
             </fieldset>
           </div>
           <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben" onsubmit="GombFunction()">
-          <a href="index.php"><input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles"></a>
+          <a href="index.php"><input type="button" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles"></a>
         </form>
       </div>
     </div>
