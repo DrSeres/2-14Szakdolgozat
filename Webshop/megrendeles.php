@@ -95,7 +95,7 @@ if(isset($_POST['torles'])){
           <div class="two-columns">
             <fieldset>
               <label class="c-form-label" for="last-name">Keresztnév<span class="c-form-required"> *</span></label>
-              <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve"  onchange="GombFunction()">
+              <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve">
             </fieldset>
 
             <fieldset>
@@ -134,12 +134,12 @@ if(isset($_POST['torles'])){
               <input id="megye" class="c-form-input" type="text" name="megye" placeholder="Megye" >
             </fieldset>
           </div>  
-          <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben" onsubmit="GombFunction()">
-          <input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles"></input>
+          <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben">
+          <input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles">
         </form>
       </div>
     </div>
-    <script src="../js/megrendeles.js"></script>
+      <script src="../js/megrendeles.js"></script>
   </body>
  
 </html>

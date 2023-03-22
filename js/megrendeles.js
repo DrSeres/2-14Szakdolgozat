@@ -1,59 +1,57 @@
 let torles = document.getElementById('torles');
-console.log(torles);
-console.log("sadas");
-function GombFunction(){
-    
-let gomb = document.getElementById("rendben");
-console.log(gomb);
 
+let knev = document.getElementById("last-name");
+let vnev = document.getElementById("first-name");
+let card = document.getElementById("card");
+let cvv = document.getElementById("code");
+let phone = document.getElementById("phone");
+let cim = document.getElementById("cim");
+let varos = document.getElementById("varos");
+let megye = document.getElementById("megye");
+console.log(' vezetéknév',vnev);
 
-
-let knev = document.getElementById("last-name").value;
-console.log(knev);
-
-        let vnev = document.getElementById("first-name").value;
-
-        let card = document.getElementById("card").value;
-        let cvv = document.getElementById("code").value;
-        let phone = document.getElementById("phone").value;
-        let cim = document.getElementById("cim").value;
-        let varos = document.getElementById("varos").value;
-        let megye = document.getElementById("megye").value;
-if (knev == "" && vnev == "" && card == "" && cvv == "" && phone == "" && cim  == "" && varos == "" && megye == ""){
-    console.log("Ne csinálj semmit");
-} 
-else{
-    console.log("asdasdasssssssssssssssss");
-    gomb.addEventListener("click", () => {
-        console.log(gomb);
-        
+// if(knev != ""){
+//     console.log(true);
+// }
+// else{
+//     console.log(false);
+// }
+let gomb = document.getElementById('rendben');
+gomb.addEventListener("click", e => {
+    if (
+        knev.value != "" && vnev.value != "" && card.value != "" && 
+        cvv.value != "" && phone.value != "" && cim.value != "" && 
+        varos.value != "" && megye.value != ""
+        ) {
+        console.log("MINDEGYIK KI VAN TÖLTVE");
+        e.preventDefault();
+        console.log("CLICK MŰKÖDIK");
         let timerInterval;
         Swal.fire({
-            title: "Sikeresen megrendelte a termékeit!",
-            timer: 5000,
+            background:'#003554',
+            title:'Kössz a rendelést',
             icon:'success',
-            background: "#003554",
-            color: "white",
+            color:'white',
+            timer: 4000,
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading()
-            const b = Swal.getHtmlContainer().querySelector('b')
-            timerInterval = setInterval(() => {
-              b.textContent = Swal.getTimerLeft()
-            }, 500)
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                b.textContent = Swal.getTimerLeft()
+                }, 100)
             },
             willClose: () => {
-                clearInterval(timerInterval);
-            },
-        }).then((result) => {
+                clearInterval(timerInterval)
+            }
+            },).then((result) => {
             
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
-                window.location.href='index.php';
             }
         });
     }
-);
-}
-
-}
+    else{
+        console.log("ÖSSZES ÜRES");
+    }
+});
