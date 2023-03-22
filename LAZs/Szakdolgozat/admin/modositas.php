@@ -3,9 +3,9 @@
 //Űrlap feldolgozása
 
 
-if(!isset($_SESSION['user_type']) == 'admin'){
-  header("location:false.php");
-}
+// if(!isset($_SESSION['user_type']) == 'admin'){
+//   header("location:false.php");
+// }
 
 
 
