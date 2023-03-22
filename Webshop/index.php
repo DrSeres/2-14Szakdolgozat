@@ -21,11 +21,11 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
   if($kedvenc >= 1){
     $kimenet .=
     <<<URLAP
-      <div class="kedvenc">
+      <div class="card kedvenc">
         <div>
           <a href=processzor_adat.php?id={$sor['id']}">
-          <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
           <h2>{$sor['termekNev']}</h2>
+          <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
       </div>
         
     
@@ -189,8 +189,8 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
 
         </div>
     </div>
-    <div class="vasarlas feliratkozas scrollmenu" style="background-image: url(../img/wallpaper.png);">
-           
+    <div class="kedvencScroll" style="background-image: url(../img/wallpaper.png); border:1px solid black;height:60rem;overflow-y:hidden;overflow-x:scroll;">
+      <h1 class="kedvencH1">Legkedveltebb termékek</h1>
             <?php print_r($kimenet) ?>
         </div>
   </main>

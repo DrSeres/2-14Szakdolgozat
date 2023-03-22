@@ -470,16 +470,28 @@ figcaption a {
 }
 .kedvenc{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
+  align-items:center;
+  justify-content: left;
+  gap: 30px;
+  padding-left: 20px;
+  padding-right: 2px;
 }
+
 .kedvenc img{
-  width: 20rem;
-  height: 15rem;
+  width: 40rem;
+  height: 40rem;
+} 
+
+.kedvencH1{
+  position: absolute;
+  margin: auto;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: 5.2rem;
+  padding: 40px;
 }
-
-
+/* 
 
 div.scrollmenu {
   background-color: #333;
@@ -497,4 +509,26 @@ div.scrollmenu {
 
 div.scrollmenu a:hover {
   background-color: #777;
+} */
+
+div.scroll {
+  margin: 4px, 4px;
+  padding: 4px;
+  background-color: #08c708;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+
+
+.kedvencScroll::-webkit-scrollbar{
+  height: 1rem;
+  width: 1rem;
+  background: #006494;
+  border-radius: 10px; 
+}
+.kedvencScroll::-webkit-scrollbar-thumb:horizontal{
+  background: #0582CA;
+  border-radius: 10px; 
 }
