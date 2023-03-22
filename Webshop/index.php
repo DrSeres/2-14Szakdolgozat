@@ -4,6 +4,38 @@ require('kapcsolat.php');
 
 session_start();
 
+$sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar, COUNT(termek.termekNev) AS 'kedveles' FROM `kedvenctermekek` INNER JOIN termek ON kedvenctermekek.termekId=termek.id GROUP BY termek.termekNev;";
+$eredmeny = mysqli_query($dbconnect, $sql);
+
+if((mysqli_num_rows($eredmeny)) < 1)
+{
+    $kimenet = "<article>
+    <h2>Nincs kedvelt termékek</h2>
+    </article>";
+}
+else
+{
+$kimenet = "";
+while ($sor = mysqli_fetch_assoc($eredmeny)) {
+  $kedvenc = $sor['kedveles'];
+  if($kedvenc >= 5){
+    $kimenet .=
+    <<<URLAP
+      <div class="kedvenc">
+        <div>
+          <a href=processzor_adat.php?id={$sor['id']}">
+          <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
+          <h2>{$sor['termekNev']}</h2>
+      </div>
+        
+    
+    
+    URLAP;
+  }
+    
+
+}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -158,9 +190,8 @@ session_start();
         </div>
     </div>
     <div class="vasarlas feliratkozas" style="background-image: url(../img/wallpaper.png);">
-            <h2>Iratkozzon fel hírlevelünkre</h2>
-            <input type="email" name="email" id="email" placeholder='Írja be E-mail címet' required >
-            <button type="submit">Feliratkozás</button>
+            <h2>Siker termékek</h2>
+            <?php print_r($kimenet) ?>
         </div>
   </main>
 
