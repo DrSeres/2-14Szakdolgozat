@@ -468,3 +468,11 @@ figcaption a {
   }
 
 }
+
+.kedvenc img{
+  width: 240px;
+}
+.kedvenc h2, div{
+  margin: 0;
+  padding: 0;
+}
