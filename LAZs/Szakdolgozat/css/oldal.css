@@ -529,6 +529,6 @@ div.scroll {
   border-radius: 10px; 
 }
 .kedvencScroll::-webkit-scrollbar-thumb:horizontal{
-  background: #0582CA;
+  background: white;
   border-radius: 10px; 
 }
