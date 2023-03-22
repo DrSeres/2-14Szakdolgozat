@@ -1,8 +1,12 @@
+let torles = document.getElementById('torles');
+console.log(torles);
 console.log("sadas");
 function GombFunction(){
     
 let gomb = document.getElementById("rendben");
 console.log(gomb);
+
+
 
 let knev = document.getElementById("last-name").value;
 console.log(knev);

@@ -11,10 +11,11 @@ session_start();
 if(isset($_POST['torles'])){
   $update = "UPDATE `megrendeles` SET `torles`='1' WHERE status != 1";
   mysqli_query($dbconnect, $update);
-  $delete = "DELETE FROM `megrendeles` WHERE status != 1 AND torles == 1";
+  print_r($update);
+  $delete = "DELETE FROM `megrendeles` WHERE status != 1 AND torles != 0";
   mysqli_query($dbconnect, $delete);
-}
- if(isset($_POST['rendben'])){
+  print_r($delete);
+}else if(isset($_POST['rendben'])){
     $veznev = $_POST['last-name'];
     $kernev = $_POST['first-name'];
     $kartyaszam = $_POST['card'];
@@ -29,7 +30,7 @@ if(isset($_POST['torles'])){
   } elseif (strlen($kartyaszam) < 19) {
     $hibak[] = "Túl rövid bankkártyaszámnak!";
   }
-
+  
   //telefonszám hosszának ellenőrzése
   if(!$telefon){
     $hibak[] = "Nem adott meg telefonszámot!";
@@ -94,47 +95,47 @@ if(isset($_POST['torles'])){
           <div class="two-columns">
             <fieldset>
               <label class="c-form-label" for="last-name">Keresztnév<span class="c-form-required"> *</span></label>
-              <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve" required onchange="GombFunction()">
+              <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve"  onchange="GombFunction()">
             </fieldset>
 
             <fieldset>
               <label class="c-form-label" for="first-name">Vezetéknév<span class="c-form-required"> *</span></label>
-              <input id="first-name" class="c-form-input" type="text" name="first-name" placeholder="Ön vezetékneve" required>
+              <input id="first-name" class="c-form-input" type="text" name="first-name" placeholder="Ön vezetékneve" >
             </fieldset>
           </div>
           <div class="two-columns">
             <fieldset>
               <label class="c-form-label" for="card">Bankkártyaszám<span class="c-form-required"> *</span></label>
-              <input id="card" class="c-form-input" type="text" name="card" placeholder="Ön kártyaszáma" required>
+              <input id="card" class="c-form-input" type="text" name="card" placeholder="Ön kártyaszáma" >
             </fieldset>
 
             <fieldset>
               <label class="c-form-label" for="code">CVV Kód<span class="c-form-required"> *</span></label>
-              <input id="code" class="c-form-input" type="text" name="code" placeholder="XXX    " required>
+              <input id="code" class="c-form-input" type="text" name="code" placeholder="XXX    " >
             </fieldset>
           </div>
 
           <fieldset>
             <label class="c-form-label" for="phone">Telefonszám<span class="c-form-required"> *</span></label>
-            <input id="phone" class="c-form-input" type="tel" name="phone" placeholder="0630 234 2455" required>
+            <input id="phone" class="c-form-input" type="tel" name="phone" placeholder="0630 234 2455" >
           </fieldset>
           <div class="two-columns">
             <fieldset>
               <label class="c-form-label" for="cim">Kiszállítási cím<span class="c-form-required"> *</span></label>
-              <input id="cim" class="c-form-input" type="text" name="cim" placeholder="Ön lakcíme" required>
+              <input id="cim" class="c-form-input" type="text" name="cim" placeholder="Ön lakcíme" >
             </fieldset>
 
             <fieldset>
               <label class="c-form-label" for="varos">Város<span class="c-form-required"> *</span></label>
-              <input id="varos" class="c-form-input" type="text" name="varos" placeholder="City" required>
+              <input id="varos" class="c-form-input" type="text" name="varos" placeholder="City" >
             </fieldset>
             <fieldset>
               <label class="c-form-label" for="megye">Megye<span class="c-form-required"> *</span></label>
-              <input id="megye" class="c-form-input" type="text" name="megye" placeholder="Megye" required>
+              <input id="megye" class="c-form-input" type="text" name="megye" placeholder="Megye" >
             </fieldset>
-          </div>
+          </div>  
           <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben" onsubmit="GombFunction()">
-          <a href="index.php"><input type="button" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles"></a>
+          <input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles"></input>
         </form>
       </div>
     </div>
