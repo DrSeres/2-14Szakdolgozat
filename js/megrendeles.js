@@ -1,4 +1,4 @@
-let torles = document.getElementById('torles');
+
 
 let knev = document.getElementById("last-name");
 let vnev = document.getElementById("first-name");
@@ -8,7 +8,7 @@ let phone = document.getElementById("phone");
 let cim = document.getElementById("cim");
 let varos = document.getElementById("varos");
 let megye = document.getElementById("megye");
-console.log(' vezetéknév',vnev);
+console.log(' vezetéknév', vnev);
 
 // if(knev != ""){
 //     console.log(true);
@@ -19,39 +19,102 @@ console.log(' vezetéknév',vnev);
 let gomb = document.getElementById('rendben');
 gomb.addEventListener("click", e => {
     if (
-        knev.value != "" && vnev.value != "" && card.value != "" && 
-        cvv.value != "" && phone.value != "" && cim.value != "" && 
+        knev.value != "" && vnev.value != "" && card.value != "" &&
+        cvv.value != "" && phone.value != "" && cim.value != "" &&
         varos.value != "" && megye.value != ""
-        ) {
+    ) {
         console.log("MINDEGYIK KI VAN TÖLTVE");
         e.preventDefault();
         console.log("CLICK MŰKÖDIK");
         let timerInterval;
         Swal.fire({
-            background:'#003554',
-            title:'Kössz a rendelést',
-            icon:'success',
-            color:'white',
+            background: '#003554',
+            title: 'Rögzítettük a rendelését!',
+            text: 'Köszönjük, hogy nálunk vásárolt.',
+            icon: 'success',
+            color: 'white',
             timer: 4000,
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading()
                 const b = Swal.getHtmlContainer().querySelector('b')
                 timerInterval = setInterval(() => {
-                b.textContent = Swal.getTimerLeft()
+                    b.textContent = Swal.getTimerLeft()
                 }, 100)
             },
             willClose: () => {
                 clearInterval(timerInterval)
             }
-            },).then((result) => {
-            
+        },).then((result) => {
+
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
+                window.location.href = 'index.php';
             }
         });
     }
-    else{
+    else {
         console.log("ÖSSZES ÜRES");
     }
+});
+
+let torles = document.getElementById('torles');
+torles.addEventListener('click', e => {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Biztosan törlöd a terméket?',
+        text: "Nem fogod tudni visszavonni ha már töröltél egy terméket!",
+        icon: 'warning',
+        iconColor: 'red',
+        background: '#003554',
+        color: 'white',
+        showCancelButton: true,
+        cancelButtonText: 'Mégsem',
+        confirmButtonColor: 'red',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Igen, törlöm'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                background: '#003554',
+                title: 'Termékek törlése',
+                icon: 'success',
+                color: 'white',
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading()
+                    const b = Swal.getHtmlContainer().querySelector('b')
+                    timerInterval = setInterval(() => {
+                        b.textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                willClose: () => {
+                    clearInterval(timerInterval)
+                }
+            },
+            ).then((result) => {
+                Swal.fire({
+                    background: '#003554',
+                    title: 'Termékek törlése folyamatban',
+                    icon: 'success',
+                    color: 'white',
+                    timer: 4000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {
+                            b.textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    }
+                },
+
+                )
+            })
+        }
+    })
 });
