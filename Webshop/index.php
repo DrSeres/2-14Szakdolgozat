@@ -189,8 +189,8 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
 
         </div>
     </div>
-    <div class="vasarlas feliratkozas" style="background-image: url(../img/wallpaper.png);">
-            <h2>Siker termékek</h2>
+    <div class="vasarlas feliratkozas scrollmenu" style="background-image: url(../img/wallpaper.png);">
+           
             <?php print_r($kimenet) ?>
         </div>
   </main>

@@ -468,11 +468,33 @@ figcaption a {
   }
 
 }
-
-.kedvenc img{
-  width: 240px;
+.kedvenc{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
-.kedvenc h2, div{
-  margin: 0;
-  padding: 0;
+.kedvenc img{
+  width: 20rem;
+  height: 15rem;
+}
+
+
+
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+  background-color: #777;
 }
