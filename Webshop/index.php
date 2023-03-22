@@ -18,7 +18,7 @@ else
 $kimenet = "";
 while ($sor = mysqli_fetch_assoc($eredmeny)) {
   $kedvenc = $sor['kedveles'];
-  if($kedvenc >= 5){
+  if($kedvenc >= 1){
     $kimenet .=
     <<<URLAP
       <div class="kedvenc">

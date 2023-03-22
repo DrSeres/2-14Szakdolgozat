@@ -94,26 +94,10 @@ torles.addEventListener('click', e => {
                 }
             },
             ).then((result) => {
-                Swal.fire({
-                    background: '#003554',
-                    title: 'Termékek törlése folyamatban',
-                    icon: 'success',
-                    color: 'white',
-                    timer: 4000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading()
-                        const b = Swal.getHtmlContainer().querySelector('b')
-                        timerInterval = setInterval(() => {
-                            b.textContent = Swal.getTimerLeft()
-                        }, 100)
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval)
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        window.location.href='index.php';
                     }
-                },
-
-                )
+                
             })
         }
     })
