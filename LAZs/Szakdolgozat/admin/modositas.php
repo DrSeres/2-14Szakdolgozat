@@ -21,15 +21,11 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     $kiir.= "
     <option value=\"{$sor['gyartoId']}\">{$sor['gyartoNev']} ({$sor['kategoriaNev']})</option>";
 }
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
+
+
 
 if (isset($_POST['rendben'])) {
     $gyartoKategoriaId = $_POST['gyartoKategoriaId'];
-    echo '<pre>';
-    print_r($gyartoKategoriaId);
-    echo '</pre>';
     $termekNev = strip_tags(trim($_POST['termekNev']));
     $leiras = $_POST['leiras'];
     $ar = $_POST['ar'];
@@ -68,8 +64,8 @@ if (isset($_POST['rendben'])) {
             $kit = ".jpg";
     }
 
-    $sql = "SELECT * FROM gyartokategoria WHERE  gyartoKategoriaId = {$gyartoKategoriaId}";
-    print_r($sql);
+    $sql = "SELECT * FROM gyartokategoria WHERE gyartoKategoriaId = {$gyartoKategoriaId}";
+
     $eredmeny = mysqli_query($dbconn, $sql);
 
     $sor = mysqli_fetch_array($eredmeny);
@@ -137,13 +133,15 @@ else{
             <?php if (isset($kimenet)) print $kimenet; ?>
 
             <p><label for="gyartoKategoriaId">Kategória*: </label>
-                    <input type="text" name="gyartoKategoriaId" id="gyartoKategoriaId" value="<?php print $gyartoNev;?>"disabled>
+                    <select id="gyartoKategoriaId" name="gyartoKategoriaId">
+                        <?php print_r($kiir);?>
+                    </select>
                     
                 </select>
             </p>
 
             <p><label for="termekNev">Modell*: </label>
-                <input type="text" name="termekNev" id="termekNev" value="<?php print $termekNev;?>" disabled>
+                <input type="text" name="termekNev" id="termekNev" value="<?php print $termekNev;?>">
             </p>
 
             <p><label for="leiras">Leírás*: </label>
