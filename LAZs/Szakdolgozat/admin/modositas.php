@@ -133,13 +133,15 @@ else{
             <?php if (isset($kimenet)) print $kimenet; ?>
 
             <p><label for="gyartoKategoriaId">Kategória*: </label>
-                    <input type="text" name="gyartoKategoriaId" id="gyartoKategoriaId" value="<?php print $gyartoNev;?>"disabled>
+                    <select id="gyartoKategoriaId" name="gyartoKategoriaId">
+                        <?php print_r($kiir);?>
+                    </select>
                     
                 </select>
             </p>
 
             <p><label for="termekNev">Modell*: </label>
-                <input type="text" name="termekNev" id="termekNev" value="<?php print $termekNev;?>" disabled>
+                <input type="text" name="termekNev" id="termekNev" value="<?php print $termekNev;?>">
             </p>
 
             <p><label for="leiras">Leírás*: </label>
