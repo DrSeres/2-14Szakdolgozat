@@ -17,6 +17,7 @@ loginlink.addEventListener('click',()=>{
 
 
 function fetchError(c, formId) {
+
     const formResult = [];
 
     if(formId == 'reg-form' ) {    
