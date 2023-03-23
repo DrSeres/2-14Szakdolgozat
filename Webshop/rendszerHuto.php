@@ -69,25 +69,22 @@ $kimenet = "";
 while ($sor = mysqli_fetch_assoc($eredmeny)) {
     $kimenet .=
 <<<URLAP
-    <article>
-    <div class="border">
-    <a href=rendszerHuto_adat.php?id={$sor['id']}">
-    <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
+<article>
+<div class="border">
+<a href=processzor_adat.php?id={$sor['id']}">
+<img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
+</div>
+<i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
+<div class="itemInfo">
+    <h2>{$sor['termekNev']}</h2>
+    <hr>
+    <p class='price'>{$sor['ar']}<span>Ft</span></p>
+    <div class='appear' id='show'>
+    <input type="number" name="quantity" id="quantity" min="1" max="9" value="1">
     
+    <button type="button" class="kosarhoz"><img src="../img/cartICON.png" alt="Logo" class='cartImage'>Kosárba</button>
     </div>
-    <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
-    <div class="itemInfo">
-    
-        <h2>{$sor['gyartoNev']} {$sor['termekNev']}</h2>
-        <hr>
-        <p class='price'>{$sor['ar']}<span>Ft</span></p>
-        <div class='appear' id='show'>
-        <input type="number" name="quantity" id="quantity" min="1" max="9" value="1">
-        
-        <button type="button" class="kosarhoz"><img src="../img/cartICON.png" alt="Logo" class='cartImage'>Kosárba</button>
-        </div>
-        
-    </div>
+</div>
 
 </article>
 URLAP;
