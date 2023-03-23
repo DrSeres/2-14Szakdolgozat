@@ -8,14 +8,8 @@ error_reporting(E_ALL);
 session_start();
 
 
-if(isset($_POST['torles'])){
-  $update = "UPDATE `megrendeles` SET `torles`='1' WHERE status != 1";
-  mysqli_query($dbconnect, $update);
-  print_r($update);
-  $delete = "DELETE FROM `megrendeles` WHERE status != 1 AND torles != 0";
-  mysqli_query($dbconnect, $delete);
-  print_r($delete);
-}else if(isset($_POST['rendben'])){
+if(isset($_POST['rendben'])){
+
     $veznev = $_POST['last-name'];
     $kernev = $_POST['first-name'];
     $kartyaszam = $_POST['card'];
@@ -60,6 +54,7 @@ if(isset($_POST['torles'])){
     echo "<pre>";
     print_r($update);
     echo "</pre>";
+
   } 
 
 
@@ -67,6 +62,7 @@ if(isset($_POST['torles'])){
 
   
   }
+
   
 ?>
 
@@ -138,6 +134,7 @@ if(isset($_POST['torles'])){
             </fieldset>
           </div>  
           <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben">
+          <a href="pdf.php" target="_blank">Számla PDF-ben</a>
           <input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles">
         </form>
       </div>

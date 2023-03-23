@@ -52,9 +52,13 @@ li a {
 .adat p {
     font-size: 1.4rem;
 }
+.adat img{
+  margin: auto;
+}
 
 .leiras{
       text-align: justify;
+      padding: 10px;
 }
 .leiras td {
     padding: 10px;
@@ -74,7 +78,7 @@ li a {
     color: white;
 }
 .leiras tr:nth-child(even) {
-    background-color: #D6EEEE;
+    background-color: #3d6c8b;
     padding: 1px;
 }
 .leiras img {
@@ -269,6 +273,18 @@ table {
         display: grid;
         grid-template-columns: auto;
     }
+    .feliratkozas h2{
+      font-size: 2rem;
+    }
+    .feliratkozas input {
+      margin: auto;
+      text-align: center;
+      width: 250px;
+      height: 30px;
+  }
+  .feliratkozas{
+    margin: auto;
+  }
 }
 
 .Vissza {

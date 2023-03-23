@@ -17,7 +17,7 @@ console.log(' vezetéknév', vnev);
 //     console.log(false);
 // }
 let gomb = document.getElementById('rendben');
-gomb.addEventListener("click", e => {
+gomb.addEventListener("click", () => {
     
     if (
         knev.value != "" && vnev.value != "" && card.value != "" &&
@@ -27,7 +27,8 @@ gomb.addEventListener("click", e => {
        
         console.log("MINDEGYIK KI VAN TÖLTVE");
         console.log("CLICK MŰKÖDIK");
-        e.preventDefault();
+       
+        
         let timerInterval;
         Swal.fire({
             background: '#003554',
@@ -44,10 +45,9 @@ gomb.addEventListener("click", e => {
                 clearInterval(timerInterval)
             }
         },).then((result) => {
-
             /* Read more about handling dismissals below */
             if (result.dismiss === Swal.DismissReason.timer) {
-                window.location.href = 'index.php';
+                //window.location.href = 'index.php';
                 localStorage.clear();
             }
         });

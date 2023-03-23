@@ -21,11 +21,15 @@ while($sor = mysqli_fetch_assoc($eredmeny)){
     $kiir.= "
     <option value=\"{$sor['gyartoId']}\">{$sor['gyartoNev']} ({$sor['kategoriaNev']})</option>";
 }
-
-
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
 
 if (isset($_POST['rendben'])) {
     $gyartoKategoriaId = $_POST['gyartoKategoriaId'];
+    echo '<pre>';
+    print_r($gyartoKategoriaId);
+    echo '</pre>';
     $termekNev = strip_tags(trim($_POST['termekNev']));
     $leiras = $_POST['leiras'];
     $ar = $_POST['ar'];
@@ -65,7 +69,7 @@ if (isset($_POST['rendben'])) {
     }
 
     $sql = "SELECT * FROM gyartokategoria WHERE  gyartoKategoriaId = {$gyartoKategoriaId}";
-
+    print_r($sql);
     $eredmeny = mysqli_query($dbconn, $sql);
 
     $sor = mysqli_fetch_array($eredmeny);
