@@ -52,6 +52,9 @@ li a {
 .adat p {
     font-size: 1.4rem;
 }
+.adat img{
+  margin: auto;
+}
 
 .leiras{
       text-align: justify;
