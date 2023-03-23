@@ -5,13 +5,17 @@ use Dompdf\Dompdf;
 
 $dbconnect = new PDO('mysql:host=localhost;dbname=Webshopv3', 'root', '');
 
-$sql = "SELECT * FROM termek INNER JOIN megrendeles ON termek.id = megrendeles.termekId";
+$sql = "SELECT * FROM termek
+        INNER JOIN megrendeles ON termek.id = megrendeles.termekId
+        INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
+        INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId";
 
 $stmt = $dbconnect->prepare($sql);
 $stmt->execute();
 $sorok = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $gt = 0;
 $i = 1;
+$date = date("Y.m.d H:i:s");
 
 $html = '<!DOCTYPE html>
 <html lang="en">
@@ -23,6 +27,11 @@ $html = '<!DOCTYPE html>
     <title>Document</title>
     <style>
         h1 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+        }
+
+        h2 {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             text-align: center;
         }
@@ -56,6 +65,7 @@ $html = '<!DOCTYPE html>
 
 <body>
     <h1>Számla</h1>
+    <h2>Megrendelés: ' . $date . '</h2>
     <table>
         <thead>
             <tr>
@@ -71,7 +81,7 @@ foreach ($sorok as $sor) {
     $html .= '
                 <tr>
                     <td class="kep"><img src="../LAZs/Szakdolgozat//img//termekekuj/' . $sor['foto'] . '" alt=""></td>
-                    <td>' . $sor['termekNev'] . '</td>
+                    <td>' . $sor['gyartoNev'] . ' ' . $sor['termekNev'] . '</td>
                     <td>' . $sor['raktaron'] . '</td>
                     <td>' . $sor['ar'] * $sor['raktaron'] . '</td>
                 </tr>';
