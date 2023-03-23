@@ -36,43 +36,5 @@ gomb.addEventListener("click", () => {
 
 let torles = document.getElementById("torles");
 torles.addEventListener("click", (e) => {
-    Swal.fire({
-        title: "Biztosan törlöd a terméket?",
-        text: "Nem fogod tudni visszavonni ha már töröltél egy terméket!",
-        icon: "warning",
-        iconColor: "red",
-        background: "#003554",
-        color: "white",
-        showCancelButton: true,
-        cancelButtonText: "Mégsem",
-        confirmButtonColor: "red",
-        cancelButtonColor: "#3085d6",
-        confirmButtonText: "Igen, törlöm",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire({
-                background: "#003554",
-                title: "Termékek törlése",
-                icon: "success",
-                color: "white",
-                timer: 4000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading();
-                    const b = Swal.getHtmlContainer().querySelector("b");
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft();
-                    }, 100);
-                },
-                willClose: () => {
-                    clearInterval(timerInterval);
-                },
-            }).then((result) => {
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    window.location.href = "index.php";
-                    localStorage.clear();
-                }
-            });
-        }
-    });
+    
 });
