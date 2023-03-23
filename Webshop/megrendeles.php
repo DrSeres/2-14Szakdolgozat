@@ -56,12 +56,7 @@ if (isset($hibak)) {
 
   $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
   mysqli_query($dbconnect, $update);
-  print_r($update);
-  echo "<pre>";
-  print_r($update);
-  echo "</pre>";
-
-} 
+}
 }
 
 
