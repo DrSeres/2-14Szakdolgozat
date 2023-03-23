@@ -64,7 +64,7 @@ if (isset($_POST['rendben'])) {
             $kit = ".jpg";
     }
 
-    $sql = "SELECT * FROM gyartokategoria WHERE  gyartoKategoriaId = {$gyartoKategoriaId}";
+    $sql = "SELECT * FROM gyartokategoria WHERE gyartoKategoriaId = {$gyartoKategoriaId}";
 
     $eredmeny = mysqli_query($dbconn, $sql);
 
