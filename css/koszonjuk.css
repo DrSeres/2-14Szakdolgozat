@@ -31,3 +31,6 @@ button{
     margin: auto;
     text-align: center;
 }
+.kozep button:hover{
+    background: #003554;
+}

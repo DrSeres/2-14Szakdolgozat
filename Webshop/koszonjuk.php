@@ -11,6 +11,7 @@
     <h1>Köszönjük rendelését!</h1>
     <div class="kozep">
         <a href="pdf.php" target="_blank"><button>Számla nyomtatása PDF-ben</button></a>
+        <a href="index.php" target="_blank"><button>Vissza a főoldalra</button></a>
         </div>
 </body>
 </html>

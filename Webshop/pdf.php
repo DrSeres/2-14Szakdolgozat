@@ -1,21 +1,33 @@
 <?php
 require_once 'vendor/autoload.php';
-
+session_start();
 use Dompdf\Dompdf;
 
 $dbconnect = new PDO('mysql:host=localhost;dbname=Webshopv3', 'root', '');
 
-$sql = "SELECT * FROM termek
-        INNER JOIN megrendeles ON termek.id = megrendeles.termekId
-        INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
-        INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId";
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.ar, users.name FROM termek
+INNER JOIN megrendeles ON termek.id = megrendeles.termekId
+INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
+INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}';
+";
 
 $stmt = $dbconnect->prepare($sql);
+$id = $dbconnect->lastInsertId();
 $stmt->execute();
 $sorok = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $gt = 0;
 $i = 1;
 $date = date("Y.m.d H:i:s");
+$szamla = 0001;
+function add_leading_zero($value, $threshold = 2) {
+    return sprintf('%0' . $threshold . 's', $value);
+}
+
+
+
+$bizonylat = 'SZ'. date( add_leading_zero(1, 5) .'/'."Y");
+
 
 $html = '
 <!DOCTYPE html>
@@ -94,14 +106,18 @@ $html = '
     .szallitoVevo {
         font-size: 2.3rem;
     }
+    h3{
+        text-align:center;
+    }
 </style>
 </head>
 
 <body>
 <h1>Számla bizonylat</h1>
 
-<h2>Bizonylat sorszáma: <span class="right">2023</span></h2>
+<h2>Bizonylat sorszáma: <span class="right"> '. $bizonylat . '</span></h2>
 <hr>
+<h3>Kinyomtatás dátuma: '. $date .'</h3>
 <table class="headerTable">
     <thead>
         <tr>
@@ -112,7 +128,7 @@ $html = '
     <tbody>
         <tr>
             <td class="szallitoVevo"><b>Seres Kft</b></td>
-            <td class="szallitoVevo"><b>RUSZKI</b></td>
+            <td class="szallitoVevo"><b>'. $id .'</b></td>
         </tr>
         <tr>
             <td>Bankszámlaszám: 888888-8888-8888-8888</td>
@@ -140,7 +156,7 @@ $html = '
 foreach ($sorok as $sor) {
     $html .= '
                 <tr>
-                    <td>' . $sor['id'] .'</td>
+                    <td>' . $sor['megrendeles'] .'</td>
                     <td>' . $sor['gyartoNev'] . ' ' . $sor['termekNev'] . '</td>
                     <td>' . $sor['raktaron'] . '</td>
                     <td>' . $sor['ar'] * $sor['raktaron'] . '</td>
@@ -249,7 +265,7 @@ $dompdf->stream('szamla.pdf');
 <body>
     <h1>Számla bizonylat</h1>
     
-    <h2>Bizonylat sorszáma: <span class="right">asd</span></h2>
+    <h2>Bizonylat sorszáma: <span class="right"></span></h2>
     <hr>
     <table class="headerTable">
         <thead>
@@ -261,7 +277,7 @@ $dompdf->stream('szamla.pdf');
         <tbody>
             <tr>
                 <td class="szallitoVevo"><b>Seres Kft</b></td>
-                <td class="szallitoVevo"><b>RUSZKI</b></td>
+                <td class="szallitoVevo"><b></b></td>
             </tr>
             <tr>
                 <td>Bankszámlaszám: 888888-8888-8888-8888</td>
