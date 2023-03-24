@@ -56,6 +56,7 @@ if (isset($hibak)) {
 
   $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
   mysqli_query($dbconnect, $update);
+  header("location:koszonjuk.php");
 }
 }
 
@@ -135,15 +136,6 @@ if (isset($hibak)) {
             </fieldset>
           </div>  
           <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben">
-         <?php 
-         
-         if(isset($_POST['rendben'])){
-          echo '<a href="pdf.php" target="_blank">Számla PDF-ben</a>';
-         }
-
-         
-         
-         ?> 
           <input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles">
         </form>
       </div>
