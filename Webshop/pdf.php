@@ -1,6 +1,11 @@
 <?php
-require_once 'vendor/autoload.php';
 session_start();
+
+
+require_once "kapcsolat.php";
+
+require_once 'vendor/autoload.php';
+
 use Dompdf\Dompdf;
 
 $dbconnect = new PDO('mysql:host=localhost;dbname=Webshopv3', 'root', '');
@@ -9,11 +14,10 @@ $sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekN
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
-INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}';
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva != 1;
 ";
 
 $stmt = $dbconnect->prepare($sql);
-$id = $dbconnect->lastInsertId();
 $stmt->execute();
 $sorok = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $gt = 0;
@@ -128,7 +132,7 @@ $html = '
     <tbody>
         <tr>
             <td class="szallitoVevo"><b>Seres Kft</b></td>
-            <td class="szallitoVevo"><b>'. $id .'</b></td>
+            <td class="szallitoVevo"><b>'. $_SESSION["name"] .'</b></td>
         </tr>
         <tr>
             <td>Bankszámlaszám: 888888-8888-8888-8888</td>
@@ -179,6 +183,13 @@ $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
 $dompdf->stream('szamla.pdf');
+
+
+
+
+$update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva != 1";
+$stmt = $dbconnect->prepare($update);
+$stmt->execute();
 ?>
 
 

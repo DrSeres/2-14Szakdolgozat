@@ -1,4 +1,16 @@
-<!DOCTYPE html>
+<?php
+require("kapcsolat.php");
+session_start();
+
+if(isset($_POST['nyomtatas'])){
+    header("location:pdf.php");
+    
+    
+}
+
+
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,9 +21,11 @@
 </head>
 <body>
     <h1>Köszönjük rendelését!</h1>
+    <form method="post" action="pdf.php">
     <div class="kozep">
-        <a href="pdf.php" target="_blank"><button>Számla nyomtatása PDF-ben</button></a>
-        <a href="index.php" target="_blank"><button>Vissza a főoldalra</button></a>
-        </div>
+    <input type="submit" value="Számla nyomtatása PDF-ben" id="nyomtatas" name="nyomtatas">
+    <a href="index.php"><input value="Vissza a főoldalra"></a>
+        </div>  
+    </form>
 </body>
 </html>

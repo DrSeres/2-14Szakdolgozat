@@ -19,7 +19,7 @@ a{
     text-align: center;
     
 }
-button{
+input{
     padding: 5px;
     font-size: 1.2rem;
     background: #125a7e;
@@ -31,6 +31,6 @@ button{
     margin: auto;
     text-align: center;
 }
-.kozep button:hover{
+.kozep input:hover{
     background: #003554;
 }
