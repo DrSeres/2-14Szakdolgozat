@@ -241,9 +241,9 @@ $dompdf->stream('szamla.pdf');
 
 
 
-// $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva != 1";
-// $stmt = $dbconnect->prepare($update);
-// $stmt->execute();
+$update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva != 1";
+$stmt = $dbconnect->prepare($update);
+$stmt->execute();
 ?>
 
 
