@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Már 26. 15:19
+-- Létrehozás ideje: 2023. Már 26. 15:35
 -- Kiszolgáló verziója: 10.4.25-MariaDB
 -- PHP verzió: 7.4.30
 
@@ -55,7 +55,9 @@ INSERT INTO `gyarto` (`gyartoId`, `gyartoNev`) VALUES
 (16, 'ZOTAC'),
 (17, 'Samsung'),
 (18, 'Seasonic'),
-(19, 'FSP');
+(19, 'FSP'),
+(20, 'Noctua'),
+(21, 'Cooler Master');
 
 -- --------------------------------------------------------
 
@@ -101,7 +103,9 @@ INSERT INTO `gyartokategoria` (`gyartoKategoriaId`, `kategoriaID`, `gyartoId`) V
 (25, 8, 18),
 (26, 8, 19),
 (27, 8, 3),
-(28, 8, 9);
+(28, 8, 9),
+(29, 5, 20),
+(30, 5, 21);
 
 -- --------------------------------------------------------
 
@@ -279,7 +283,11 @@ INSERT INTO `termek` (`id`, `gyartoKategoriaId`, `termekNev`, `foto`, `leiras`, 
 (94, 11, 'FURY Beast RGB 16GB DDR4', 'ram9.png', 'a', 30, 21750),
 (95, 11, 'FURY Renegade RGB 32GB (2x16GB) DDR5', 'ram10.png', 'a', 30, 65120),
 (96, 11, ' FURY Beast RGB 32GB (2x16GB) DDR5', 'ram11.png', 'a', 40, 62900),
-(97, 11, 'FURY Beast 128GB (4x32GB) DDR4', 'ram12.png', 'a', 10, 161110);
+(97, 11, 'FURY Beast 128GB (4x32GB) DDR4', 'ram12.png', 'a', 10, 161110),
+(98, 10, 'Pure Rock 2 (BK007)', 'procHuto1.png', 'a', 30, 16170),
+(99, 29, 'Chromax NH-D15', 'procHuto2.png', 'a', 30, 52360),
+(100, 30, 'MasterLiquid ML120L RGB V2', 'procHuto3.png', 'a', 50, 13860),
+(101, 10, 'Pure Rock 2 FX 120mm ARGB', 'procHuto4.png', 'a', 40, 18450);
 
 -- --------------------------------------------------------
 
@@ -372,13 +380,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT a táblához `gyarto`
 --
 ALTER TABLE `gyarto`
-  MODIFY `gyartoId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `gyartoId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT a táblához `gyartokategoria`
 --
 ALTER TABLE `gyartokategoria`
-  MODIFY `gyartoKategoriaId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `gyartoKategoriaId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT a táblához `kategoria`
@@ -402,7 +410,7 @@ ALTER TABLE `megrendeles`
 -- AUTO_INCREMENT a táblához `termek`
 --
 ALTER TABLE `termek`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
 
 --
 -- AUTO_INCREMENT a táblához `users`
