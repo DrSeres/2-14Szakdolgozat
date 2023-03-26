@@ -1,4 +1,5 @@
 <?php
+require_once 'vendor/autoload.php';
 session_start();
 
 
@@ -10,7 +11,8 @@ use Dompdf\Dompdf;
 
 $dbconnect = new PDO('mysql:host=localhost;dbname=Webshopv3', 'root', '');
 
-$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.ar, users.name FROM termek
+//A megrendelő adatainak kikeresése
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.ar, users.name, users.vezetekNev, users.keresztNev, users.kartyaszam, users.kiszallitasiCim, users.varos, users.megye, users.email FROM termek
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
@@ -18,8 +20,37 @@ INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION
 ";
 
 $stmt = $dbconnect->prepare($sql);
+$id = $dbconnect->lastInsertId();
+$stmt->execute();
+$sor = $stmt->fetch(PDO::FETCH_ASSOC);
+$email = $sor["email"];
+$veznev = $sor["vezetekNev"];
+$kernev = $sor["keresztNev"];
+$kartyaszam = $sor["kartyaszam"];
+$kiszallitasiCim = $sor["kiszallitasiCim"];
+$varos = $sor["varos"];
+$megye = $sor["megye"];
+
+
+
+
+
+
+//az adatok fetchAll-al kiíratása
+
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.ar, users.name, users.vezetekNev FROM termek
+INNER JOIN megrendeles ON termek.id = megrendeles.termekId
+INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
+INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva != 1;
+";
+
+$stmt = $dbconnect->prepare($sql);
+$id = $dbconnect->lastInsertId();
 $stmt->execute();
 $sorok = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 $gt = 0;
 $i = 1;
 $date = date("Y.m.d H:i:s");
@@ -62,12 +93,12 @@ $html = '
         border: 1px solid #444;
         padding: 13px;
         font-size: 1.2rem;
-
+        text-align:center;
     }
     .bodyTable th{
         background: #4682B4;
         color: white;
-        
+        text-align:center;
     }
 
     .vegossz {
@@ -113,10 +144,29 @@ $html = '
     h3{
         text-align:center;
     }
+    .ar{
+        width:100px;
+    }
+    .kapcsolat{
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+    }
+    .kapcsolat p{
+        font-size: 1.1rem;
+    }
+    .kapcsolatHr{
+        width: 100%;
+    }
 </style>
 </head>
 
 <body>
+<div class="kapcsolat">
+        <p>Kapcsolat: +36 20 527 7829 <br>
+        onlinePcWebshop2023@gmail.com</p>
+    </div>
+    <hr class="kapcsolatHr">
 <h1>Számla bizonylat</h1>
 
 <h2>Bizonylat sorszáma: <span class="right"> '. $bizonylat . '</span></h2>
@@ -131,16 +181,20 @@ $html = '
     </thead>
     <tbody>
         <tr>
-            <td class="szallitoVevo"><b>Seres Kft</b></td>
-            <td class="szallitoVevo"><b>'. $_SESSION["name"] .'</b></td>
+            <td class="szallitoVevo"><b>Seres Szabolcs</b></td>
+            <td class="szallitoVevo"><b>'. $veznev .' '. $kernev .'</b></td>
         </tr>
         <tr>
             <td>Bankszámlaszám: 888888-8888-8888-8888</td>
-            <td>Bankszámlaszám: 88888-88888-8888-8888</td>
+            <td>Bankszámlaszám: '. $kartyaszam .'</td>
         </tr>
         <tr>
-            <td>Adószám: 12345678-2-41</td>
-            <td>Adószám: </td>
+            <td>Helyszín: 1022, Budapest asd utac 24.</td>
+            <td>Helyszín: '. $megye .' '. $varos .' '. $kiszallitasiCim .'</td>
+        </tr>
+        <tr>
+            <td>E-mail cím: onlinePcWebshop2023@gmail.com</td>
+            <td>E-mail cím: '. $email .'</td>
         </tr>
     </tbody>
    
@@ -160,10 +214,10 @@ $html = '
 foreach ($sorok as $sor) {
     $html .= '
                 <tr>
-                    <td>' . $sor['megrendeles'] .'</td>
+                    <td class="rendelesId">' . $sor['megrendeles'] .'</td>
                     <td>' . $sor['gyartoNev'] . ' ' . $sor['termekNev'] . '</td>
                     <td>' . $sor['raktaron'] . '</td>
-                    <td>' . $sor['ar'] * $sor['raktaron'] . '</td>
+                    <td class="ar">' . $sor['ar'] * $sor['raktaron'] . ' Ft</td>
                 </tr>';
     $gt += $sor['ar'] * $sor['raktaron'];
     $i++;
@@ -172,7 +226,7 @@ $html .= '
         </tbody>
             <tr>
                 <th colspan="3" class="vegossz">Végösszeg</th>
-                <td>' . $gt . '</td>
+                <td>' . $gt . ' Ft</td>
             </tr>
         </table>
         </body>
@@ -187,9 +241,9 @@ $dompdf->stream('szamla.pdf');
 
 
 
-$update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva != 1";
-$stmt = $dbconnect->prepare($update);
-$stmt->execute();
+// $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva != 1";
+// $stmt = $dbconnect->prepare($update);
+// $stmt->execute();
 ?>
 
 
@@ -270,10 +324,26 @@ $stmt->execute();
         .szallitoVevo {
             font-size: 2.3rem;
         }
+        .kapcsolat{
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+        }
+        .kapcsolat p{
+            font-size: 1.1rem;
+        }
+        .kapcsolatHr{
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
+    <div class="kapcsolat">
+        <p>Kapcsolat: +36 20 527 7829 <br>
+        onlinePcWebshop2023@gmail.com</p>
+    </div>
+    <hr class="kapcsolatHr">
     <h1>Számla bizonylat</h1>
     
     <h2>Bizonylat sorszáma: <span class="right"></span></h2>
