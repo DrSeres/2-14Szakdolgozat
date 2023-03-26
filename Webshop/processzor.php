@@ -98,6 +98,9 @@ else
 {
 $kimenet = "";
 while ($sor = mysqli_fetch_assoc($eredmeny)) {
+    if($sor['darab'] > 0){
+
+    
     $kimenet .=
 <<<URLAP
     <article>
@@ -120,7 +123,30 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
 </article>
 
 URLAP;
+}else{
+    $kimenet .=
+    <<<URLAP
+    <article>
+    <div class="border">
+    <a href=processzor_adat.php?id={$sor['id']}">
+    <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
+    </div>
+    <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
+    <div class="itemInfo">
+        <h2>{$sor['termekNev']}</h2>
+        <hr>
+        <p class='price'>{$sor['ar']}<span>Ft</span></p>
+        <div class='appear' id='show'>
+        <input type="number" name="quantity" id="quantity" min="1" max="9" value="0" disabled>
+        
+        <button type="button"  class="kosarhozElfogyott" disabled><img src="../img/cartICON.png" alt="Logo" class='cartImage' >Kosárba</button>
+        </div>
+    </div>
 
+</article>
+
+URLAP;
+}
 }
 }
 

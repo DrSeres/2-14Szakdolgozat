@@ -472,16 +472,15 @@ figcaption a {
   display: flex;
   align-items:center;
   justify-content: left;
-  gap: 30px;
+  gap: 5px;
   padding-left: 20px;
   padding-right: 2px;
-  -webkit-overflow-scrolling: touch;
   user-select: none; /*A felhasználó nev tudja kijelölni a termékeket*/
 }
 
 .kedvenc img{
-  width: 40rem;
-  height: 40rem;
+  width: 30rem;
+  height: 30rem;
 } 
 
 .kedvencH1{
@@ -493,6 +492,16 @@ figcaption a {
   font-size: 5.2rem;
   padding: 40px;
 }
+
+
+.kedvencScroll{
+  background-image: url(../img/wallpaper.png); 
+  border:1px solid black;
+  height:52rem;
+  overflow-y:hidden;
+}
+
+
 /* 
 
 div.scrollmenu {

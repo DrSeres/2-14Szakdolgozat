@@ -83,6 +83,17 @@ input {
     border-radius: 10px;
     padding: 1px;
 }
+.kosarhozElfogyott {
+    font-size: 1.2rem;
+    display: flex;
+    /* text-align: left; */
+    width: 160px;
+    float: right;
+    font-size: 2rem;
+    background-color: #16a0e5;
+    border-radius: 10px;
+    padding: 1px;
+}
 .kosarhoz:hover {
     color: white;
 }
@@ -231,13 +242,6 @@ table {
 
 
 
-
-.kedvencScroll{
-    background-image: url(../img/wallpaper.png); 
-    border:1px solid black;
-    height:60rem;
-    overflow-y:hidden;
-}
 
 
 
