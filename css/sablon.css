@@ -382,6 +382,16 @@ input {
   border-radius: 10px;
   padding: 1px;
 }
+.kosarhozElfogyott {
+  cursor: pointer;
+  display: flex;
+  /* text-align: left; */
+  width: 160px;
+  font-size: 3rem;
+  background-color: #16a0e5;
+  border-radius: 10px;
+  padding: 1px;
+}
 #quantity {
   padding: 8px;
   background-color: white;
