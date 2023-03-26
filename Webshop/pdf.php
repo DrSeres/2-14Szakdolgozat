@@ -217,7 +217,7 @@ foreach ($sorok as $sor) {
                     <td class="rendelesId">' . $sor['megrendeles'] .'</td>
                     <td>' . $sor['gyartoNev'] . ' ' . $sor['termekNev'] . '</td>
                     <td>' . $sor['raktaron'] . '</td>
-                    <td class="ar">' . $sor['ar'] * $sor['raktaron'] . ' Ft</td>
+                    <td class="ar">' . number_format($sor['ar'] * $sor['raktaron'], 0, ',', ' ') . ' Ft</td>
                 </tr>';
     $gt += $sor['ar'] * $sor['raktaron'];
     $i++;
@@ -226,7 +226,7 @@ $html .= '
         </tbody>
             <tr>
                 <th colspan="3" class="vegossz">Végösszeg</th>
-                <td>' . $gt . ' Ft</td>
+                <td>' . number_format($gt, 0, ',', ' ') . ' Ft</td>
             </tr>
         </table>
         </body>
