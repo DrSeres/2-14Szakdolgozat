@@ -53,7 +53,7 @@ if (isset($hibak)) {
   $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
   $eredmeny = mysqli_query($dbconnect, $sql);
 
-  $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1 AND users.name '{$_SESSION['name']}'";
+  $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
   mysqli_query($dbconnect, $update);
   header("location:koszonjuk.php");
 }
@@ -132,6 +132,17 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
     
     
     ';
+    if(isset($_POST['rendben'])){
+      $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE megrendeles.usersId=users.id";
+      $eredmeny = mysqli_query($dbconnect, $sql);
+
+      $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
+      mysqli_query($dbconnect, $update);
+      header("location:koszonjuk.php");
+    }
+    
+  
+   
         }else{
           $form = '<div class="form-box login-section">
     <?php if (isset($kimenet)) print $kimenet; ?>
@@ -187,25 +198,7 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
   </div>';
         }
 
-if(isset($_POST['adatokMarad']) && $_POST['adatokMarad'] == 'A') {
-  echo "<pre>";
-echo "INPUT GOMB";
-var_dump($_POST['adatokMarad']);
-echo "</pre>";
-  $veznev = $_POST['last-name'];
-  $kernev = $_POST['first-name'];
-  $kartyaszam = $_POST['card'];
-  $kod = $_POST['code'];
-  $telefon = $_POST['phone'];
-  $cim = $_POST['cim'];
-  $varos = $_POST['varos'];
-  $megye = $_POST['megye'];
-  $form = "";
-  if($veznev != "" && $kernev != "" && $kartyaszam != "" && $kod != "" && $telefon != "" && $cim != "" && $varos != "" && $megye != ""){
-    $mentes = "UPDATE users SET mentve = 1 WHERE mentve = 0 AND name = '{$_SESSION['name']}'";
-    mysqli_query($dbconnect, $mentes);
-  }
-}
+
 
 
   
