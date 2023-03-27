@@ -19,7 +19,7 @@ $eredmeny = mysqli_query($dbconn, $sql);
 $kiir = "";
 while($sor = mysqli_fetch_assoc($eredmeny)){
     $kiir.= "
-    <option value=\"{$sor['gyartoId']}\">{$sor['gyartoNev']} ({$sor['kategoriaNev']})</option>";
+    <option value=\"{$sor['gyartoKategoriaId']}\">{$sor['gyartoNev']} ({$sor['kategoriaNev']})</option>";
 }
 
 
@@ -69,7 +69,7 @@ if (isset($_POST['rendben'])) {
     $eredmeny = mysqli_query($dbconn, $sql);
 
     $sor = mysqli_fetch_array($eredmeny);
-    $kategoriaID = $sor['kategoriaID'];
+    $kategoriaID = $sor['gyartoKategoriaId'];
 
 
     $foto = $kategoriaID . "_" . $termekNev . "_" . date('U') . $kit;
@@ -85,7 +85,7 @@ if (isset($_POST['rendben'])) {
         $id = (int)$_GET['id'];
         
         $sql = "UPDATE termek
-                SET gyartoKategoriaId = '{$gyartoKategoriaId}', termekNev = '{$termekNev}', foto = '{$foto}', leiras = '{$leiras}', darab = '{$darab}', ar = '{$ar}'
+                SET gyartoKategoriaId = '{$kategoriaID}', termekNev = '{$termekNev}', foto = '{$foto}', leiras = '{$leiras}', darab = '{$darab}', ar = '{$ar}'
                 WHERE id = {$id}";
         mysqli_query($dbconn, $sql);
 
@@ -98,12 +98,13 @@ if (isset($_POST['rendben'])) {
 }
 else{
     $id = (int)$_GET['id'];
-    $sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON gyartokategoria.gyartoKategoriaId=termek.gyartoKategoriaId INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID
+    $sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON gyartokategoria.gyartoKategoriaId=termek.gyartoKategoriaId INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
             WHERE id = {$id}";
     $eredmeny = mysqli_query($dbconn, $sql);
     $sor = mysqli_fetch_assoc($eredmeny);
     $gyartoId = $sor['gyartoKategoriaId'];
-    $gyartoNev = $sor['kategoriaNev'];
+    $gyartoNev = $sor['gyartoNev'];
+    $kategoriaNev = $sor['kategoriaNev'];
     $termekNev = $sor['termekNev'];
     $leiras = $sor['leiras'];
     $ar = $sor['ar'];
@@ -134,6 +135,7 @@ else{
 
             <p><label for="gyartoKategoriaId">Kategória*: </label>
                     <select id="gyartoKategoriaId" name="gyartoKategoriaId">
+                        <option value="<?php print $gyartoId;?>">Marad: <?php print $gyartoNev;?> (<?php print $kategoriaNev;?>)</option>
                         <?php print_r($kiir);?>
                     </select>
                     
