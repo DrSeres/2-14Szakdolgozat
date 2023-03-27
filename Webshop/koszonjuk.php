@@ -25,11 +25,5 @@ if(isset($_POST['nyomtatas'])){
     <a href="index.php"><input value="Vissza a főoldalra"></a>
         </div>  
     </form>
-    <script>
-        window.onload  = () => {
-            localStorage.clear();
-        }
-        
-    </script>
 </body>
 </html>
