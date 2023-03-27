@@ -105,7 +105,7 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
 <<<URLAP
     <article>
     <div class="border">
-    <a href=processzor_adat.php?id={$sor['id']}">
+    <a href=adat.php?id={$sor['id']}">
     <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
     <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
@@ -128,7 +128,7 @@ URLAP;
     <<<URLAP
     <article>
     <div class="border">
-    <a href=processzor_adat.php?id={$sor['id']}">
+    <a href=adat.php?id={$sor['id']}">
     <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
     <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
