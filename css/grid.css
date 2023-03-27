@@ -2,7 +2,17 @@ html {
   overflow-x:hidden;
 }
 
+html::-webkit-scrollbar {
+  width: .8rem;
+}
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
 
+html::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 5rem;
+}
 .grid-container {
     width: 100%;
     height: auto;
