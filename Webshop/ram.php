@@ -83,7 +83,7 @@ else
             <hr>
             <p class='price'>{$sor['ar']}<span>Ft</span></p>
             <div class='appear' id='show'>
-            <input type="number" name="quantity" id="quantity" min="1" max="9" value="1">
+            <input type="number" name="quantity" id="quantity" min="1" max="{$sor["darab"]}" value="1">
             
             <button type="button" class="kosarhoz"><img src="../img/cartICON.png" alt="Logo" class='cartImage'>Kosárba</button>
             </div>
@@ -106,7 +106,7 @@ else
             <hr>
             <p class='price'>{$sor['ar']}<span>Ft</span></p>
             <div class='appear' id='show'>
-            <input type="number" name="quantity" id="quantity" min="1" max="9" value="0" disabled>
+            <input type="number" name="quantity" id="quantity" min="1" max="{$sor[$darab]}" value="0" disabled>
             
             <button type="button"  class="kosarhozElfogyott" disabled><img src="../img/cartICON.png" alt="Logo" class='cartImage' >Kosárba</button>
             </div>
@@ -189,7 +189,6 @@ else
       </ul>
       <div class="centered">
         <h1>Memóriák</h1>
-        
       </div>
 
       
