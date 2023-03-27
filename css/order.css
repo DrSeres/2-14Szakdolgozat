@@ -150,3 +150,21 @@
   background: #0582CA;
   
 }
+.adatokMentese{
+  font-size: 1.3rem;
+  color: white;
+}
+
+
+input[type=checkbox]:checked {
+  background-color: #a77e2d !important;
+  color: #ffffff !important;
+}
+input[type='checkbox']:after {
+    box-shadow: none !important;
+}
+details summary{
+  text-align: center;
+  color: white;
+  font-size: 1.1rem;
+}
