@@ -44,7 +44,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
     $adat = "{$sor['gyartoNev']} {$sor['termekNev']}";
 }
 
-
+$url = htmlspecialchars($_SERVER['HTTP_REFERER']);
 
 
 
@@ -89,7 +89,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
                 
                 ?>
                 <li><a href="kapcsolat.html">Kapcsolat</a></li>
-              <li><a href="processzor.php" class='Vissza'>Vissza a termékekhez</a></li>
+              <li><a href="<?php print $url;?>" class='Vissza'>Vissza a termékekhez</a></li>
                 
             </ul>
         </nav>
