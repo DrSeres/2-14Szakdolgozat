@@ -130,7 +130,7 @@ else
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Free Web tutorials"> /*Keresőmotor optimalizáláshoz kellenek ezen kódsorok */
+    <meta name="description" content="Free Web tutorials"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="John Doe">
     

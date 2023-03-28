@@ -15,7 +15,7 @@ session_start();
 <head>
     <title>Webshop oldal</title>
 
-    <meta name="description" content="Free Web tutorials"> /*Keresőmotor optimalizáláshoz kellenek ezen kódsorok */
+    <meta name="description" content="Free Web tutorials"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="John Doe">
     

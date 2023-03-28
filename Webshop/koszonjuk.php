@@ -14,7 +14,7 @@ if(isset($_POST['nyomtatas'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="description" content="Free Web tutorials"> /*Keresőmotor optimalizáláshoz kellenek ezen kódsorok */
+    <meta name="description" content="Free Web tutorials"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="John Doe">
     

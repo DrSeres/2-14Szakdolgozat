@@ -38,6 +38,7 @@ if (count($eredmeny) > 0) {
     } else if ($sor['user_type'] == 'user') {
         echo "Sima user";
         $_SESSION['name'] = $sor['name'];
+        $_SESSION['user_type'] = $sor['user_type'];
         //echo $_SESSION['user_name'];
         //header("location:index.php");
     }

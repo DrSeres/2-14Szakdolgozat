@@ -248,12 +248,14 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Rendelés részletei</title>
+
+    <meta name="description" content="Free Web tutorials"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok-->
+    <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+    <meta name="author" content="John Doe">
+
     <link rel="stylesheet" type="text/css" href="https://demo.plantpot.works/assets/css/normalize.css">
     <link rel="stylesheet" href="https://use.typekit.net/opg3wle.css">
     <link rel="stylesheet" type="text/css" href="../css/order.css">
-
-
-   
     <link rel="stylesheet" href="sweetalert2.min.css">
     <script src="sweetalert2.all.min.js"></script>
     <script src="sweetalert2.min.js"></script>
