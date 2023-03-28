@@ -45,6 +45,10 @@ while ($sor = mysqli_fetch_assoc($eredmeny)) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="description" content="Free Web tutorials"> /*Keresőmotor optimalizáláshoz kellenek ezen kódsorok */
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="John Doe">
+
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/oldal.css">
   <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/flexbox.css">

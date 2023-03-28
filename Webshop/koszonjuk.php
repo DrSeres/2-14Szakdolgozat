@@ -13,6 +13,11 @@ if(isset($_POST['nyomtatas'])){
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="Free Web tutorials"> /*Keresőmotor optimalizáláshoz kellenek ezen kódsorok */
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="John Doe">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Köszönjük rendelését</title>
     <link rel="stylesheet" href="../css/koszonjuk.css">

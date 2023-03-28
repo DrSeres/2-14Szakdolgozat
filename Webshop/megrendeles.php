@@ -9,12 +9,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 echo $felhasznalo = $_SESSION['name'];
-if(isset($_POST['torles'])){
-  $update = "UPDATE megrendeles SET torles = '1' WHERE status != 1";
-  mysqli_query($dbconnect, $update);
-  $delete = "DELETE FROM megrendeles WHERE status != 1 AND torles != 0";
-  mysqli_query($dbconnect, $delete);
-}else if(isset($_POST['rendben'])){
+if(isset($_POST['rendben'])){
 
 
   $veznev = $_POST['last-name'];
@@ -140,7 +135,12 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
    
    
     ';
-    if(isset($_POST['rendben'])){
+    if(isset($_POST['torles'])){
+      $update = "UPDATE megrendeles SET torles = '1' WHERE status != 1";
+      mysqli_query($dbconnect, $update);
+      $delete = "DELETE FROM megrendeles WHERE status != 1 AND torles != 0";
+      mysqli_query($dbconnect, $delete);
+    }else if(isset($_POST['rendben'])){
       $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE users.name = '{$_SESSION['name']}'";
       $eredmeny = mysqli_query($dbconnect, $sql);
 
@@ -223,8 +223,13 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
   $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
   mysqli_query($dbconnect, $update);
   header("location:koszonjuk.php");
+  }else if(isset($_POST['torles'])){
+    $update = "UPDATE megrendeles SET torles = '1' WHERE status != 1";
+    mysqli_query($dbconnect, $update);
+    $delete = "DELETE FROM megrendeles WHERE status != 1 AND torles != 0";
+    mysqli_query($dbconnect, $delete);
+  }
 }
-        }
 
 
 
@@ -260,7 +265,7 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
   </head>
   <body>
     <div id="container">    
-      <?php print $form ?>
+      <?php print $form; ?>
     </div>
       <script src="../js/megrendeles.js"></script>
   </body>
