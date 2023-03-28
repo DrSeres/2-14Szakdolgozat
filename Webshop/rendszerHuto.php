@@ -128,9 +128,9 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rendszerhűtő</title>
 
-    <meta name="description" content="Free Web tutorials"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="John Doe">
+    <meta name="description" content="Rendszerhűtők"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
+    <meta name="keywords" content="PC Webshop, Számítógép Webshop, Számítógépes Webshop, Számítógép szaküzlet, Rendszerhűtő, be quiet!, Arctic, SilentiumPC">
+    <meta name="author" content="Laczka Adrián Zsolt, Seres Szabolcs">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">

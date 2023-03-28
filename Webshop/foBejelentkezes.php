@@ -15,9 +15,9 @@ session_start();
 <head>
     <title>Webshop oldal</title>
 
-    <meta name="description" content="Free Web tutorials"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="John Doe">
+    <meta name="description" content="Bejelentkező és regisztrációs oldal"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
+    <meta name="keywords" content="PC Webshop, Számítógép Webshop, Számítógépes Webshop, Számítógép szaküzlet">
+    <meta name="author" content="Laczka Adrián Zsolt, Seres Szabolcs">
     
     <link rel="stylesheet" href="../css/FoBejelentkezes.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>

@@ -128,9 +128,9 @@ else
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tápegység</title>
 
-    <meta name="description" content="Free Web tutorials"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="John Doe">
+    <meta name="description" content="Tápegységek"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
+    <meta name="keywords" content="PC Webshop, Számítógép Webshop, Számítógépes Webshop, Számítógép szaküzlet, Tápegység, ASUS, be quiet!, Corsair">
+    <meta name="author" content="Laczka Adrián Zsolt, Seres Szabolcs">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/style.css">
