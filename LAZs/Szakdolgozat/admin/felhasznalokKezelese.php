@@ -25,10 +25,11 @@ if (mysqli_num_rows($eredmeny) > 0) {
     </tr>
  ";
     while ($sor = mysqli_fetch_array($eredmeny)) {
+        $muvelet = ($sor['engedelyezes'] == 1) ? 'Kitiltás' : 'Engedélyezés';
         $kimenet .= "<tr>
         <td>{$sor['name']}</td>
         <td>{$sor['user_type']}</td>
-        <td><a href=\"torles.php?id={$sor['id']}\" id=\'torles\'>Törlés</a></td>
+        <td><button class='felhasznaloKezeles' name='felhasznaloKezeles' value = '{$muvelet}' data-id='{$sor['id']}'>{$muvelet}</button></td>
         </tr>
   ";
     }
@@ -36,6 +37,29 @@ if (mysqli_num_rows($eredmeny) > 0) {
 }else{
     $kimenet = "";
 }
+
+
+// $btn = document.querySelectorAll(".felhasznaloKezeles");
+// console.log(btn);
+// let i = 0;
+// btn.forEach((elem) => {
+//     elem.addEventListener(('click'), () => {
+//             if (elem.value == "Kitiltás") {
+//             elem.value = "Engedélyezés";
+//             elem.innerHTML = "Engedélyezés";
+//         }
+//         else {
+//             elem.value = "Kitiltás";
+//             elem.innerHTML = "Kitiltás";
+//         }
+//     })
+// });
+
+
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -65,8 +89,11 @@ if (mysqli_num_rows($eredmeny) > 0) {
         
        
     </header>
-<h1>Az Ön által kedvelt termék:</h1>
+<h1>Felhasználók kezelése</h1>
 <?php echo $kimenet?>
+
+
+<script src="../admin/js/felhasznalok.js"></script>
 </body>
 
 </html>

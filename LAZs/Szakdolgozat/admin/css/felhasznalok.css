@@ -76,7 +76,7 @@ tr:nth-child(even) {
     color: black;
   }
 
-a{
+button{
     padding: 4px;
     border: 1px #051923 solid;
     border-radius: 10px;
