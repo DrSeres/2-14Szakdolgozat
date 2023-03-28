@@ -8,7 +8,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
-echo $felhasznalo = $_SESSION['name'];
+$felhasznalo = $_SESSION['name'];
 if(isset($_POST['rendben'])){
 
 
@@ -140,6 +140,7 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
       mysqli_query($dbconnect, $update);
       $delete = "DELETE FROM megrendeles WHERE status != 1 AND torles != 0";
       mysqli_query($dbconnect, $delete);
+      header("Location:index.php");
     }else if(isset($_POST['rendben'])){
       $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE users.name = '{$_SESSION['name']}'";
       $eredmeny = mysqli_query($dbconnect, $sql);
@@ -228,6 +229,7 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
     mysqli_query($dbconnect, $update);
     $delete = "DELETE FROM megrendeles WHERE status != 1 AND torles != 0";
     mysqli_query($dbconnect, $delete);
+    header("Location:index.php");
   }
 }
 
@@ -269,7 +271,6 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
     <div id="container">    
       <?php print $form; ?>
     </div>
-      <script src="../js/megrendeles.js"></script>
   </body>
  
 </html>
