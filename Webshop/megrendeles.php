@@ -150,9 +150,6 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
       mysqli_query($dbconnect, $update);
       header("location:koszonjuk.php");
     }
-   
- 
-   
         }else{
           $form = '<div class="form-box login-section">
     <?php if (isset($kimenet)) print $kimenet; ?>
