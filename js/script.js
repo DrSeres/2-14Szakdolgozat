@@ -73,7 +73,7 @@ window.onload = function () {
       if (typeof Storage !== "undefined") {
         //létre hozzuk a kulcs értékpárokat
         let termek = {
-          id: i + 1,
+          id: element.target.parentElement.parentElement.children[0].innerHTML,
           kep: element.target.parentElement.parentElement.parentElement
             .children[0].innerHTML,
           name: element.target.parentElement.parentElement.children[0]
@@ -135,7 +135,7 @@ window.onload = function () {
   } else {
     JSON.parse(localStorage.getItem("termekek")).map((data) => {
       tableData +=
-        `<tr style='display:none;'><td>` +
+        `<tr><td>` +
         data.id +
         `<tr><td>` +
         data.kep +
