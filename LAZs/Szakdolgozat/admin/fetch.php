@@ -44,7 +44,7 @@ if (mysqli_num_rows($result) > 0) {
         <td>{$sor['gyartoNev']}</td>
         <td>{$sor['termekNev']}</td>
         <td>" . number_format($sor['ar'], 0, ',', ' ') ." Ft</td>
-        <td><a href=\"torles.php?id={$sor['id']}\" class=\"gomboks\">Törlés</a> | <a href=\"modositas.php?id={$sor['id']}\" class=\"gomboks\">Módosítás</a> | <a href=\"reszletek.php?id={$sor['id']}\" class=\"gomboks\">Részletek</a></td>
+        <td ><a href=\"torles.php?id={$sor['id']}\" class=\"gomboks\">Törlés</a>  <a href=\"modositas.php?id={$sor['id']}\" class=\"gomboks\" >Módosítás</a>  <a href=\"reszletek.php?id={$sor['id']}\" class=\"gomboks\">Részletek</a></td>
   ";
     }
     $kimenet .= "</table>";
