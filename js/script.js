@@ -73,7 +73,7 @@ window.onload = function () {
       if (typeof Storage !== "undefined") {
         //létre hozzuk a kulcs értékpárokat
         let termek = {
-          id: element.target.parentElement.parentElement.children[0].innerHTML,
+          id: element.target.parentElement.parentElement.parentElement.children[1].innerHTML,
           kep: element.target.parentElement.parentElement.parentElement
             .children[0].innerHTML,
           name: element.target.parentElement.parentElement.children[0]
@@ -82,8 +82,9 @@ window.onload = function () {
             element.target.parentElement.parentElement.children[2].innerHTML
           ),
           no: parseInt(element.target.parentElement.children[0].value),
+          
         };
-        console.log(termek);
+        
         //adjuk hozzá a localStoragehez az adatokat
         if (JSON.parse(localStorage.getItem("termekek") === null)) {
           termekek.push(termek);

@@ -105,6 +105,7 @@ if ((mysqli_num_rows($eredmeny)) < 1) {
     <a href=adat.php?id={$sor['id']}">
     <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
+    <span>{$sor['id']}</span>
     <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
     <div class="itemInfo">
         <h2>{$sor['termekNev']}</h2>
