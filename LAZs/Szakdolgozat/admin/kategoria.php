@@ -17,7 +17,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="../css/oldal.css">
   <link rel="stylesheet" href="../css/flexbox.css">
@@ -65,6 +65,7 @@
     <!-- <hr> -->
     <h2 id="kategoria">Táblák</h2>
     <p class="gombok"><a href="felvetel.php"><button>Új gyártó hozzáadása</button></a> | <a href="felvetel_2.php"><button>Új adat hozzáadása</button></a> | <a href="kedvenc.php"><button>Kedvenc termékek</button> | <a href="felhasznalokKezelese.php"><button>Felhasználók kezelése</button> | <a href="../../../Webshop/index.php"><button>Vissza a webshopra</button></a></p>
+    <h3 id="return-to-top"><i class="icon-arrow-up" style="color: red;"></i></h3>
     <form method="post">
       <input type="text" name="search_text" id="search_text" placeholder="Keresés">
     </form>
@@ -73,7 +74,6 @@
 
       </div>
     </div>
-
 
     
       <script src="../js/script.js"></script>

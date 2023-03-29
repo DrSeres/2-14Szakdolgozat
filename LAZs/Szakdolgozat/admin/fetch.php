@@ -1,6 +1,17 @@
 <?php
 //fetch.php
 require("kapcsolat.php");
+
+
+
+
+
+
+
+
+
+
+
 $output = '';
 if (isset($_POST["query"])) {
     $search = mysqli_real_escape_string($dbconn, $_POST["query"]);
@@ -10,10 +21,13 @@ if (isset($_POST["query"])) {
     OR  kategoria.kategoriaNev LIKE '%{$search}%'";
 } else {
     $query = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID ORDER BY termek.id";
+
+    
 }
 $result = mysqli_query($dbconn, $query);
 if (mysqli_num_rows($result) > 0) {
-    $kimenet = "<table>
+    $kimenet = "
+    <table class='kategoriaTable'>
     <tr>
         <th>Kép</th>
         <th>Kategória</th>

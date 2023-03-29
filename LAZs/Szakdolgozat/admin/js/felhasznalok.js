@@ -7,6 +7,7 @@ btn.forEach((elem) => {
             if (elem.value == "Kitiltás") {
             elem.value = "Engedélyezés";
             elem.innerHTML = "Engedélyezés";
+            elem.style.backgroundColor = 'green';
             // console.log(element.dataset.id);
             console.log("s");
             console.log(elem.dataset.id);
@@ -25,6 +26,7 @@ btn.forEach((elem) => {
         else {
             elem.value = "Kitiltás";
             elem.innerHTML = "Kitiltás";
+            elem.style.backgroundColor = 'red';
             console.log("s");
             console.log(elem.dataset.id);
             let formdata = new FormData();
