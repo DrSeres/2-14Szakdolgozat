@@ -10,8 +10,11 @@ if (isset($_SESSION['user_type'])) {
     $eredmeny = mysqli_query($dbconnect, $kitiltas);
     if (mysqli_num_rows($eredmeny) > 0) {
       header("location: kitiltottOldal.php");
-    } else {
-      $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar, COUNT(termek.termekNev) AS 'kedveles' FROM `kedvenctermekek` INNER JOIN termek ON kedvenctermekek.termekId=termek.id GROUP BY termek.termekNev;";
+    }
+  }
+}
+
+$sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar, COUNT(termek.termekNev) AS 'kedveles' FROM `kedvenctermekek` INNER JOIN termek ON kedvenctermekek.termekId=termek.id GROUP BY termek.termekNev;";
       $eredmeny = mysqli_query($dbconnect, $sql);
 
       if ((mysqli_num_rows($eredmeny)) < 1) {
@@ -38,11 +41,6 @@ if (isset($_SESSION['user_type'])) {
           }
         }
       }
-    }
-  }
-}
-
-
 
 
 ?>
