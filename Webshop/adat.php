@@ -36,7 +36,7 @@ while($sor = mysqli_fetch_assoc($eredmeny)) {
 
         <div class=\"kosar\">
             <form action=\"\" method=\"post\">
-                <h3>Ár: {$sor['ar']} Ft</h3>
+                <h3>Ár: " . number_format($sor['ar'], 0, ',', ' ') . " Ft</h3>
             </form>
         </div>
     </div>";

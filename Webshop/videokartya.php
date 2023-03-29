@@ -64,6 +64,7 @@ else
 {
     $kimenet = "";
     while ($sor = mysqli_fetch_assoc($eredmeny)) {
+        $ar = number_format($sor['ar'], 0, ',', ' ');
         if($sor['darab'] > 0){
     
         
@@ -78,7 +79,7 @@ else
         <div class="itemInfo">
             <h2>{$sor['termekNev']}</h2>
             <hr>
-            <p class='price'>{$sor['ar']}<span>Ft</span></p>
+            <p class='price'>{$ar}<span>Ft</span></p>
             <div class='appear' id='show'>
             <input type="number" name="quantity" id="quantity" min="1" max="{$sor["darab"]}" value="1">
             
@@ -101,7 +102,7 @@ else
         <div class="itemInfo">
             <h2>{$sor['termekNev']}</h2>
             <hr>
-            <p class='price'>{$sor['ar']}<span>Ft</span></p>
+            <p class='price'>{$ar}<span>Ft</span></p>
             <div class='appear' id='show'>
             <input type="number" name="quantity" id="quantity" min="1" max="{$sor['darab']}" value="0" disabled>
             
