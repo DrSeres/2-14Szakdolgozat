@@ -50,14 +50,21 @@ tr:nth-child(odd) {
 html::-webkit-scrollbar {
     width: .8rem;
 }
-html::-webkit-scrollbar-track {
-    background: transparent;
-}
+
 
 html::-webkit-scrollbar-thumb {
     background: #fff;
     border-radius: 5rem;
 }
+
+html::-webkit-scrollbar-thumb {
+    background: #003554;
+}
+
+html::-webkit-scrollbar-track {
+    background: #16a0e5;
+}
+
 @media (max-width:640px) {
     html{
         width: 100%;
