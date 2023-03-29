@@ -135,7 +135,7 @@ window.onload = function () {
   } else {
     JSON.parse(localStorage.getItem("termekek")).map((data) => {
       tableData +=
-        `<tr><td>` +
+        `<tr style='display:none'><td>` +
         data.id +
         `<tr><td>` +
         data.kep +
