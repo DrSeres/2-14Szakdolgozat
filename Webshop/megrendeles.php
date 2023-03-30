@@ -145,9 +145,9 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
 
       $vezetekNev = $_POST['last-name'];
       $keresztNev = $_POST['first-name'];
-      $kartyaszamNev = $_POST['kartyaszam'];
-      $kodNev = $_POST['kod'];
-      $telefonNev = $_POST['telefon'];
+      $kartyaszamNev = $_POST['card'];
+      $kodNev = $_POST['code'];
+      $telefonNev = $_POST['phone'];
       $kiszallitasiCimNev = $_POST['cim'];
       $varosNev = $_POST['varos'];
       $megyeNev = $_POST['megye'];

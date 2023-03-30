@@ -6,3 +6,5 @@
  https://stackoverflow.com/questions/2108663/in-php-how-to-remove-specific-class-from-html-tag
  https://stackoverflow.com/questions/1685860/how-do-i-get-the-last-inserted-id-of-a-mysql-table-in-php
  https://ckeditor.com/ckeditor-4/download/
+
+ https://www.edureka.co/community/94514/how-to-get-input-field-value-using-php
