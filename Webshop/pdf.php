@@ -16,7 +16,7 @@ $sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekN
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
-INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva != 1;
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva = 0;
 ";
 
 $stmt = $dbconnect->prepare($sql);
@@ -42,7 +42,7 @@ $sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekN
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
-INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva != 1;
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva = 0;
 ";
 
 $stmt = $dbconnect->prepare($sql);
@@ -241,9 +241,12 @@ $dompdf->stream('szamla.pdf');
 
 
 
-echo $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva != 1 AND users.name = '{$_SESSION['name']}'";
+echo $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva = 0 AND users.name = '{$_SESSION['name']}'";
 $stmt = $dbconnect->prepare($update);
 $stmt->execute();
+
+
+
 ?>
 
 

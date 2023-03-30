@@ -237,24 +237,12 @@ window.onload = function () {
       }
     })
   });
-  
-
-
-
-  // let confirm = document.getElementsByClassName("swal2-confirm");
-  // confirm.addEventListener("click", () => {
-  //   console.log("szia");
-    
-
-  // }
 };
-
-
 //törlés
 function Delete(elem) {
   let termekek = [];
   JSON.parse(localStorage.getItem("termekek")).map((data) => {
-    if (data.id != elem.parentElement.parentElement.children[0].textContent) {
+    if (data.id != elem.parentElement.parentElement.parentElement.children[1].textContent) {
       termekek.push(data);
     }
   });
@@ -270,9 +258,5 @@ function allDelete(elem) {
   localStorage.setItem("termekek", JSON.stringify(termekek));
   window.location.reload();
 }
-
-// function Megrendeles() {
-//   window.location.href = "megrendeles.php";
-// }
 
 
