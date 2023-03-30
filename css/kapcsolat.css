@@ -14,7 +14,7 @@ form {
     flex-direction: column;
     margin: 20px auto;
     width: 800px;
-    background: rgba(23, 104, 144, 0.75);
+    background: rgba(23, 104, 144, 1);
     border-radius: 20px;
 }
 
@@ -33,6 +33,7 @@ form input::placeholder {
 form input, textarea {
   background-color: #003554;
   color: white;
+  z-index: 1;
 }
 
 form textarea::placeholder{
@@ -266,6 +267,7 @@ h1 {
   background: #051923;
   border-radius: 5px;
   padding: 10px;
+  z-index: 1;
 }
 
 button:focus{
