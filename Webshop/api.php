@@ -46,11 +46,17 @@ if($data['c'] == 'loginValidalas') {
     $select = "SELECT * FROM users WHERE email = '$email' AND password = '$pass' ";    
     $result = mysqli_query($dbconnect, $select);
     
+   
     
     //ha nincs felhaszná, akkor küldjön vissza hibaüzenetet
     if (mysqli_num_rows($result) == 0 ) {
         $message = 'Rossz felhasználói név / jelszó';
-    } 
+    }else{
+        if(isset($_POST['elfelejtett-jelszo'])){
+           echo $jelszo = "UPDATE `users` SET `jelszoemlekezteto`='1' WHERE jelszoemlekezteto = 0";
+           echo $eremeny = mysqli_query($dbconnect, $jelszo);
+        }
+    }
 
     //üzenet visszaküldése
     $result = array(
@@ -58,5 +64,8 @@ if($data['c'] == 'loginValidalas') {
     );
 
     echo json_encode($result);
+
+    
+
 }
 ?>

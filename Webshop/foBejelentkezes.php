@@ -6,6 +6,11 @@ error_reporting(E_ALL);
 
 require 'kapcsolat.php';
 session_start();
+
+
+
+
+
 ?>
 
 
@@ -66,7 +71,7 @@ session_start();
                         <label>Jelszó</label>
                     </div>
                     <div class="remember-password">
-                        <label for="elfelejtett-jelszo"><input id="elfelejtett-jelszo" type="checkbox">Emlékezz rám</label>
+                        <label for="elfelejtett-jelszo"><input id="elfelejtett-jelszo" name="elfelejtett-jelszo" type="checkbox">Emlékezz rám</label>
                         <a href="#">Elfelejtett jelszó</a>
                     </div>
                     <button class="btn" id="be" type="submit">Bejelentkezés</button>

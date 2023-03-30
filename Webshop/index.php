@@ -14,7 +14,7 @@ if (isset($_SESSION['user_type'])) {
   }
 }
 
-$sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar, COUNT(termek.termekNev) AS 'kedveles' FROM `kedvenctermekek` INNER JOIN termek ON kedvenctermekek.termekId=termek.id GROUP BY termek.termekNev;";
+$sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar, COUNT(termek.termekNev) AS 'kedveles' FROM `kedvenctermekek` INNER JOIN termek ON kedvenctermekek.termekId=termek.id GROUP BY termek.termekNev ORDER BY kedveles DESC LIMIT 15;";
       $eredmeny = mysqli_query($dbconnect, $sql);
 
       if ((mysqli_num_rows($eredmeny)) < 1) {
