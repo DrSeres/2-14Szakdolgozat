@@ -95,6 +95,7 @@ if ((mysqli_num_rows($eredmeny)) < 1) {
 } else {
     $kimenet = "";
     while ($sor = mysqli_fetch_assoc($eredmeny)) {
+        $heartIcon = ((isset($_SESSION['user_type']))) ? "<i class='fa fa-heart' style='font-size:36px;' data-id='{$sor["id"]}'></i>" : "";
         $ar = number_format($sor['ar'], 0, ',', ' ');
         if ($sor['darab'] > 0) {
 
@@ -106,7 +107,7 @@ if ((mysqli_num_rows($eredmeny)) < 1) {
     <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
     <span style='display:none'>{$sor['id']}</span>
-    <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
+    $heartIcon
     <div class="itemInfo">
         <h2>{$sor['termekNev']}</h2>
         <hr>
@@ -129,7 +130,7 @@ URLAP;
     <a href=adat.php?id={$sor['id']}">
     <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
-    <i class="fa fa-heart" style="font-size:36px;" data-id='{$sor['id']}'></i>
+    $heartIcon
     <div class="itemInfo">
         <h2>{$sor['termekNev']}</h2>
         <hr>
