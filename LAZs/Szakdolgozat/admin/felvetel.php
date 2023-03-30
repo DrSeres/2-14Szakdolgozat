@@ -43,9 +43,16 @@ if (isset($_POST['rendben'])) {
 
     //változók visszaadása
 
+    $select = "SELECT * FROM gyartokategoria INNER JOIN gyarto ON gyarto.gyartoId = gyartokategoria.gyartoId INNER JOIN kategoria ON kategoria.kategoriaID = gyartokategoria.kategoriaID WHERE
+    gyarto.gyartoNev = '{$gyartoNev}' AND kategoria.kategoriaID = '{$kategoriaID}'";
+    $eredmeny = mysqli_query($dbconn, $select);
+
     $mine = array("image/jpeg", "image/gif", "image/png");
     if (empty($gyartoNev)) {
         $hibak[] = "Nem adott meg márkát!";
+    }
+    if(mysqli_num_rows($eredmeny) > 0){
+        $hibak[] = "A gyártó már létezik, kérem adjon meg egy újat.";
     }
 
     //Hibaüzenet összeállítása
