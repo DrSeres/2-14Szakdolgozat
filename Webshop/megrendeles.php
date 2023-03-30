@@ -142,10 +142,18 @@ $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$_SESSION['name']}'
       mysqli_query($dbconnect, $delete);
       header("Location:index.php");
     }else if(isset($_POST['rendben'])){
-      $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cim}',`varos`='{$varos}',`megye`='{$megye}' WHERE users.name = '{$_SESSION['name']}'";
+
+      $vezetekNev = $_POST['last-name'];
+      $keresztNev = $_POST['first-name'];
+      $kartyaszamNev = $_POST['kartyaszam'];
+      $kodNev = $_POST['kod'];
+      $telefonNev = $_POST['telefon'];
+      $kiszallitasiCimNev = $_POST['cim'];
+      $varosNev = $_POST['varos'];
+      $megyeNev = $_POST['megye'];
+
+      $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$keresztNev}',`vezetekNev`='{$vezetekNev}',`kartyaszam`='{$kartyaszamNev}',`kartyaKod`='{$kodNev}',`telefonszam`='{$telefonNev}',`kiszallitasiCim`='{$kiszallitasiCimNev}',`varos`='{$varosNev}',`megye`='{$megyeNev}' WHERE users.name = '{$_SESSION['name']}'";
       $eredmeny = mysqli_query($dbconnect, $sql);
-
-
       $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
       mysqli_query($dbconnect, $update);
       header("location:koszonjuk.php");

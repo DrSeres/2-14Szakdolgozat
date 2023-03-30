@@ -69,8 +69,6 @@ else
     while ($sor = mysqli_fetch_assoc($eredmeny)) {
         $ar = number_format($sor['ar'], 0, ',', ' ');
         if($sor['darab'] > 0){
-    
-        
         $kimenet .=
     <<<URLAP
         <article>
