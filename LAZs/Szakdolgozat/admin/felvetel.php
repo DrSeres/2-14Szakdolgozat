@@ -66,10 +66,10 @@ if (isset($_POST['rendben'])) {
                 (gyartoId, gyartoNev)
                 VALUES
                 ('', '{$gyartoNev}');";
-        echo "<pre>";
-        echo $querys = mysqli_query($dbconn, $sql);
-        echo $utolsoId = mysqli_insert_id($dbconn);
-        echo "</pre>";
+         "<pre>";
+         $querys = mysqli_query($dbconn, $sql);
+         $utolsoId = mysqli_insert_id($dbconn);
+         "</pre>";
         
        
         $sqls = " INSERT INTO gyartokategoria (gyartoKategoriaId, kategoriaID, gyartoId) VALUES ('', '{$kategoriaID}', '{$utolsoId}')";
