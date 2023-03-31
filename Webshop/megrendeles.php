@@ -167,6 +167,7 @@ if (mysqli_num_rows($query) > 0) {
   if (isset($_POST['adatokMarad'])) {
     $update = "UPDATE `users` SET `mentve`='1' WHERE mentve = 0 AND name = '{$_SESSION['name']}'";
     $eredmeny = mysqli_query($dbconnect, $update);
+    header("location:koszonjuk.php");
   } else if (isset($_POST['rendben'])) {
 
     $veznev = $_POST['last-name'];
