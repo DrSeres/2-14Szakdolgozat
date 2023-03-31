@@ -32,7 +32,7 @@ $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar
         <div>
           <a href=processzor_adat.php?id={$sor['id']}">
           <h2>{$sor['termekNev']}</h2>
-          <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
+          <img src="img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
       </div>
         
     
@@ -57,10 +57,10 @@ $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar
   <meta name="author" content="Laczka Adrián Zsolt, Seres Szabolcs">
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/oldal.css">
-  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/flexbox.css">
-  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/sablon.css">
-  <link rel="stylesheet" href="../LAZs/Szakdolgozat/css/oldal.css">
+  <link rel="stylesheet" href="../Webshop/admin/admincss/oldal.css">
+  <link rel="stylesheet" href="../Webshop/admin/admincss/flexbox.css">
+  <link rel="stylesheet" href="../Webshop/admin/admincss/sablon.css">
+  <link rel="stylesheet" href="../Webshop/admin/admincss/oldal.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feliratkozas.css">
   <link rel="stylesheet" href="../css/cookie.css">
@@ -92,7 +92,7 @@ $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar
         ?>
 
 
-        <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<span style='color:blue'> Üdvözöllek </span>" . $_SESSION['name'] : "<span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "<li><a href = ../LAZs/Szakdolgozat/admin/kategoria.php style='color:red'>Admin oldal</a></li>") : ""); ?> </a></li>
+        <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<span style='color:blue'> Üdvözöllek </span>" . $_SESSION['name'] : "<span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "<li><a href = admin/kategoria.php style='color:red'>Admin oldal</a></li>") : ""); ?> </a></li>
 
         <?php
 
@@ -134,7 +134,7 @@ $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar
         
 
 </div>
-  <a href="../LAZs/Szakdolgozat/admin/kategoria.php"></a>
+  <a href="/Webshop/admin/kategoria.php"></a>
   <main id="main">
     <!-- <hr> -->
     <h2 id="kategoria">Kategóriák</h2>
@@ -277,36 +277,6 @@ $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar
     </p>
     <button id="acceptCookie">Elfogadom</button>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   <script src="../js/kijelentkezes.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/index.js"></script>

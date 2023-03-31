@@ -6,11 +6,6 @@ error_reporting(E_ALL);
 
 require 'kapcsolat.php';
 session_start();
-
-
-
-
-
 ?>
 
 
@@ -24,7 +19,7 @@ session_start();
     <meta name="keywords" content="PC Webshop, Számítógép Webshop, Számítógépes Webshop, Számítógép szaküzlet">
     <meta name="author" content="Laczka Adrián Zsolt, Seres Szabolcs">
     
-    <link rel="stylesheet" href="../css/FoBejelentkezes.css">
+    <link rel="stylesheet" href="css/FoBejelentkezes.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -120,7 +115,7 @@ session_start();
     <script type="text/javascript">
     localStorage.clear();
 </script>
-    <script src="../js/FoBejelentkezes.js"></script>
+    <script src="js/FoBejelentkezes.js"></script>
 </body>
 
 </html>

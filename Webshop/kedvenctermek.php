@@ -26,7 +26,7 @@ if (mysqli_num_rows($eredmeny) > 0) {
  ";
     while ($sor = mysqli_fetch_array($eredmeny)) {
         $kimenet .= "<tr>
-        <td><img src='../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}'></td>
+        <td><img src='img/termekekuj/{$sor['foto']}'></td>
         <td>{$sor['termekNev']}</td>
         <td>{$sor['ar']}</td>
         <td><a href=\"torles.php?id={$sor['id']}\" id=\'torles\'>Törlés</a></td>
@@ -52,7 +52,7 @@ if (mysqli_num_rows($eredmeny) > 0) {
     <meta name="author" content="John Doe">
 
     <title>Kedvenc termék</title>
-    <link rel="stylesheet" href="../css/kedvencek.css">
+    <link rel="stylesheet" href="css/kedvencek.css">
 </head>
 
 <body>

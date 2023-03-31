@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+html::-webkit-scrollbar {
+    width: .8rem;
+}
+html::-webkit-scrollbar-track {
+    background: #16a0e5;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #003554;
+}
+body{
+    background-image: url(../../img/wallpaper.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+
+
+
+.container{
+    margin: auto;
+    background-color: rgba(23, 104, 144, 0.75);
+    border-radius: 20px;
+    padding: 10px;
+    max-width: 500px;
+}
+img{
+    max-width: 500px;
+    width: 100%;
+}
+select {
+    background: #003554;
+    color: white;
+    padding: 3px;
+}
+input {
+    background: #003554;
+    color: white;
+    padding: 3px;
+}
+#rendben {
+    padding: 7px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#rendben:hover{
+    background: #051923; 
+}
+a{
+    color: #003554;
+    text-decoration: none;
+    background: #003554;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 0.8rem;
+}
+a:hover{
+    background: #051923; 
+}
+textarea{
+    background: #003554;
+    color: black;
+    overflow-x: hidden;
+}
+details{
+    text-align: center;
+}
+.gyKtable {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+summary {
+    margin: 10px;
+    color: white;
+}
+summary::marker{
+    color: #051923;
+}
+.gyKtable th{
+    background: #001e30;
+    padding: 10px;
+}
+.gyKtable td{
+    padding: 10px;
+    border: 2px solid black;
+}
+.gyKtable th {
+    border-top-left-radius: 10px;
+}
+.gyKtable tr:nth-child(odd) {
+    background-color: #001e30;
+    color: white;
+  }
+
+#termekFoto {
+    display: block;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+}
+
+
+
+textarea::-webkit-scrollbar {
+    background: #16a0e5;
+    border-radius: 5px;     
+  }
+textarea::-webkit-scrollbar-thumb {
+    background: #051923;
+    border-radius: 5px; 
+  }
+
+input #file-upload-button{
+    color: red;
+    background: red;
+}
+#dataFileInput input #file-upload-button{
+    color: red;
+    background: red;
+}
+/*FILE FELTÖLTÉS GOMB SZINEZÉSE*/
+
+/*https://stackoverflow.com/questions/67913925/how-to-change-the-color-of-the-choose-file-button-wordpress*/
+
+
+input[type=file]::file-selector-button{
+    background: #051923;
+    color: white;
+    border-radius: 4px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+/**/

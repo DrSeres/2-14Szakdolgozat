@@ -77,7 +77,7 @@ else
         <article>
         <div class="border">
         <a href=adat.php?id={$sor['id']}">
-        <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
+        <img src="img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
         </div>
         <span style='display:none'>{$sor['id']}</span>
         $heartIcon
@@ -101,7 +101,7 @@ else
         <article>
         <div class="border">
         <a href=adat.php?id={$sor['id']}">
-        <img src="../LAZs/Szakdolgozat/img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
+        <img src="img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
         </div>
         $heartIcon
         <div class="itemInfo">
