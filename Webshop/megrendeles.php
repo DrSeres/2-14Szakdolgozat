@@ -187,7 +187,9 @@ if (mysqli_num_rows($query) > 0) {
     }
 
     //Kártyaszám hosszának ellenőrzése
-    if (strlen($kartyaszam) > 19) {
+    if (empty($kartyaszam)) {
+      $hibak[] = "Nem adott meg bankkártyaszámot!";
+    }elseif (strlen($kartyaszam) > 19) {
       $hibak[] = "Túl hosszú bankkártyaszámnak!";
     } elseif (strlen($kartyaszam) < 19) {
       $hibak[] = "Túl rövid bankkártyaszámnak!";
@@ -203,7 +205,9 @@ if (mysqli_num_rows($query) > 0) {
 
 
     //CVV kód hosszának ellenőrzése
-    if (strlen($kod) != 3) {
+    if (empty($kod)) {
+      $hibak[] = "Nem adott meg ellenőrző kódot!";
+    }elseif (strlen($kod) != 3) {
       $hibak[] = "3 számjegynek kell szerepelnie!";
     }
 
@@ -218,11 +222,11 @@ if (mysqli_num_rows($query) > 0) {
       $hibak[] = "Nem adott meg megyét!";
     }
     if (isset($hibak)) {
-      $kimenet = "<div style=\"background-color: #A50000; width: 100%; max-width: 600px; margin: auto;\">";
+      $kimenet = "<div style=\"background-color: #A50000; width: 100%; max-width: 600px; margin: auto; text-align: center\">";
       $kimenet .= "<h2 style=\"color: white; margin: 0px;\">HIBÁS / HIÁNYOS ADATOK!</h2>";
       foreach ($hibak as $hiba) {
 
-        $kimenet .= "<p style=\"color: white;\"><b>X</b> {$hiba}</p>";
+        $kimenet .= "<p style=\"color: white; padding: 3px\"><b>X</b> {$hiba}</p>";
       }
       $kimenet .= "</div>";
       print $kimenet;
