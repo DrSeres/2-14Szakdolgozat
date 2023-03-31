@@ -64,6 +64,7 @@ $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/feliratkozas.css">
   <link rel="stylesheet" href="../css/cookie.css">
+  <link rel="stylesheet" href="../css/animation.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="sweetalert2.min.css">
   <script src="sweetalert2.all.min.js"></script>
@@ -130,6 +131,9 @@ $sql = "SELECT termek.id, termek.termekNev, termek.foto, termek.darab, termek.ar
     </div>
   </div>
 
+        
+
+</div>
   <a href="../LAZs/Szakdolgozat/admin/kategoria.php"></a>
   <main id="main">
     <!-- <hr> -->

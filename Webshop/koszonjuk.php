@@ -28,7 +28,7 @@ if(isset($_POST['vissza'])){
     <form method="post">
     <div class="kozep">
     <input type="submit" value="Számla nyomtatása PDF-ben" id="nyomtatas" name="nyomtatas">
-    <input type = "submit" value="Vissza a főoldalra" id="vissza" name="vissza">
+    <input type = "submit" value="A számlát postán kérem" id="vissza" name="vissza">
         </div>  
     </form>
     <script>
