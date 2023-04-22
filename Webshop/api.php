@@ -26,7 +26,7 @@ if($data['c'] == 'regisztracioValidalas') {
         $message = 'Létezik már egy olyan felhasználó!';
     } else if ($pass != $cpass) {
         $message = "Nem egyezik meg a két jelszó!";
-    }
+    } 
     
     $result = array(
         'message' => $message,

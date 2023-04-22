@@ -66,17 +66,36 @@ html::-webkit-scrollbar-track {
 }
 
 @media (max-width:640px) {
-    html{
-        width: 100%;
-    };
-    table{
-        padding: 10px;
-        margin: auto;
-        overflow-x:auto;
-        width: 30%;
-        border-radius: 10px;
-    }
+   html{
+    width: 100%;
+   }
+   h1{
+    font-size: 2rem;
+   }
+   #kategoria{
+    margin: 30px auto;
+    font-size: 2rem;
     
+   }
+    .tableContainer {
+        overflow: scroll;
+    }
+    table {
+        position: sticky;
+        top: 0;
+        width: 100%;
+    }
+    .muveletek a{
+        padding: 8px;
+        font-size: 0.8rem;
+        display: flex;
+        margin: 5px;
+        justify-content: center;
+        align-items: center;
+    }
+    .tableAr{
+        width: 600px;
+    }
     th{
         border-top-left-radius: 10px;
     }
@@ -118,6 +137,65 @@ html::-webkit-scrollbar-track {
         padding-right: 10px;
         margin-top: 6px;
     }
+    .area{
+        background: #051923;  
+        background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);  
+        width: 100%;
+        height:35vh;
+      }
+      p{
+        font-size: small;
+      }
+      .context {
+        width: 100%;
+        position: absolute;
+        top:40vh;
+        
+      }
+      .circles{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70vw;
+        overflow: hidden;
+      }
+      .circles li{
+        position: absolute;
+        display: block;
+        list-style: none;
+        width: 20px;
+        height: 20px;
+        /* background: rgba(255, 255, 255, 0.2); */
+        background: #0582CA;
+        animation: animate 25s linear infinite;
+        bottom: -150px;
+        
+      }
+      #search_text{
+        width: 24rem;
+      }
+      .input-div{
+        margin: auto;
+        display: flex;
+        justify-content: center;
+      }
+      .icon-arrow-up{
+        display: none;
+      }
+      #return-to-top{
+        display: none;
+        background: none;
+      }
+     
+      a{
+        margin: 15px;
+        display: flex;
+        justify-content: center;
+      }
+      .visszaOldal{
+        margin:0;
+      }
 }
 @media (max-width:700px) {
     html{

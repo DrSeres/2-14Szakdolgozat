@@ -16,7 +16,8 @@ $eredmeny = mysqli_query($dbconnect, $select);
 
 
 if (mysqli_num_rows($eredmeny) > 0) {
-    $kimenet = "<table>
+    $kimenet = "<div class='tableContainer'>
+    <table>
     <tr>
         <th>Fotó</th>
         <th>Termék neve</th>
@@ -34,6 +35,7 @@ if (mysqli_num_rows($eredmeny) > 0) {
   ";
     }
     $kimenet .= "</table>";
+    $kimenet .= "</div>";
 }else{
     $kimenet = "";
 }
@@ -66,7 +68,7 @@ if (mysqli_num_rows($eredmeny) > 0) {
         
        
     </header>
-<h1>Az Ön által kedvelt termék:</h1>
+<h1>Az Ön által kedvelt termék(ek):</h1>
 <?php echo $kimenet?>
 </body>
 

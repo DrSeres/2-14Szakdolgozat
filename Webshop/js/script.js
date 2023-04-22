@@ -13,6 +13,8 @@ window.onload = function () {
   const heartBtn = document.querySelectorAll(".fa-heart");
   console.log(heartBtn);
 
+
+
   heartBtn.forEach(element => {
   
     element.addEventListener("click", () => {
@@ -31,24 +33,24 @@ window.onload = function () {
         .catch((error) => console.log(error));
     });
   });
-  heartBtn.forEach(element => {
+  // heartBtn.forEach(element => {
 
-    element.addEventListener("dblclick", () => {
-        console.log(element.dataset.id);
-        element.style.color = "white";
-        let adatok = new FormData();
-        adatok.append("id", element.dataset.id);
-      fetch("heart.php", {
-        method: "POST",
-        body: adatok,
-      })
-        .then((response) => response.text())
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => console.log(error));
-    });
-  });
+  //   element.addEventListener("dblclick", () => {
+  //       console.log(element.dataset.id);
+  //       element.style.color = "white";
+  //       let adatok = new FormData();
+  //       adatok.append("id", element.dataset.id);
+  //     fetch("heart.php", {
+  //       method: "POST",
+  //       body: adatok,
+  //     })
+  //       .then((response) => response.text())
+  //       .then((data) => {
+  //         console.log(data);
+  //       })
+  //       .catch((error) => console.log(error));
+  //   });
+  // });
   
 
   //a felugró ablak megjelenítése
@@ -72,15 +74,24 @@ window.onload = function () {
       //ha a storage nem üres akkor adja hozzá az elemeket
       if (typeof Storage !== "undefined") {
         //létre hozzuk a kulcs értékpárokat
+        
+        // if(element.target.parentElement.parentElement.children[2].firstElementChild.innerHTML){
+        //   price: parseInt(element.target.parentElement.parentElement.children[2].firstElementChild.innerHTML) + ','
+        // }
+        // else
+        // {
+        // price: parseInt( element.target.parentElement.parentElement.children[2].innerHTML) + ','
+        // }
         let termek = {
-          id: element.target.parentElement.parentElement.parentElement.children[1].innerHTML,
+          id: element.target.parentElement.parentElement.parentElement.children[1].innerHTML, 
           kep: element.target.parentElement.parentElement.parentElement
             .children[0].innerHTML,
           name: element.target.parentElement.parentElement.children[0]
             .innerHTML,
-          price: parseInt(
-            element.target.parentElement.parentElement.children[2].innerHTML
-          ),
+          
+            // price: 
+            // (parseInt(element.target.parentElement.parentElement.children[2].firstElementChild.innerHTML)) ? parseInt(element.target.parentElement.parentElement.children[2].firstElementChild.innerHTML) : parseInt(element.target.parentElement.parentElement.children[2].innerHTML), 
+          price:parseInt(element.target.parentElement.parentElement.children[2].innerHTML), 
           no: parseInt(element.target.parentElement.children[0].value),
           
         };
@@ -109,7 +120,7 @@ window.onload = function () {
       } else {
         alert("A local storage nem működik a böngészőben!");
       }
-    });
+    })
   }
  
   //rendelés hozzáadása a kosárhoz
@@ -146,7 +157,7 @@ window.onload = function () {
         data.no +
         ` darab</td><td>` +
         data.price * data.no +
-        ` Ft</td><td><a href="#" onclick=Delete(this) style='color:#051923; font-weight:900'>X</a></td></tr>`;
+        ` Ft</td><td><a href="#" onclick=Delete(this) style='color:#051923; font-weight:900' class='egytorles'>X</a></td></tr>`;
 
       nev.push(data.name);
       console.log(nevDb);
@@ -241,8 +252,9 @@ window.onload = function () {
 //törlés
 function Delete(elem) {
   let termekek = [];
+  console.log("localstorage termekek:");
   JSON.parse(localStorage.getItem("termekek")).map((data) => {
-    if (data.id != elem.parentElement.parentElement.parentElement.children[1].textContent) {
+    if (data.id != elem.parentElement.parentElement.parentElement.children[0].textContent) {
       termekek.push(data);
     }
   });

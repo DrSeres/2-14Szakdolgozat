@@ -4,6 +4,21 @@
 //   header("location:false.php");
 // }
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require("kapcsolat.php");
+
+if(isset($_POST["akcios"]))
+{
+  $u = "UPDATE `termek` SET akcio = 0";
+  mysqli_query($dbconnect, $u);
+  $sors = "UPDATE termek SET akcio = 1 ORDER BY rand() LIMIT 5";
+  mysqli_query($dbconnect, $sors);
+
+}
+
 
 
 ?>
@@ -25,49 +40,28 @@
   <link rel="stylesheet" href="../admin/css/table.css">
   
   <title>Admin oldal</title>
-  <script src="adminjs/input.js"></script>
+  
 </head>
 
 <body>
-  <header>
-
-    <div class="oldalLogo">
-      <div class="area">
-        <ul class="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-        <div class="centered">
-          <h1>Üdvözöllek az admin oldalon</h1>
-          <p>Termék kategóriáink megtekintése</p>
-          <a href="#main"><i class="fa fa-chevron-circle-down" style="font-size:36px"></i></a>
-        </div>
-      </div>
-      
-    </div>
-
-
-  </header>
+  
 
 
 
   
   <main id="main">
     <!-- <hr> -->
-    <h2 id="kategoria">Táblák</h2>
-    <p class="gombok"><a href="felvetel.php"><button>Új gyártó hozzáadása</button></a>  <a href="felvetel_2.php"><button>Új adat hozzáadása</button></a>  <a href="kedvenc.php"><button>Kedvenc termékek</button>  <a href="felhasznalokKezelese.php"><button>Felhasználók kezelése</button>  <a href="../../Webshop/index.php"><button>Vissza a webshopra</button></a></p>
-    <h3 id="return-to-top"><i class="icon-arrow-up" style="color: white;"></i></h3>
+    <h1 id="kategoria">Termékek</h1>
+    <p class="gombok"><a href="felvetel.php"><button>Új gyártó hozzáadása</button></a>  <a href="felvetel_2.php"><button>Új termék hozzáadása</button></a>  <a href="kedvenc.php"><button>Népszerű termékek</button>  <a href="userMegrendeles.php"><button>Megrendelések megtekintése</button>   </a> <a href="felhasznalokKezelese.php"><button>Felhasználók kezelése</button>   </a> </p>
     <form method="post">
-      <input type="text" name="search_text" id="search_text" placeholder="Keresés">
+    <!-- <p class="gombok"><a href=""><button type="submit" name="akcios" id="akcios">Vissza a webshopra</button></a></p> -->
+    <p class="gombok"><a href="../../Webshop/index.php"><button type="button" name="akcios" id="akcios">Vissza a webshopra</button></a></p>
+    <h3 id="return-to-top"><i class="icon-arrow-up" style="color: white;"></i></h3>
+    </form>
+    <form method="post">
+      <div class="input-div">
+        <input type="text" name="search_text" id="search_text" placeholder="Keresés">
+      </div>
     </form>
     <div class="main">
       <div class="flexbox-container" id="result">
@@ -75,7 +69,7 @@
       </div>
     </div>
       <script src="js/search.js"></script>
-      
+      <script src="js/input.js"></script>
 </body>
 
 </html>

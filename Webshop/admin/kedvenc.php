@@ -4,10 +4,11 @@ require("kapcsolat.php");
 
 
 $query = "SELECT termek.termekNev, termek.foto, termek.darab, termek.ar, COUNT(termek.termekNev) AS 'kedveles' FROM `kedvenctermekek` INNER JOIN termek ON kedvenctermekek.termekId=termek.id GROUP BY termek.termekNev;";
-$result = mysqli_query($dbconn, $query);
+$result = mysqli_query($dbconnect, $query);
 
 if (mysqli_num_rows($result) > 0) {
-    $kimenet = "<table>
+    $kimenet = "<div class='tableContainer'>
+    <table>
     <tr>
         <th>Kép</th>
         <th>Termék neve</th>
@@ -26,6 +27,7 @@ if (mysqli_num_rows($result) > 0) {
   ";
     }
     $kimenet .= "</table>";
+    $kimenet .= "</div>";
     
 } else{
   $kimenet = "";

@@ -39,7 +39,7 @@ session_start();
                 <h2>Üdvözöllek! <br><span>
                         A Webshopon
                     </span></h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, repellendus?</p>
+                <p></p>
                 <div class="social-icon">
                     <a href="#"><i class='bx bxl-facebook'></i></a>
                     <a href="#"><i class='bx bxl-twitter'></i></a>

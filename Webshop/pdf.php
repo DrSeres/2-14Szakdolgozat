@@ -2,6 +2,9 @@
 require_once 'vendor/autoload.php';
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 require_once "kapcsolat.php";
 
@@ -9,14 +12,14 @@ require_once 'vendor/autoload.php';
 
 use Dompdf\Dompdf;
 
-$dbconnect = new PDO('mysql:host=localhost;dbname=Webshopv3', 'root', '');
-
+$dbconnect = new PDO('mysql:host=mysql.omega;dbname=webshopv3', 'webshopv3', 'Szuperbat01');
+$felhasznalo = $_SESSION['name'];
 //A megrendelő adatainak kikeresése
-$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.ar, users.name, users.vezetekNev, users.keresztNev, users.kartyaszam, users.kiszallitasiCim, users.varos, users.megye, users.email FROM termek
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, users.keresztNev, users.kartyaszam, users.kiszallitasiCim, users.email FROM termek
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
-INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva = 0;
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$felhasznalo}' AND megrendeles.szamlazva = 0;
 ";
 
 $stmt = $dbconnect->prepare($sql);
@@ -28,8 +31,7 @@ $veznev = $sor["vezetekNev"];
 $kernev = $sor["keresztNev"];
 $kartyaszam = $sor["kartyaszam"];
 $kiszallitasiCim = $sor["kiszallitasiCim"];
-$varos = $sor["varos"];
-$megye = $sor["megye"];
+
 
 
 
@@ -38,11 +40,11 @@ $megye = $sor["megye"];
 
 //az adatok fetchAll-al kiíratása
 
-$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.ar, users.name, users.vezetekNev FROM termek
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, users.kiszallitasiCim FROM termek
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
-INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$_SESSION['name']}' AND megrendeles.szamlazva = 0;
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$felhasznalo}' AND megrendeles.szamlazva = 0;
 ";
 
 $stmt = $dbconnect->prepare($sql);
@@ -54,7 +56,9 @@ $sorok = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $gt = 0;
 $i = 1;
 $date = date("Y.m.d H:i:s");
-$szamla = 0001;
+$szamla = 000 . "<script>window.localStorage.getItem('clickcount');</script>";
+
+
 function add_leading_zero($value, $threshold = 2) {
     return sprintf('%0' . $threshold . 's', $value);
 }
@@ -175,22 +179,22 @@ $html = '
 <table class="headerTable">
     <thead>
         <tr>
-            <th class="th">Szállító</th>
+            <th class="th">Cég</th>
             <th class="th">Vásárló</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td class="szallitoVevo"><b>Seres Szabolcs</b></td>
+            <td class="szallitoVevo"><b>Seres és Társa.Kft</b></td>
             <td class="szallitoVevo"><b>'. $veznev .' '. $kernev .'</b></td>
         </tr>
         <tr>
-            <td>Bankszámlaszám: 888888-8888-8888-8888</td>
+            <td>Bankszámlaszám: 123456789-123456789-123456789</td>
             <td>Bankszámlaszám: '. $kartyaszam .'</td>
         </tr>
         <tr>
-            <td>Helyszín: 1022, Budapest asd utac 24.</td>
-            <td>Helyszín: '. $megye .' '. $varos .' '. $kiszallitasiCim .'</td>
+            <td>Helyszín: 1022, Budapest I.kerület utca 24.</td>
+            <td>Helyszín:  '. $kiszallitasiCim .'</td>
         </tr>
         <tr>
             <td>E-mail cím: onlinePcWebshop2023@gmail.com</td>
@@ -203,45 +207,58 @@ $html = '
 <table class="bodyTable">
     <thead>
         <tr>
-            <th>Termék azonosító</th>
+            <th>Termék cikkszáma</th>
             <th>Termék</th>
             <th>Darab</th>
             <th>Ár</th>
+            <th>Akció</th>
         </tr>
     </thead>
     <tbody>';
 
 foreach ($sorok as $sor) {
-    $html .= '
+    /*
+    Ha a termék id-ja = a $_SESSION[deal] -ben szereplő id-val, akkor szorozza fel 0.*-al az árat.
+    if(in_array($sor["id"],$_SESSION["deal"]));
+    */
+    $akcio = number_format($sor['ar'] * 0.8, '0', '.', '');
+    $ArFormazas = intval($sor['ar']);
+        $akciosAr = (in_array($sor['termekid'], $_SESSION['deal'])) ? " {$akcio} " :  "$ArFormazas";
+        $termekAkcio = (in_array($sor['termekid'], $_SESSION['deal'])) ? " 20 % " :  "0 %";
+   $html .= '
                 <tr>
                     <td class="rendelesId">' . $sor['megrendeles'] .'</td>
                     <td>' . $sor['gyartoNev'] . ' ' . $sor['termekNev'] . '</td>
                     <td>' . $sor['raktaron'] . '</td>
-                    <td class="ar">' . number_format($sor['ar'] * $sor['raktaron'], 0, ',', ' ') . ' Ft</td>
+ 
+                    <td class="ar">' . number_format($akciosAr * $sor['raktaron'], 0, ',', ' ') . ' Ft</td>
+                    <td class="ar">' . $termekAkcio . '</td>
                 </tr>';
-    $gt += $sor['ar'] * $sor['raktaron'];
+    $gt += number_format($akciosAr * $sor['raktaron'], 0, '.', '');
     $i++;
 }
 $html .= '
         </tbody>
             <tr>
-                <th colspan="3" class="vegossz">Végösszeg</th>
+                <th colspan="4" class="vegossz">Végösszeg</th>
                 <td>' . number_format($gt, 0, ',', ' ') . ' Ft</td>
             </tr>
         </table>
         </body>
     </html>';
 
-$dompdf = new Dompdf;
-$dompdf->loadHtml($html);
-$dompdf->setPaper('A4', 'portrait');
-$dompdf->render();
-$dompdf->stream('szamla.pdf');
+
+
+    $dompdf = new Dompdf;
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('A4', 'portrait');
+    $dompdf->render();
+    $dompdf->stream('PCszamla.pdf');
 
 
 
 
-echo $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva = 0 AND users.name = '{$_SESSION['name']}'";
+echo $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva = 0 AND users.name = '{$felhasznalo}'";
 $stmt = $dbconnect->prepare($update);
 $stmt->execute();
 

@@ -103,3 +103,49 @@ html::-webkit-scrollbar-thumb {
     background: #003554;
     border-radius: 5px; 
 }
+
+@media screen and (max-width:640px) {
+    .tableContainer {
+        overflow: scroll;
+    }
+    table{
+        position: sticky;
+        top: 0;
+        width: 100%;
+        font-size: 1rem;
+    }
+    td{
+        font-size: 0.6rem;
+    }
+    th{
+        font-size: 0.6rem;
+    }
+    button{
+        font-size: 0.7rem;
+    }
+    h1{
+        font-size: 1.3rem;
+    }
+    nav a{
+        font-size: 1.3rem;
+    }
+}
+
+
+
+form{
+    text-align: center;
+    
+}
+select{
+    min-width: 400px;
+    text-align: center;
+    font-size: 1.3rem;
+    background: #003554;
+    color: white;
+    border: 2px solid white;
+}
+option{
+    text-align: center;
+    border: 2px solid white;
+}

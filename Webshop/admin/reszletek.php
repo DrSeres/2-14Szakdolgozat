@@ -23,7 +23,7 @@ $sql = "SELECT*
         INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
         INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID
         WHERE id = {$id}";
-$eredmeny = mysqli_query($dbconn, $sql);
+$eredmeny = mysqli_query($dbconnect, $sql);
 $sor = mysqli_fetch_assoc($eredmeny);
 
 $cim = $sor['termekNev'];

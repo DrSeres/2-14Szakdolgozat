@@ -54,23 +54,7 @@ else{
     print "ez történik másodszor";
 }
 
-// $k = "SELECT * FROM kedvenctermekek WHERE id = {$kedvencId}";
-// $erd = mysqli_query($dbconnect, $k);
 
-
-
-// if(mysqli_num_rows($erd) > 0){
-//     $update = "UPDATE `kedvenctermekek` SET `termekId`='{$termekid}',`usersId`='{$usersid}' WHERE id = {$kedvencId}";
-//     $eredmeny = mysqli_query($dbconnect, $update);
-// }
-// else{
-//     if(mysqli_num_rows($query) < 0){
-    
-    
-//         $sql = "INSERT INTO `kedvenctermekek`(`id`, `termekId`, `usersId`) VALUES ('','{$termekid}','{$usersid}')";
-//         $eredmeny = mysqli_query($dbconnect, $sql);
-//     }
-// }
 
 
 

@@ -6,6 +6,19 @@
 html {
     overflow-x: hidden;
 }
+.borderStyle{
+    border:2px solid black; 
+    padding:10px; 
+    background:#051923; 
+    border-radius: 10px;
+}
+.borderStyle2{
+    border:2px solid black; 
+    border-radius:10px; 
+    background:#051923; 
+    padding: 10px;
+    margin-top: -9px;
+}
 header {
     background: #145b7f;
     display: flex;
@@ -18,24 +31,27 @@ nav ul {
     list-style: none;
     padding: 20px;
 }
+
 li a {
     text-decoration: none;
     color: white;
-    margin: 10px;
+    /* margin: 10px; */
     font-size: 18px;
     font-weight: 600;
+    
 }
 nav a:hover{
     text-decoration: underline;
     font-size: 1.5rem;
     font-weight: 600;
 }
+
 .kosaricon {
     cursor: pointer;
     float: right;
     font-size: 25px;
     color: black;
-    margin: 10px;
+    margin: 15px;
     background-color: #16a0e5;
     padding: 5px;
     display: block;
@@ -239,35 +255,49 @@ table {
     background: #051923 !important;
 }
 
+.udvozlo{
+    background: #051923 !important;
+    height: 10rem !important;  
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    color: white !important;
+    
+}
 
+.udvozles{
+    color: white !important;
+}
 
+.strikeThrough{
+    text-decoration: line-through;
+    font-size: 2rem;
+}
 
+.akcioIdoDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    width: 100%;
+    height: 4rem;
+    margin: auto;
+    margin-bottom: 10px;
+    background: #145b7f;
+    color:red;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (max-width:900px) {
+    .akcioIdoDiv{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.4rem;
+        width: 100%;
+        height: 4rem;
+        margin: auto;
+        margin-bottom: 10px;
+        background: #145b7f;
+        color:red;
+    }
+}

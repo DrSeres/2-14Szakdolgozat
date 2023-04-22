@@ -86,3 +86,20 @@ html::-webkit-scrollbar-thumb {
     text-align: center;
     color: white;
 }
+
+@media screen and (max-width:630px) {
+    .tableContainer {
+        overflow: scroll;
+    }
+    table {
+        position: sticky;
+        top: 0;
+        width: 100%;
+    }    
+    #kategoria{
+        font-size: 1.8rem;
+    }
+    td{
+        font-size: 1rem;
+    }
+}

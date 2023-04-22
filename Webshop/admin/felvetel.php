@@ -1,5 +1,7 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require("kapcsolat.php");
 
 
@@ -12,7 +14,7 @@ require("kapcsolat.php");
 
 $sql = "SELECT kategoria.kategoriaNev, gyarto.gyartoNev, gyarto.gyartoId FROM gyartokategoria INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId INNER JOIN kategoria ON kategoria.kategoriaID=gyartokategoria.kategoriaID WHERE gyartokategoria.kategoriaID=kategoria.kategoriaID";
 
-$eredmeny = mysqli_query($dbconn, $sql);
+$eredmeny = mysqli_query($dbconnect, $sql);
 
 
 $sorok = "<table class='gyKtable'>
@@ -45,9 +47,8 @@ if (isset($_POST['rendben'])) {
 
     $select = "SELECT * FROM gyartokategoria INNER JOIN gyarto ON gyarto.gyartoId = gyartokategoria.gyartoId INNER JOIN kategoria ON kategoria.kategoriaID = gyartokategoria.kategoriaID WHERE
     gyarto.gyartoNev = '{$gyartoNev}' AND kategoria.kategoriaID = '{$kategoriaID}'";
-    $eredmeny = mysqli_query($dbconn, $select);
+    $eredmeny = mysqli_query($dbconnect, $select);
 
-    $mine = array("image/jpeg", "image/gif", "image/png");
     if (empty($gyartoNev)) {
         $hibak[] = "Nem adott meg márkát!";
     }
@@ -74,13 +75,13 @@ if (isset($_POST['rendben'])) {
                 VALUES
                 ('', '{$gyartoNev}');";
          "<pre>";
-         $querys = mysqli_query($dbconn, $sql);
-         $utolsoId = mysqli_insert_id($dbconn);
+         $querys = mysqli_query($dbconnect, $sql);
+         $utolsoId = mysqli_insert_id($dbconnect);
          "</pre>";
         
        
         $sqls = " INSERT INTO gyartokategoria (gyartoKategoriaId, kategoriaID, gyartoId) VALUES ('', '{$kategoriaID}', '{$utolsoId}')";
-        $eredmenyek = mysqli_query($dbconn, $sqls);
+        $eredmenyek = mysqli_query($dbconnect, $sqls);
         // mysqli_query($dbconn, $sqls);
         // header("location: kategoria.php");
     }

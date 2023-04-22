@@ -11,7 +11,6 @@ h1{
     padding: 10px;
     font-size: 3.3rem;
     background: #125a7e;
-    width: 40%;
     margin: 10px auto;
     border-radius: 15px;
 }
@@ -33,4 +32,17 @@ input{
 }
 .kozep input:hover{
     background: #003554;
+}
+@media screen and (max-width:300px) {
+    h1{
+        font-size: 2rem;
+    }
+    input{
+        padding: 5px;
+        font-size: 0.8rem;
+        background: #125a7e;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+    }
 }

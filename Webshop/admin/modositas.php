@@ -13,7 +13,7 @@
 require("kapcsolat.php");
 $sql = "SELECT * FROM `gyartokategoria` INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId";
 
-$eredmeny = mysqli_query($dbconn, $sql);
+$eredmeny = mysqli_query($dbconnect, $sql);
 
 
 $kiir = "";
@@ -44,35 +44,42 @@ if (isset($_POST['rendben'])) {
         $hibak[] = "Nem adott meg árat!";
     }
 
+    $fotoQuery = "";
 
-    if ($_FILES['foto']['error'] == 0 && $_FILES['foto']['size'] > 2000000) {
-        $hibak[] = "A kép mérete nagyobb mint 2 MB!";
-    }
-    if ($_FILES['foto']['error'] == 0 && !in_array($_FILES['foto']['type'], $mine)) {
-        $hibak[] = "A kép formátuma nem megfelelő!";
-    }
+    if($_FILES['foto']['error'] != 4) {
+        if ($_FILES['foto']['error'] == 0 && $_FILES['foto']['size'] > 2000000) {
+            $hibak[] = "A kép mérete nagyobb mint 2 MB!";
+        }
+        if ($_FILES['foto']['error'] == 0 && !in_array($_FILES['foto']['type'], $mine)) {
+            $hibak[] = "A kép formátuma nem megfelelő!";
+        }
 
-    //Új fájlnév elkészítése
-    switch ($_FILES['foto']['type']) {
-        case "image/png":
-            $kit = ".png";
-            break;
-        case "image/gif":
-            $kit = ".gif";
-            break;
-        default:
-            $kit = ".jpg";
-    }
+        //Új fájlnév elkészítése
+        switch ($_FILES['foto']['type']) {
+            case "image/png":
+                $kit = ".png";
+                break;
+            case "image/gif":
+                $kit = ".gif";
+                break;
+            default:
+                $kit = ".jpg";
+        }
 
+        $foto = $kategoriaID . "_" . $termekNev . "_" . date('U') . $kit;
+        $fotoQuery = "foto = '{$foto}', "; 
+    
+        //kép mozgatása a végleges helyére
+        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekekuj/{$foto}");
+    }
+    
     $sql = "SELECT * FROM gyartokategoria WHERE gyartoKategoriaId = {$gyartoKategoriaId}";
 
-    $eredmeny = mysqli_query($dbconn, $sql);
+    $eredmeny = mysqli_query($dbconnect, $sql);
 
     $sor = mysqli_fetch_array($eredmeny);
     $kategoriaID = $sor['gyartoKategoriaId'];
 
-
-    $foto = $kategoriaID . "_" . $termekNev . "_" . date('U') . $kit;
     //Hibaüzenet összeállítása
     if (isset($hibak)) {
         $kimenet = "<ul>\n";
@@ -85,14 +92,10 @@ if (isset($_POST['rendben'])) {
         $id = (int)$_GET['id'];
         
         $sql = "UPDATE termek
-                SET gyartoKategoriaId = '{$kategoriaID}', termekNev = '{$termekNev}', foto = '{$foto}', leiras = '{$leiras}', darab = '{$darab}', ar = '{$ar}'
+                SET gyartoKategoriaId = '{$kategoriaID}', termekNev = '{$termekNev}', {$fotoQuery} leiras = '{$leiras}', darab = '{$darab}', ar = '{$ar}'
                 WHERE id = {$id}";
-        mysqli_query($dbconn, $sql);
+        mysqli_query($dbconnect, $sql);
 
-
-
-        //kép mozgatása a végleges helyére
-        move_uploaded_file($_FILES['foto']['tmp_name'], "../img/termekekuj/{$foto}");
         header("location: kategoria.php");
     }
 }
@@ -100,7 +103,7 @@ else{
     $id = (int)$_GET['id'];
     $sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON gyartokategoria.gyartoKategoriaId=termek.gyartoKategoriaId INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
             WHERE id = {$id}";
-    $eredmeny = mysqli_query($dbconn, $sql);
+    $eredmeny = mysqli_query($dbconnect, $sql);
     $sor = mysqli_fetch_assoc($eredmeny);
     $gyartoId = $sor['gyartoKategoriaId'];
     $gyartoNev = $sor['gyartoNev'];

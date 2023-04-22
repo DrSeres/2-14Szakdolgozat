@@ -5,6 +5,7 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM kedvenctermekek
             WHERE id = {$id}";
     mysqli_query($dbconnect, $sql);
+    
     header("location:kedvenctermek.php");
 }
 ?>

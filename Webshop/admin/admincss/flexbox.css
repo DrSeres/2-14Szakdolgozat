@@ -35,38 +35,83 @@
 .oszlop1{
     grid-area: oszlop1;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop2{
     grid-area: oszlop2;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop3{
     grid-area: oszlop3;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop4{
     grid-area: oszlop4;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop5{
     grid-area: oszlop5;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop6{
     grid-area: oszlop6;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop7{
     grid-area: oszlop7;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop8{
     grid-area: oszlop8;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 .oszlop9{
     grid-area: oszlop9;
     border-radius: 20px;
+    width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 }
 
 
@@ -111,28 +156,13 @@
     }
 } */
 
-@media(max-width: 574px) {
-    .flex-box {
-        width: 300px;
-        height: 400px;
-        color: white;
-        font-size: 25px;
-        text-align: center;
-        line-height: 200px;
-        margin: 20px;
-    }
-    .flex-box img {
-        width: 100%;
-        height: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
+@media screen and (max-width: 630px) {
     .grid-container{
         width: 100%;
-        height: auto;
+        padding: 35px;
         display: grid;
+        justify-content: center;
+        align-items: center;
         grid-template-areas:
         "oszlop1"
         "oszlop2"
@@ -143,5 +173,88 @@
         "oszlop7"
         "oszlop8"
         "oszlop9";
+        
+    }
+    
+    .grid-container .oszlop1{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .grid-container .oszlop2{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .grid-container .oszlop3{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .grid-container .oszlop4{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .grid-container .oszlop5{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .grid-container .oszlop6{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+    }
+    .grid-container .oszlop7{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .grid-container .oszlop8{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .grid-container .oszlop9{
+        width: 60%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    .grid-container .hover-img{
+        width: 100%;
+        margin: auto;
+       
     }
 }
+
+
+
+

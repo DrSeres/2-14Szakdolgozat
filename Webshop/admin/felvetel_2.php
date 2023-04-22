@@ -5,7 +5,7 @@
 require("kapcsolat.php");
 $sql = "SELECT * FROM `gyartokategoria` INNER JOIN kategoria ON gyartokategoria.kategoriaID=kategoria.kategoriaID INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId";
 
-$eredmeny = mysqli_query($dbconn, $sql);
+$eredmeny = mysqli_query($dbconnect, $sql);
 
 
 $kiir = "";
@@ -58,7 +58,7 @@ if (isset($_POST['rendben'])) {
 
     $sql = "SELECT * FROM gyartokategoria WHERE  gyartoKategoriaId = {$gyartoKategoriaId}";
 
-    $eredmeny = mysqli_query($dbconn, $sql);
+    $eredmeny = mysqli_query($dbconnect, $sql);
 
     $sor = mysqli_fetch_array($eredmeny);
     $kategoriaID = $sor['gyartoKategoriaId'];
@@ -77,7 +77,7 @@ if (isset($_POST['rendben'])) {
 
         
         $sql = "INSERT INTO `termek`(`id`, `gyartoKategoriaId`, `termekNev`, `foto`, `leiras`, `darab`, `ar`) VALUES ('','{$gyartoKategoriaId}','{$termekNev}','{$foto}','{$leiras}','{$darab}','{$ar}')";
-        mysqli_query($dbconn, $sql);
+        mysqli_query($dbconnect, $sql);
 
 
 
@@ -97,13 +97,13 @@ if (isset($_POST['rendben'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/felv_mod.css">
-    <title>Új adat hozzáadása</title>
+    <title>Új termék hozzáadása</title>
     <script src="ckeditor.js"></script>
 </head>
 
 <body>
     <div class="container">
-        <h1>Új adat hozzáadása</h1>
+        <h1>Új termék hozzáadása</h1>
         <form method="post" enctype="multipart/form-data">
 
             <?php if (isset($kimenet)) print $kimenet; ?>

@@ -101,3 +101,77 @@ html::-webkit-scrollbar-thumb {
     background: #003554;
     border-radius: 5px; 
 }
+
+@media screen and (max-width:500px) {
+    header {
+        background: #145b7f;
+        display: flex;
+        justify-content: space-between;
+        position: relative; 
+        width: 100%; 
+    }
+table{
+    padding: 10px;
+    border-radius: 10px;
+    margin: auto;
+    overflow-x: scroll;
+    width: 50%;
+}
+th{
+    border-top-left-radius: 10px;
+    color: white;
+}
+td, th{
+    text-align: center;
+    padding: 5px;
+}
+
+th{
+    background: #003554;
+    color: white;
+    padding:10px;
+}
+td{
+    color: white;
+    padding:15px;
+    font-size: 0.6rem;
+}
+
+table img {
+    width: 30px;
+    height: 40px;
+}
+tr:nth-child(odd) {
+    background-color: #003554;
+    color: black;
+  }
+tr:nth-child(even) {
+    background-color: #145b7f;
+    color: black;
+  }
+
+a{
+    padding: 4px;
+    border: 1px #051923 solid;
+    border-radius: 10px;
+    background-color: #051923;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+}
+
+@media screen and (max-width:600px) {
+    .tableContainer {
+        overflow: scroll;
+    }
+    table {
+        position: sticky;
+        top: 0;
+        width: 100%;
+    } 
+    h1{
+        font-size: 1.7rem;
+    }  
+}

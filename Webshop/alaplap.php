@@ -7,6 +7,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+include("url.php");
+
 $sql = "SELECT * FROM termek INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId WHERE gyartokategoria.kategoriaID = 2";
 $eredmeny = mysqli_query($dbconnect, $sql);
 
@@ -67,27 +69,32 @@ else
 {
     $kimenet = "";
     while ($sor = mysqli_fetch_assoc($eredmeny)) {
-        $ar = number_format($sor['ar'], 0, ',', ' ');
         $heartIcon = ((isset($_SESSION['user_type']))) ? "<i class='fa fa-heart' style='font-size:36px;' data-id='{$sor["id"]}'></i>" : "";
+        $akcio = number_format($sor['ar'] * 0.8, '0', '.', '');
+        $akciosAr = (in_array($sor['id'], $_SESSION['deal'])) ? "  <span style='font-size:1.4rem; margin-right:40px;'> {$akcio} Ft</span>  <span style='text-decoration:line-through; font-size:1.0rem'> {$sor['ar']} Ft</span> " :  " <span>{$sor['ar']} </span> Ft";
+        $akciosKeret = (in_array($sor['id'], $_SESSION['deal'])) ? "border: 3px solid red" : "";
+        $akciosSzoveg = (in_array($sor['id'], $_SESSION['deal'])) ? "<h2 style='color:red; text-align:center'>AKCIÓS</h2>" : "";
+        $akciosLink = (in_array($sor['id'], $_SESSION['deal'])) ?  "<a href='adat.php?id={$sor['id']}&deal=1'>" : "<a href=adat.php?id={$sor['id']}>"; 
         if($sor['darab'] > 0){
         
         $kimenet .=
     <<<URLAP
-        <article>
-        <div class="border">
-        <a href=adat.php?id={$sor['id']}">
+        <article style='$akciosKeret'>
+        <div class="border" >
+        $akciosLink
         <img src="img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
         </div>
         <span style='display:none'>{$sor['id']}</span>
         $heartIcon
+        $akciosSzoveg
         <div class="itemInfo">
             <h2>{$sor['termekNev']}</h2>
             <hr>
-            <p class='price'>{$ar}<span>Ft</span></p>
+            $akciosAr
             <div class='appear' id='show'>
             <input type="number" name="quantity" id="quantity" min="1" max="{$sor["darab"]}" value="1">
             
-            <button type="button" class="kosarhoz"><img src="../img/cartICON.png" alt="Logo" class='cartImage'>Kosárba</button>
+            <button type="button" class="kosarhoz"><img src="img/cartICON.png" alt="Logo" class='cartImage'>Kosárba</button>
             </div>
         </div>
     
@@ -110,7 +117,7 @@ else
             <div class='appear' id='show'>
             <input type="number" name="quantity" id="quantity" min="1" max="{$sor['darab']}" value="0" disabled>
             
-            <button type="button"  class="kosarhozElfogyott" disabled><img src="../img/cartICON.png" alt="Logo" class='cartImage' >Kosárba</button>
+            <button type="button"  class="kosarhozElfogyott" disabled><img src="img/cartICON.png" alt="Logo" class='cartImage' >Kosárba</button>
             </div>
         </div>
     
@@ -133,10 +140,12 @@ else
     <meta name="author" content="Laczka Adrián Zsolt, Seres Szabolcs">
     
     <title>Alaplapok</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/sablon.css">
-    <link rel="stylesheet" href="../css/oldal.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sablon.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/oldal.css">
+  <link rel="stylesheet" href="css/navbar.css">
 
 
     <link rel="stylesheet" href="sweetalert2.min.css">
@@ -148,39 +157,92 @@ else
 
 </head>
 <body>
+<header>
+    <nav class="navbar">
+      <div class="brand">
+        <span>Seres és Társa.Kft</span>
+      </div>
+      <button aria-label="toggle menu" id="responsiveToggleButton">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="openIcon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="closeIcon"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
 
-        
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">Főoldal</a></li>
-                <?php 
-                
-                if(isset($_SESSION['user_type'])){
-                    if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
-                      echo '<li><a href="kedvenctermek.php">Kedvenc termékek</a></li>';
-                    }
-                  }
-                
-                
-                
-                ?>
-                <li><a href="kapcsolat.html">Kapcsolat</a></li>
-            </ul>
-        </nav>
-            
-        <?php 
-        
-        if(isset($_SESSION['user_type'])){
-            if($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin'){
-                echo  '<div class="kosaricon">
+      </button>
+
+      <div class="navbar-links">
+        <?php
+        if (isset($_SESSION['user_type'])) {
+          if ($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin') {
+            echo  '<div class="kosaricon">
                     <p>0</p> <i class="fa fa-shopping-cart"></i>
                 </div>';
-            }
+          }
         }
-        
         ?>
-    </header>
+        <ul class="list-item">
+          <li class="item button "><a href="index.php" class="borderStyle">Főoldal</a></li>
+          <?php
+          if (isset($_SESSION['user_type'])) {
+            if ($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin') {
+              echo '<li class="item button"><a href="kedvenctermek.php" class="borderStyle">Kedvenc termékek</a></li>';
+            }
+          }
+          ?>
+          <li class="item button"><a href="kapcsolat.html" class="borderStyle">Kapcsolat</a></li>
+
+          <?php
+
+          if (isset($_SESSION['user_type'])) {
+            if ($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin') {
+            }
+          } else {
+            echo '<li class="item button"><a href="foBejelentkezes.php" class="borderStyle">Bejelentkezés</a></li>';
+          }
+          ?>
+
+          <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<li class='item button'><span style='color:blue; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" : "<li class='borderStyle2'><span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" . "<li class='item button'><a href = admin/kategoria.php class='borderStyle' style='color:red'>Admin oldal</a></li>") : ""); ?> </a></li>
+
+          <?php
+
+          if (isset($_SESSION['user_type'])) {
+            if ($_SESSION['user_type'] == 'user' || $_SESSION['user_type'] == 'admin') {
+              echo '<li class="item button secondary"><a href="Kijelentkezes.php" class="logout borderStyle">Kijelentkezés</a></li> ';
+              echo '<div id="divCounter" style="color:Red; display:flex; justify-content:center; align-items:center"></div>';
+            }
+          }
+          ?>
+
+
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
     <div class="oldalLogo">
     <div class="area" >
       <ul class="circles">
@@ -244,15 +306,17 @@ else
     <div class="cartBox">
         <div class="cart">
             <!--A gomb, mivel majd bezárjuk-->
-            <i class="fa fa-close"></i>
+            <i class="fa fa-close">X</i>
             <h1>Kosár tartalma</h1>
             <!--Táblázat, ahol a termékek kerülnek-->
             <div style="overflow-y:auto; height:350px; overflow-x:hidden" class="tableScrollBar">
-            <table></table>
+            <table class='kosartable'></table>
             </div>
         </div>
     </div>
     
-    <script src="../js/script.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/index.js"></script>
+  <script src="js/navbar.js"></script>
 </body>
 </html>

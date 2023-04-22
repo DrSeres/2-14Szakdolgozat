@@ -1,14 +1,10 @@
-<?php
+<?php 
 
-header("Content-Type: text/html; charset=utf-8");
+$dbconnect = mysqli_connect("mysql.omega", "webshopv3", "Szuperbat01", "webshopv3");
 
-define("DBHOST", "localhost");
-define('DBUSER', 'root');
-define('DBPASS', '');
-define('DBNAME', 'webshopv3');
-
-$dbconn = @mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME) or die("Hiba az adatbázis csatlakozáskor");
-
-mysqli_query($dbconn, "SET NAMES utf8");
-
+// if (!$dbconnect) {
+//     die("Connection failed: " . mysqli_connect_error());
+//   }
+//   echo "Connected successfully";
+$array = array();
 ?>

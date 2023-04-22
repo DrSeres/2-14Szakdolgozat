@@ -24,9 +24,7 @@ html::-webkit-scrollbar-thumb {
     background: #fff;
     border-radius: 5rem;
 }
-body {
-    /* background: var(--bg); */
-}
+
 .btn {
     margin-top: 1rem;
     display: inline-block;
@@ -219,7 +217,6 @@ article img {
 article .kosar {
     text-align: center;
 }
-
 .termekek .btn {
     margin-top: 1rem;
     display: inline-block;
@@ -242,8 +239,7 @@ article .kosar {
 
     
 .border img:hover{
-    box-shadow: 0 0 0 10px white;
-    transition: .5s ease;
+    box-shadow: 0 0 0 10px #0084b4;
 }
 
 
@@ -270,6 +266,9 @@ article {
     background: #051923;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 article h3 {
     text-align: center;
@@ -332,6 +331,9 @@ article {
     background: #051923;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 article h3 {
     text-align: center;
@@ -396,6 +398,7 @@ input {
   padding: 8px;
   background-color: white;
   color: black;
+  width: 10vw;
   border-radius: 15px;
   font-size: 1.4rem;
 }

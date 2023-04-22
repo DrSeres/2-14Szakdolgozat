@@ -33,12 +33,14 @@ if (count($eredmeny) > 0) {
         echo "Admin user";
         $_SESSION['name'] = $sor['name'];
         $_SESSION['user_type'] = $sor['user_type'];
+        $_SESSION['id'] = $sor['id'];
         // echo $_SESSION['admin_name'];
         //header('location:index.php');
     } else if ($sor['user_type'] == 'user') {
         echo "Sima user";
         $_SESSION['name'] = $sor['name'];
         $_SESSION['user_type'] = $sor['user_type'];
+        $_SESSION['id'] = $sor['id'];
         //echo $_SESSION['user_name'];
         //header("location:index.php");
     }

@@ -3,12 +3,14 @@
 require("kapcsolat.php");
 session_start();
 
-$sql = "SELECT * FROM users WHERE user_type = 'user'";
-$eredmeny = mysqli_query($dbconn, $sql);
+$sql = "SELECT * FROM users";
+$eredmeny = mysqli_query($dbconnect, $sql);
 
 
 if (mysqli_num_rows($eredmeny) > 0) {
-    $kimenet = "<table>
+
+    $kimenet = "<div class='tableContainer'>
+    <table>
     <tr>
         
         <th>Felhasználó neve</th>
@@ -19,16 +21,16 @@ if (mysqli_num_rows($eredmeny) > 0) {
     while ($sor = mysqli_fetch_array($eredmeny)) {
         $muvelet = ($sor['engedelyezes'] == 1) ? 'Kitiltás' : 'Engedélyezés';
         $szin = ($muvelet == "Kitiltás") ? 'background-color:red' : 'background-color:green';
+        $admin = ($sor['user_type'] == 'admin' ? "color:red" : "");
         $kimenet .= "<tr>
-        <td>{$sor['name']}</td>
-        <td>{$sor['user_type']}</td>
+        <td style='$admin'>{$sor['name']}</td>
+        <td style='$admin'>{$sor['user_type']}</td>
         <td><button class='felhasznaloKezeles' name='felhasznaloKezeles' value = '{$muvelet}' data-id='{$sor['id']}' style={$szin}>{$muvelet}</button></td>
         </tr>
   ";
     }
     $kimenet .= "</table>";
-}else{
-    $kimenet = "";
+    $kimenet .= "<div>";
 }
 ?>
 <!DOCTYPE html>

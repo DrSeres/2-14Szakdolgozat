@@ -5,7 +5,7 @@ body {
         linear-gradient(
             rgba(255, 0, 0, 0),
             rgba(255, 0, 0, 0.45)),
-        url(../LAZs/Szakdolgozat/img/wallpaper.png);
+        url(../img/wallpaper.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +21,7 @@ body {
             linear-gradient(
                 rgba(255, 0, 0, 0),
                 rgba(255, 0, 0, 0.45)),
-            url(../LAZs/Szakdolgozat/img/wallpaper.png);
+            url(../img/wallpaper.png);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
@@ -31,7 +31,7 @@ body {
             linear-gradient(
                 rgba(255, 0, 0, 0.45),
                 rgba(255, 0, 0, 0)),
-            url(../LAZs/Szakdolgozat/img/wallpaper.png);
+            url(../img/wallpaper.png);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
@@ -41,7 +41,7 @@ body {
             linear-gradient(
                 rgba(255, 0, 0, 0),
                 rgba(255, 0, 0, 0.45)),
-            url(../LAZs/Szakdolgozat/img/wallpaper.png);
+            url(../img/wallpaper.png);
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
