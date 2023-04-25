@@ -8,18 +8,32 @@ error_reporting(E_ALL);
 
 require_once "kapcsolat.php";
 
+$szamlaSorszamaSql = "SELECT COUNT(id) AS 'Sorszam' FROM megrendeles";
+$szamlaSorszamQuery = mysqli_query($dbconnect, $szamlaSorszamaSql);
+$beolvasas = mysqli_fetch_assoc($szamlaSorszamQuery);
+$sorszam = $beolvasas['Sorszam'];
+$szamHossz = (strlen((string)$sorszam) == 3) ?  "00" : (strlen((string)$sorszam) == 4 ? "0" : "");
+
+
+
 require_once 'vendor/autoload.php';
 
 use Dompdf\Dompdf;
 
 $dbconnect = new PDO('mysql:host=mysql.omega;dbname=webshopv3', 'webshopv3', 'Szuperbat01');
 $felhasznalo = $_SESSION['name'];
+
+
+
+
 //A megrendelő adatainak kikeresése
-$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, users.keresztNev, users.kartyaszam, users.kiszallitasiCim, users.email FROM termek
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, users.keresztNev, users.kartyaszam, megrendeles.utcaNev, megrendeles.hazszam, users.email, telepulesek.irsz, telepulesek.nev FROM termek
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
-INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$felhasznalo}' AND megrendeles.szamlazva = 0;
+INNER JOIN users ON users.id= megrendeles.usersId 
+INNER JOIN telepulesek ON megrendeles.usersId = telepulesek.id
+WHERE users.name = '{$felhasznalo}' AND megrendeles.szamlazva = 0;
 ";
 
 $stmt = $dbconnect->prepare($sql);
@@ -30,8 +44,10 @@ $email = $sor["email"];
 $veznev = $sor["vezetekNev"];
 $kernev = $sor["keresztNev"];
 $kartyaszam = $sor["kartyaszam"];
-$kiszallitasiCim = $sor["kiszallitasiCim"];
-
+$utcaNev = $sor['utcaNev'];
+$hazszam = $sor['hazszam'];
+$telepulesIranyitoszam = $sor['irsz'];
+$telepules = $sor['nev'];
 
 
 
@@ -40,7 +56,7 @@ $kiszallitasiCim = $sor["kiszallitasiCim"];
 
 //az adatok fetchAll-al kiíratása
 
-$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, users.kiszallitasiCim FROM termek
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, megrendeles.utcaNev, megrendeles.hazszam FROM termek
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
@@ -56,16 +72,11 @@ $sorok = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $gt = 0;
 $i = 1;
 $date = date("Y.m.d H:i:s");
-$szamla = 000 . "<script>window.localStorage.getItem('clickcount');</script>";
-
-
-function add_leading_zero($value, $threshold = 2) {
-    return sprintf('%0' . $threshold . 's', $value);
-}
 
 
 
-$bizonylat = 'SZ'. date( add_leading_zero(1, 5) .'/'."Y");
+
+$bizonylat = 'SZ'. $szamHossz. $sorszam . "/" . date("Y");
 
 
 $html = '
@@ -193,8 +204,8 @@ $html = '
             <td>Bankszámlaszám: '. $kartyaszam .'</td>
         </tr>
         <tr>
-            <td>Helyszín: 1022, Budapest I.kerület utca 24.</td>
-            <td>Helyszín:  '. $kiszallitasiCim .'</td>
+            <td>Helyszín: 1022, Budapest I.kerület Domb utca 11.</td>
+            <td>Helyszín:  '. $telepulesIranyitoszam .', '. $telepules . ' '. $utcaNev . ' ' . $hazszam .'</td>
         </tr>
         <tr>
             <td>E-mail cím: onlinePcWebshop2023@gmail.com</td>
@@ -208,9 +219,10 @@ $html = '
     <thead>
         <tr>
             <th>Termék cikkszáma</th>
-            <th>Termék</th>
+            <th style="width:100px">Termék neve</th>
             <th>Darab</th>
-            <th>Ár</th>
+            <th>Eredeti Ár</th>
+            <th>Akciós Ár</th>
             <th>Akció</th>
         </tr>
     </thead>
@@ -228,10 +240,11 @@ foreach ($sorok as $sor) {
    $html .= '
                 <tr>
                     <td class="rendelesId">' . $sor['megrendeles'] .'</td>
-                    <td>' . $sor['gyartoNev'] . ' ' . $sor['termekNev'] . '</td>
+                    <td style="font-size:15px">' . $sor['gyartoNev'] . ' ' . $sor['termekNev'] . '</td>
                     <td>' . $sor['raktaron'] . '</td>
- 
+                    <td class="ar">' .number_format($sor['ar'], 0, ',', ' ') . ' Ft</td>
                     <td class="ar">' . number_format($akciosAr * $sor['raktaron'], 0, ',', ' ') . ' Ft</td>
+                    
                     <td class="ar">' . $termekAkcio . '</td>
                 </tr>';
     $gt += number_format($akciosAr * $sor['raktaron'], 0, '.', '');
@@ -240,7 +253,7 @@ foreach ($sorok as $sor) {
 $html .= '
         </tbody>
             <tr>
-                <th colspan="4" class="vegossz">Végösszeg</th>
+                <th colspan="5" class="vegossz">Végösszeg</th>
                 <td>' . number_format($gt, 0, ',', ' ') . ' Ft</td>
             </tr>
         </table>
@@ -258,7 +271,7 @@ $html .= '
 
 
 
-echo $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva = 0 AND users.name = '{$felhasznalo}'";
+echo $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = users.id SET megrendeles.szamlazva ='1' WHERE megrendeles.szamlazva = 0 AND users.name = '{$felhasznalo}' AND megrendeles.status = 1";
 $stmt = $dbconnect->prepare($update);
 $stmt->execute();
 

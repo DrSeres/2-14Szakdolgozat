@@ -163,13 +163,58 @@
                 ?>
                 </div>
                 <?php print $lapozo; ?>
+                <footer class="footer footerTermekek">
+    <div class="container">
+      <div class="sor">
+        <div class="footer-col">
+          <h4>Információk</h4>
+          <ul>
+            <li><a href="#">Rólunk</a></li>
+            <li><a href="#">Szerződési feltételek</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Oldaltérkép</h4>
+          <ul>
+            <li><a href="index.php">Főoldal</a></li>
+            <li><a href="foBejelentkezes.php">Bejelentkezés</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="kedvenctermek.php">Népszerű termékek</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Webshop</h4>
+          <ul>
+            <li><a href="processzor.php">Processzor</a></li>
+            <li><a href="processzorHuto.php">Processzorhűtő</a></li>
+            <li><a href="alaplap.php">Alaplap</a></li>
+            <li><a href="videokartya.php">Videókártya</a></li>
+            <li><a href="ram.php">Memória</a></li>
+            <li><a href="rendszerHuto.php">Rendszerhűtő</a></li>
+            <li><a href="ssd.php">SSD</a></li>
+            <li><a href="tapegyseg.php">Tápegység</a></li>
+            <li><a href="gephaz.php">Számítógépház</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kapcsolat</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
         </main>
     
     <!--Kosár tartalma-->
     <div class="cartBox">
         <div class="cart">
             <!--A gomb, mivel majd bezárjuk-->
-            <i class="fa fa-close"></i>
+            <i class="fa fa-close">X</i>
             <h1>Kosár tartalma</h1>
             <!--Táblázat, ahol a termékek kerülnek-->
             <div style="overflow-y:auto; height:350px; overflow-x:hidden" class="tableScrollBar">

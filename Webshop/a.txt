@@ -9,3 +9,5 @@ https://www.geeksforgeeks.org/refresh-a-page-using-php/
 https://www.appsloveworld.com/php/837/countdown-timer-reloading-again-on-refreshing
 
 https://stackoverflow.com/questions/1283327/how-to-get-url-of-current-page-in-php
+https://stackoverflow.com/questions/1506527/how-to-replace-if-statement-with-a-ternary-operator
+https://stackoverflow.com/questions/28433798/php-get-length-of-digits-in-a-number

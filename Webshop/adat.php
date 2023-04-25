@@ -140,7 +140,7 @@ $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
           }
           ?>
 
-          <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<li class='item button'><span style='color:blue; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" : "<li class='borderStyle2'><span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" . "<li class='item button'><a href = admin/kategoria.php class='borderStyle' style='color:red'>Admin oldal</a></li>") : ""); ?> </a></li>
+          <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<li class='borderStyle2'><span style='color:blue; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" : "<li class='borderStyle2'><span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" . "<li class='item button'><a href = admin/kategoria.php class='borderStyle' style='color:red'>Admin oldal</a></li>") : ""); ?> </a></li>
 
           <?php
 
@@ -214,24 +214,24 @@ $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
         <div class="footer-col">
           <h4>Oldaltérkép</h4>
           <ul>
-            <li><a href="#">Főoldal</a></li>
-            <li><a href="#">Bejelentkezés</a></li>
-            <li><a href="#">Kapcsolat</a></li>
-            <li><a href="#">Népszerű termékek</a></li>
+            <li><a href="index.php">Főoldal</a></li>
+            <li><a href="foBejelentkezes.php">Bejelentkezés</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="kedvenctermek.php">Népszerű termékek</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Webshop</h4>
           <ul>
-            <li><a href="#">Processzor</a></li>
-            <li><a href="#">Processzorhűtő</a></li>
-            <li><a href="#">Alaplap</a></li>
-            <li><a href="#">Videókártya</a></li>
-            <li><a href="#">Memória</a></li>
-            <li><a href="#">Rendszerhűtő</a></li>
-            <li><a href="#">SSD</a></li>
-            <li><a href="#">Tápegység</a></li>
-            <li><a href="#">Számítógépház</a></li>
+            <li><a href="processzor.php">Processzor</a></li>
+            <li><a href="processzorHuto.php">Processzorhűtő</a></li>
+            <li><a href="alaplap.php">Alaplap</a></li>
+            <li><a href="videokartya.php">Videókártya</a></li>
+            <li><a href="ram.php">Memória</a></li>
+            <li><a href="rendszerHuto.php">Rendszerhűtő</a></li>
+            <li><a href="ssd.php">SSD</a></li>
+            <li><a href="tapegyseg.php">Tápegység</a></li>
+            <li><a href="gephaz.php">Számítógépház</a></li>
           </ul>
         </div>
         <div class="footer-col">

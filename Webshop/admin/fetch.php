@@ -27,14 +27,15 @@ if (mysqli_num_rows($result) > 0) {
     </tr>
  ";
     while ($sor = mysqli_fetch_array($result)) {
+        $raktaron = ($sor['darab'] == 0) ? "color:red" : "";
         $kimenet .= "<tr>
         <td><img src=\"../img/termekekuj/{$sor['foto']}\" alt=\"pro\"></td>
-        <td>{$sor['kategoriaNev']}</td>
-        <td>{$sor['gyartoNev']}</td>
-        <td>{$sor['termekNev']}</td>
-        <td>" . number_format($sor['ar'], 0, ',', ' ') ." Ft</td>
-        <td>{$sor['darab']}</td>
-        <td class='muveletek'><a href=\"torles.php?id={$sor['id']}\" class=\"gomboks\">Törlés</a>  <a href=\"modositas.php?id={$sor['id']}\" class=\"gomboks\" >Módosítás</a>  <a href=\"reszletek.php?id={$sor['id']}\" class=\"gomboks\">Részletek</a></td>
+        <td style='$raktaron'>{$sor['kategoriaNev']}</td>
+        <td style='$raktaron'>{$sor['gyartoNev']}</td>
+        <td style='$raktaron'>{$sor['termekNev']}</td>
+        <td style='$raktaron'>" . number_format($sor['ar'], 0, ',', ' ') ." Ft</td>
+        <td style='$raktaron'>{$sor['darab']} darab</td>
+        <td class='muveletek'><a href=\"torles.php?id={$sor['id']}\" class=\"gomboks\" style='$raktaron'>Törlés</a>  <a href=\"modositas.php?id={$sor['id']}\" class=\"gomboks\" style='$raktaron' >Módosítás</a>  <a href=\"reszletek.php?id={$sor['id']}\" class=\"gomboks\" style='$raktaron'>Részletek</a></td>
   ";
     }
     $kimenet .= "</table>";

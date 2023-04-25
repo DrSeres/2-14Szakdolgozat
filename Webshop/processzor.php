@@ -147,11 +147,10 @@ echo "</pre>";
     <a href=adat.php?id={$sor['id']}">
     <img src="img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
-    $heartIcon
     <div class="itemInfo">
         <h2>{$sor['termekNev']}</h2>
         <hr>
-        <p class='price'>{$ar}<span>Ft</span></p>
+        <p style='color:red; padding:5px; font-family:900'>ELFOGYOTT TERMÉK</p>
         <div class='appear' id='show'>
         <input type="number" name="quantity" id="quantity" min="1" max="{$sor['darab']}" value="0" disabled>
         
@@ -265,7 +264,7 @@ URLAP;
           }
           ?>
 
-          <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<li class='item button'><span style='color:blue; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" : "<li class='borderStyle2'><span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" . "<li class='item button'><a href = admin/kategoria.php class='borderStyle' style='color:red'>Admin oldal</a></li>") : ""); ?> </a></li>
+          <li><a> <?= (isset($_SESSION['user_type']) ? ($_SESSION['user_type'] == 'user' ? "<li class='borderStyle2'><span style='color:blue; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" : "<li class='borderStyle2'><span style='color:red; padding-right:10px;'  class='fas fa-address-book'> </span>" . $_SESSION['name'] . "</li>" . "<li class='item button'><a href = admin/kategoria.php class='borderStyle' style='color:red'>Admin oldal</a></li>") : ""); ?> </a></li>
 
           <?php
 
@@ -332,6 +331,51 @@ URLAP;
 
         </div>
         <?php print $lapozo; ?>
+        <footer class="footerTermekek">
+    <div class="container">
+      <div class="sor">
+        <div class="footer-col">
+          <h4>Információk</h4>
+          <ul>
+            <li><a href="#">Rólunk</a></li>
+            <li><a href="#">Szerződési feltételek</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Oldaltérkép</h4>
+          <ul>
+            <li><a href="index.php">Főoldal</a></li>
+            <li><a href="foBejelentkezes.php">Bejelentkezés</a></li>
+            <li><a href="kapcsolat.html">Kapcsolat</a></li>
+            <li><a href="kedvenctermek.php">Népszerű termékek</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Webshop</h4>
+          <ul>
+            <li><a href="processzor.php">Processzor</a></li>
+            <li><a href="processzorHuto.php">Processzorhűtő</a></li>
+            <li><a href="alaplap.php">Alaplap</a></li>
+            <li><a href="videokartya.php">Videókártya</a></li>
+            <li><a href="ram.php">Memória</a></li>
+            <li><a href="rendszerHuto.php">Rendszerhűtő</a></li>
+            <li><a href="ssd.php">SSD</a></li>
+            <li><a href="tapegyseg.php">Tápegység</a></li>
+            <li><a href="gephaz.php">Számítógépház</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Kapcsolat</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
     </main>
 
     <!--Kosár tartalma-->

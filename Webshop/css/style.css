@@ -19,6 +19,10 @@ html {
     padding: 10px;
     margin-top: -9px;
 }
+.borderStyle2:hover{
+    background: #0a86d9;
+    cursor: pointer;
+}
 header {
     background: #145b7f;
     display: flex;
@@ -40,10 +44,18 @@ li a {
     font-weight: 600;
     
 }
+@media screen and (max-width:930px) {
+    li a {
+        text-decoration: none;
+        color: white;
+        margin: 0;
+        font-size: 1rem;
+        
+    }
+}
+
 nav a:hover{
-    text-decoration: underline;
-    font-size: 1.5rem;
-    font-weight: 600;
+    background: #0a86d9;
 }
 
 .kosaricon {

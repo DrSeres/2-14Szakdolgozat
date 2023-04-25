@@ -14,14 +14,11 @@ $felhasznalo = $_SESSION['name'];
 // print_r($_SESSION);
 // echo "</pre>";
 
-$select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$felhasznalo}'";
-$query  = mysqli_query($dbconnect, $select);
 
 
 
-
-$telepulesek = "SELECT `users`.`name`, `telepulesek`.`irsz`, `telepulesek`.`nev`, `telepulesek`.`megye` FROM `users` LEFT JOIN `telepulesek` ON `telepulesek`.`id` = `users`.`telepules` WHERE users.telepules = telepulesek.id";
-mysqli_query($dbconnect, $telepulesek);
+// $telepulesek = "SELECT `users`.`name`, `telepulesek`.`irsz`, `telepulesek`.`nev`, `telepulesek`.`megye` FROM `users` LEFT JOIN `telepulesek` ON `telepulesek`.`id` = `users`.`telepules` WHERE users.telepules = telepulesek.id";
+// mysqli_query($dbconnect, $telepulesek);
 
 
 
@@ -29,19 +26,21 @@ mysqli_query($dbconnect, $telepulesek);
 
 
 
-$irszam = "SELECT telepulesek.id, telepulesek.irsz, telepulesek.nev FROM telepulesek";
-$eredmeny = mysqli_query($dbconnect, $irszam);
+// $irszam = "SELECT telepulesek.id, telepulesek.irsz, telepulesek.nev FROM telepulesek";
+// $eredmeny = mysqli_query($dbconnect, $irszam);
 
 
+
+
+// while ($sor = mysqli_fetch_assoc($eredmeny)) {
+//   $kiir .= "
+//   <option value=\"{$sor['id']}\"> {$sor['nev']} ({$sor['irsz']})</option>";
+// }
 
 $kiir = "";
 
-while ($sor = mysqli_fetch_assoc($eredmeny)) {
-  $kiir .= "
-  <option value=\"{$sor['id']}\"> {$sor['nev']} ({$sor['irsz']})</option>";
-}
-
-
+$select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$felhasznalo}'";
+$query  = mysqli_query($dbconnect, $select);
 
 if (mysqli_num_rows($query) > 0) {
   $sor = mysqli_fetch_assoc($query);
@@ -50,31 +49,46 @@ if (mysqli_num_rows($query) > 0) {
   $kartyaszam = $sor['kartyaszam'];
   $kod = $sor['kartyaKod'];
   $telefon = $sor['telefonszam'];
-  $cim = $sor['kiszallitasiCim'];
+
+
+  $szallitasiCimSql = "
+  SELECT m.telepules, m.utcaNev, m.hazszam FROM megrendeles as m INNER JOIN users as u ON m.usersId = u.id  WHERE u.name = '{$felhasznalo}' AND m.status = 1 AND m.szamlazva = 1
+";
+
+  $szamlazasiCimQuery = mysqli_query($dbconnect, $szallitasiCimSql);
+  $szamlazasiCim = mysqli_fetch_assoc($szamlazasiCimQuery);
+
+  if (mysqli_num_rows($szamlazasiCimQuery) > 0) {
+    echo $utca = $szamlazasiCim["utcaNev"];
+    echo $hazszam = $szamlazasiCim["hazszam"];
+    echo $iranyitoszam = $szamlazasiCim["telepules"];
 
 
 
 
-  $irszam = "SELECT telepulesek.id, telepulesek.irsz, telepulesek.nev, users.telepules FROM telepulesek INNER JOIN users ON users.telepules = telepulesek.id";
-  $eredmeny = mysqli_query($dbconnect, $irszam);
+    // $irszam = "SELECT telepulesek.id, telepulesek.irsz, telepulesek.nev FROM telepulesek INNER JOIN users ON users.telepules = telepulesek.id WHERE users.name = '{$felhasznalo}'";
+    // $eredmeny = mysqli_query($dbconnect, $irszam);
 
+    $osszesTelepulesSql = "SELECT * FROM telepulesek";
+    $osszesTelepulesQuery = mysqli_query($dbconnect, $osszesTelepulesSql);
 
-  $kiir = "";
-  while ($sor = mysqli_fetch_assoc($eredmeny)) {
+    $kiir = "";
+    while ($sor = mysqli_fetch_assoc($osszesTelepulesQuery)) {
 
-    $selected = "";
-
-    if ($sor['telepules'] == $sor['irsz']) {
-      $selected = "selected";
-    } else {
       $selected = "";
+
+      if ($iranyitoszam == $sor['id']) {
+        $selected = "selected";
+      } else {
+        $selected = "";
+      }
+
+      $kiir .= "
+      <option value=\"{$sor['id']}\" {$selected} > {$sor['nev']} ({$sor['irsz']})</option>";
     }
 
-    $kiir .= "
-  <option value=\"{$sor['id']}\" {$selected} > {$sor['nev']} ({$sor['irsz']})</option>";
-  }
 
-  $form = '
+    $form = '
      
      
       <div class="form-box login-section">
@@ -118,20 +132,27 @@ if (mysqli_num_rows($query) > 0) {
   
         </fieldset>
         <div class="two-columns">
-          <fieldset>
-            <label class="c-form-label" for="cim">Kiszállítási cím<span class="c-form-required"> *</span></label>
-            <input id="cim" class="c-form-input" type="text" name="cim" placeholder="Ön lakcíme" value = ' . "{$cim}" . '>
-          </fieldset>
-        </div>
+        <fieldset>
+        <label class="c-form-label" for="utca">Utca név:<span class="c-form-required"> *</span></label>
+        <input id="utca" class="c-form-input" type="text" name="utca" placeholder="Utca név" value= ' . "{$utca}" . '>
+      </fieldset>
+      <fieldset>
+        <label class="c-form-label" for="hazszam">Házszám:<span class="c-form-required"> *</span></label>
+        <input id="hazszam" class="c-form-input" type="text" name="hazszam" placeholder="Házszám" value= ' . "{$hazszam}" . '>
+      </fieldset>
+        </div> 
         </details>
+         
         <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendben" name="rendben">
         <input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles">
+
+        
       </form>
     </div>
    
    
     ';
-
+  }
 
 
   if (isset($_POST['torles'])) {
@@ -140,20 +161,27 @@ if (mysqli_num_rows($query) > 0) {
     $delete = "DELETE FROM megrendeles WHERE status != 1 AND torles != 0";
     mysqli_query($dbconnect, $delete);
     header("Location:index.php");
-  } else if (isset($_POST['rendben'])) {
+  }
+  if (isset($_POST['rendben'])) {
 
     $vezetekNev = $_POST['last-name'];
     $keresztNev = $_POST['first-name'];
     $kartyaszamNev = $_POST['card'];
     $kodNev = $_POST['code'];
     $telefonNev = $_POST['phone'];
-    $iranyitoszam = $_POST['iranyitoszam'];
-    $utca = $_POST['cim'];
-    $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$keresztNev}',`vezetekNev`='{$vezetekNev}',`kartyaszam`='{$kartyaszamNev}',`kartyaKod`='{$kodNev}',`telefonszam`='{$telefonNev}',`kiszallitasiCim`='{$utca}',`telepules`='{$iranyitoszam}' WHERE users.name = '$felhasznalo'";
+    $utca = $_POST['utca'];
+    $hazszam = $_POST['hazszam'];
+    $idopont = date('Y-m-d');
+    $iranyitoszam = $_POST["iranyitoszam"];
+    $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$keresztNev}',`vezetekNev`='{$vezetekNev}',`kartyaszam`='{$kartyaszamNev}',`kartyaKod`='{$kodNev}',`telefonszam`='{$telefonNev}',`utcaNev`='{$utca}', `hazszam` = '{$hazszam}', `telepules`='{$iranyitoszam}', `idopont`= '{$idopont}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0";
     $eredmeny = mysqli_query($dbconnect, $sql);
     $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
     mysqli_query($dbconnect, $update);
     header("location:koszonjuk.php");
+
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
   }
 } else {
 
@@ -200,7 +228,7 @@ if (mysqli_num_rows($query) > 0) {
 
       <fieldset>
         <label class="c-form-label" for="phone">Telefonszám<span class="c-form-required"> *</span></label>
-        <input id="phone" class="c-form-input" type="tel" name="phone" placeholder="0630 234 2455" >
+        <input id="phone" class="c-form-input" type="tel" name="phone" placeholder="06302342455" >
       </fieldset>
       <fieldset>
         
@@ -215,22 +243,28 @@ if (mysqli_num_rows($query) > 0) {
           </fieldset>
       <div class="two-columns">
         <fieldset>
-          <label class="c-form-label" for="cim">Kiszállítási cím<span class="c-form-required"> *</span></label>
-          <input id="cim" class="c-form-input" type="text" name="cim" placeholder="Ön lakcíme" >
+          <label class="c-form-label" for="utca">Utca név:<span class="c-form-required"> *</span></label>
+          <input id="utca" class="c-form-input" type="text" name="utca" placeholder="Utca név">          
+        </fieldset>
+        <fieldset>
+          <label class="c-form-label" for="hazszam">Házszám:<span class="c-form-required"> *</span></label>
+          <input id="hazszam" class="c-form-input" type="text" name="hazszam" placeholder="Házszám" >
         </fieldset>
       </div>
       <div>
-      <label class="adatokMarad" for="adatokMarad" style="color:white; font-family:900"><input type="checkbox" name="adatokMarad" id="adatokMarad" value="A"/>
-      Adatok elmentése</label ><span class="showTooltip">(?)</span></div><div class="tooltip">Az adatok elmentésére rákattintva el tudja menteni az adatait ez által nem kell kitöltenie az újbóli vásárlása során!</div>  
+      <label class="adatokMaradNew" for="adatokMaradNew" style="color:white; font-family:900"><input type="checkbox" name="adatokMaradNew" id="adatokMaradNew" value="A"/>
+      Adatok elmentése</label ><span class="showTooltip">(?)</span><div class="tooltip">Az adatok elmentésére rákattintva el tudja menteni az adatait ez által nem kell kitöltenie az újbóli vásárlása során!</div>  
       <input type="submit" value="Rendelés véglegesítése" class="c-form-btn" id="rendbennew" name="rendbennew">
       <input type="submit" value="Megrendelés törlése" class="c-form-btn" id="torles" name="torles">
     </form>
   </div>';
-  if (isset($_POST['adatokMarad'])) {
+
+  if (isset($_POST['adatokMaradNew'])) {
     $update = "UPDATE `users` SET `mentve`='1' WHERE mentve = 0 AND name = '{$felhasznalo}'";
     $eredmeny = mysqli_query($dbconnect, $update);
-    header("location:koszonjuk.php");
-  } else if (isset($_POST['rendbennew'])) {
+  }
+
+  if (isset($_POST['rendbennew'])) {
 
     $veznev = $_POST['last-name'];
 
@@ -241,12 +275,17 @@ if (mysqli_num_rows($query) > 0) {
     $kod = $_POST['code'];
     $telefon = $_POST['phone'];
 
-    $cimSzallitas = $_POST['cim'];
+
 
     $irsz = $_POST['iranyitoszam'];
 
+    $idopontok = date('Y-m-d');
 
+    $utcak = $_POST['utca'];
+    $hazszamok = $_POST['hazszam'];
     //Név ellenőrzése
+
+
     if (empty($veznev)) {
       $hibak[] = "Nem adott meg vezetéknevet!";
     }
@@ -279,10 +318,13 @@ if (mysqli_num_rows($query) > 0) {
       $hibak[] = "3 számjegynek kell szerepelnie!";
     }
 
-    //Kiszállítási cím ellenőrzése
-    if (empty($cimSzallitas)) {
-      $hibak[] = "Nem adott meg címet!";
-    }
+    // //Kiszállítási cím ellenőrzése
+    // if (empty($utcak)) {
+    //   $hibak[] = "Nem adott meg utca nevet!";
+    // }
+    // if(empty($hazszamok)){
+    //   $hibak[] = "Nem adott meg házszámot!";
+    // }
     if (isset($hibak)) {
       $kimenet = "<div style=\"background-color: #A50000; width: 100%; max-width: 600px; margin: auto; text-align: center\">";
       $kimenet .= "<h2 style=\"color: white; margin: 0px;\">HIBÁS / HIÁNYOS ADATOK!</h2>";
@@ -294,7 +336,7 @@ if (mysqli_num_rows($query) > 0) {
       print $kimenet;
     } else {
 
-      $sqlUpdate = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`kiszallitasiCim`='{$cimSzallitas}',`telepules` = '{$irsz}' WHERE users.name = '{$felhasznalo}'";
+      $sqlUpdate = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`utcaNev`='{$utcak}', `hazszam` = '{$hazszamok}',`telepules` = '{$irsz}', `idopont`='{$idopontok}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0 ";
       mysqli_query($dbconnect, $sqlUpdate);
       echo  "AZ SQL: " . $sqlUpdate;
 
@@ -302,7 +344,9 @@ if (mysqli_num_rows($query) > 0) {
       mysqli_query($dbconnect, $update);
       header("location:koszonjuk.php");
     }
-  } else if (isset($_POST['torles'])) {
+  }
+
+  if (isset($_POST['torles'])) {
     $update = "UPDATE megrendeles SET torles = '1' WHERE status != 1";
     mysqli_query($dbconnect, $update);
     $delete = "DELETE FROM megrendeles WHERE status != 1 AND torles != 0";

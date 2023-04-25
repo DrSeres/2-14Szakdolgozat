@@ -34,7 +34,7 @@ session_start();
     <div class="background"></div>
     <div class="container">
         <div class="item">
-            <h2 class="logo"><i class='bx bxl-xing'></i>SzA.Kft</h2>
+            <h2 class="logo"><i class='bx bxl-xing'></i>Seres és Társa.Kft</h2>
             <div class="text-item">
                 <h2>Üdvözöllek! <br><span>
                         A Webshopon

@@ -2,10 +2,12 @@
 
 //Űrlap feldolgozása
 
-
-// if(!isset($_SESSION['user_type']) == 'admin'){
-//   header("location:false.php");
-// }
+session_start();
+if(isset($_SESSION['user_type'])){
+    if($_SESSION['user_type'] != 'admin'){
+        header("location:false.php");
+    }
+}
 
 
 

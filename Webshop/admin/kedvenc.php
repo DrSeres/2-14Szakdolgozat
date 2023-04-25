@@ -1,6 +1,12 @@
 <?php 
 
 require("kapcsolat.php");
+session_start();
+if(isset($_SESSION['user_type'])){
+    if($_SESSION['user_type'] != 'admin'){
+        header("location:false.php");
+    }
+}
 
 
 $query = "SELECT termek.termekNev, termek.foto, termek.darab, termek.ar, COUNT(termek.termekNev) AS 'kedveles' FROM `kedvenctermekek` INNER JOIN termek ON kedvenctermekek.termekId=termek.id GROUP BY termek.termekNev;";
@@ -18,12 +24,13 @@ if (mysqli_num_rows($result) > 0) {
     </tr>
  ";
     while ($sor = mysqli_fetch_array($result)) {
+      $raktaron = ($sor['darab'] == 0) ? "color:red" : "";
         $kimenet .= "<tr>
         <td><img src=\"../img/termekekuj/{$sor['foto']}\" alt=\"pro\"></td>
-        <td>{$sor['termekNev']}</td>
-        <td>{$sor['darab']}</td>
-        <td>{$sor['ar']}</td>
-        <td>{$sor['kedveles']}</td>
+        <td style='$raktaron'>{$sor['termekNev']}</td>
+        <td style='$raktaron'>{$sor['darab']}</td>
+        <td style='$raktaron'>{$sor['ar']}</td>
+        <td style='$raktaron'>{$sor['kedveles']}</td>
   ";
     }
     $kimenet .= "</table>";

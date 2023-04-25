@@ -250,6 +250,9 @@ article .kosar {
     overflow-x: hidden;
     margin: auto;
   }
+  nav {
+    font-size: 1rem;
+  }
   .termekek {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

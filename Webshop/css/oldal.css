@@ -146,11 +146,15 @@ hr {
 ul{
 	list-style: none;
 }
+
 .footer{
-	/* background-color: rgb(21,76,121); */
-  /* background: #595959; */
-  background: #003554;
-  padding: 70px 0;
+  padding: 20px;
+}
+
+.footerTermekek{
+  background: #051923;
+  margin-top: 40px;
+  padding: 20px;
 }
 .footer-col{
    width: 25%;
@@ -226,10 +230,12 @@ ul{
 .container{
   text-align: center;
 }
-.footer{
-  margin: auto;
+.footerTermekek{
+  background: #051923;
+  margin: 20px auto auto auto;
   text-align: center;
 }
+
 .footer-col h4::before{
 	content: '';
 	position: absolute;
@@ -280,8 +286,6 @@ ul{
   margin: auto;
   
 }
-
-
 }
 
  

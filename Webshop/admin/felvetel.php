@@ -3,11 +3,14 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require("kapcsolat.php");
+session_start();
+if(isset($_SESSION['user_type'])){
+    if($_SESSION['user_type'] != 'admin'){
+        header("location:false.php");
+    }
+}
 
 
-// if(!isset($_SESSION['user_type']) == 'admin'){
-//   header("location:false.php");
-// }
 
 
 

@@ -95,3 +95,11 @@
     background-color: rgba(0, 0, 0, 0.8);
   }
 }
+
+@media screen and (max-width:500px) {
+  footer{
+    background: #051923;
+    margin: auto;
+    text-align: center;
+  }
+}

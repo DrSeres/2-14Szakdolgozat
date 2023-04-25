@@ -30,9 +30,11 @@ if(isset($_POST['vissza'])){
     <div class="kozep">
     <input type="submit" value="Számla nyomtatása PDF-ben" id="nyomtatas" name="nyomtatas" onclick="clickCounter()">
     <input type = "submit" value="A számlát postán is kérem" id="vissza" name="vissza">
-    <a href='index.php'><input type = "button" value="Vissza a főoldalra" id='fooldalra' id='fooldalra' name="fooldalra"></a>
+    <a href='index.php'><input type = "button" value="Vissza a főoldalra"  id='fooldalra' name="fooldalra"></a>
     <script>
         let gomb =document.getElementById('fooldalra');
+        console.log('GOMB:');
+        console.log(gomb);
         gomb.addEventListener('click', () =>{
             localStorage.removeItem('termekek');
         })

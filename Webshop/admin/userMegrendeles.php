@@ -1,6 +1,12 @@
 <?php 
 
 require("kapcsolat.php");
+session_start();
+if(isset($_SESSION['user_type'])){
+    if($_SESSION['user_type'] != 'admin'){
+        header("location:false.php");
+    }
+}
 
 $sql = "SELECT * FROM users";
 $er = mysqli_query($dbconnect, $sql);

@@ -197,7 +197,7 @@ html::-webkit-scrollbar-track {
         margin:0;
       }
 }
-@media (max-width:700px) {
+@media (max-width:1300px) {
     html{
         width: 100%;
     };
@@ -261,4 +261,12 @@ html::-webkit-scrollbar-track {
         text-decoration: none;
         cursor: pointer;
     }
+    .muveletek a {
+      padding: 8px;
+      font-size: 0.8rem;
+      display: flex;
+      margin: 5px;
+      justify-content: center;
+      align-items: center;
+  }
 }

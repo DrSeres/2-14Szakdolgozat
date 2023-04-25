@@ -55,11 +55,10 @@ echo "</pre>";
     <a href=adat.php?id={$sor['id']}">
     <img src="img/termekekuj/{$sor['foto']}" alt="{$sor['foto']} "></a>
     </div>
-    $heartIcon
     <div class="itemInfo">
         <h2>{$sor['termekNev']}</h2>
         <hr>
-        <p class='price'>{$ar}<span>Ft</span></p>
+        <p style='color:red; padding:5px; font-family:900'>ELFOGYOTT TERMÉK</p>
         <div class='appear' id='show'>
         <input type="number" name="quantity" id="quantity" min="1" max="{$sor['darab']}" value="0" disabled>
         
