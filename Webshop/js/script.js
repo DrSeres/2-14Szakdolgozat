@@ -232,7 +232,7 @@ window.onload = function () {
                     method: "POST",
                     body: adatok,
                   })
-                    .then((response) => window.location.href='megrendeles.php')
+                    .then((response) =>  window.location.href='megrendeles.php')
                     .then((data) => {
                       console.log(data);
                     })

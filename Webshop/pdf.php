@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once "kapcsolat.php";
+require("kapcsolat.php");
 
 $szamlaSorszamaSql = "SELECT COUNT(id) AS 'Sorszam' FROM megrendeles";
 $szamlaSorszamQuery = mysqli_query($dbconnect, $szamlaSorszamaSql);
@@ -27,16 +27,28 @@ $felhasznalo = $_SESSION['name'];
 
 
 //A megrendelő adatainak kikeresése
-$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, users.keresztNev, users.kartyaszam, megrendeles.utcaNev, megrendeles.hazszam, users.email, telepulesek.irsz, telepulesek.nev FROM termek
+$sqlSQL = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, users.keresztNev, users.kartyaszam, megrendeles.utcaNev, megrendeles.hazszam, users.email, telepulesek.irsz, telepulesek.nev, megrendeles.telepules, megrendeles.telepules FROM termek
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
 INNER JOIN users ON users.id= megrendeles.usersId 
-INNER JOIN telepulesek ON megrendeles.usersId = telepulesek.id
+INNER JOIN telepulesek ON megrendeles.telepules = telepulesek.id
 WHERE users.name = '{$felhasznalo}' AND megrendeles.szamlazva = 0;
 ";
 
-$stmt = $dbconnect->prepare($sql);
+
+
+$email = "";
+$veznev = "";
+$kernev = "";
+$kartyaszam = "";
+$utcaNev = "";
+$hazszam = "";
+$telepulesIranyitoszam = "";
+$telepules = "";
+
+
+$stmt = $dbconnect->prepare($sqlSQL);
 $id = $dbconnect->lastInsertId();
 $stmt->execute();
 $sor = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -56,11 +68,12 @@ $telepules = $sor['nev'];
 
 //az adatok fetchAll-al kiíratása
 
-$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, megrendeles.utcaNev, megrendeles.hazszam FROM termek
+$sql = "SELECT megrendeles.id AS 'megrendeles', gyarto.gyartoNev, termek.termekNev, megrendeles.raktaron, termek.id AS 'termekid', termek.ar, users.name, users.vezetekNev, megrendeles.utcaNev, megrendeles.hazszam, megrendeles.telepules, telepulesek.id FROM termek
 INNER JOIN megrendeles ON termek.id = megrendeles.termekId
 INNER JOIN gyartokategoria ON termek.gyartoKategoriaId=gyartokategoria.gyartoKategoriaId
 INNER JOIN gyarto ON gyartokategoria.gyartoId=gyarto.gyartoId
-INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$felhasznalo}' AND megrendeles.szamlazva = 0;
+INNER JOIN telepulesek ON megrendeles.telepules = telepulesek.id
+INNER JOIN users ON users.id= megrendeles.usersId WHERE users.name = '{$felhasznalo}' AND megrendeles.szamlazva = 0 AND megrendeles.telepules = telepulesek.id;
 ";
 
 $stmt = $dbconnect->prepare($sql);

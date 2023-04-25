@@ -3,11 +3,23 @@
 
 
 
-require('kapcsolat.php');
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
+
+
+
+$dbconnect = mysqli_connect("mysql.omega", "webshopv3", "Szuperbat01", "webshopv3");
+
+// if (!$dbconnect) {
+//     die("Connection failed: " . mysqli_connect_error());
+//   }
+//   echo "Connected successfully";
+$array = array();
+
+
 $felhasznalo = $_SESSION['name'];
 
 // echo "<pre>";
@@ -40,7 +52,7 @@ $felhasznalo = $_SESSION['name'];
 $kiir = "";
 
 $select = "SELECT * FROM users WHERE mentve = 1 AND name = '{$felhasznalo}'";
-$query  = mysqli_query($dbconnect, $select);
+$query = mysqli_query($dbconnect, $select);
 
 if (mysqli_num_rows($query) > 0) {
   $sor = mysqli_fetch_assoc($query);
@@ -52,7 +64,7 @@ if (mysqli_num_rows($query) > 0) {
 
 
   $szallitasiCimSql = "
-  SELECT m.telepules, m.utcaNev, m.hazszam FROM megrendeles as m INNER JOIN users as u ON m.usersId = u.id  WHERE u.name = '{$felhasznalo}' AND m.status = 1 AND m.szamlazva = 1
+  SELECT m.telepules, m.utcaNev, m.hazszam, m.id FROM megrendeles as m INNER JOIN users as u ON m.usersId = u.id  WHERE u.name = '{$felhasznalo}' AND m.status = 1 AND m.szamlazva = 1 ORDER BY m.id DESC LIMIT 1
 ";
 
   $szamlazasiCimQuery = mysqli_query($dbconnect, $szallitasiCimSql);
@@ -63,32 +75,32 @@ if (mysqli_num_rows($query) > 0) {
     echo $hazszam = $szamlazasiCim["hazszam"];
     echo $iranyitoszam = $szamlazasiCim["telepules"];
 
+  }
 
 
+  // $irszam = "SELECT telepulesek.id, telepulesek.irsz, telepulesek.nev FROM telepulesek INNER JOIN users ON users.telepules = telepulesek.id WHERE users.name = '{$felhasznalo}'";
+  // $eredmeny = mysqli_query($dbconnect, $irszam);
 
-    // $irszam = "SELECT telepulesek.id, telepulesek.irsz, telepulesek.nev FROM telepulesek INNER JOIN users ON users.telepules = telepulesek.id WHERE users.name = '{$felhasznalo}'";
-    // $eredmeny = mysqli_query($dbconnect, $irszam);
+  $osszesTelepulesSql = "SELECT * FROM telepulesek";
+  $osszesTelepulesQuery = mysqli_query($dbconnect, $osszesTelepulesSql);
 
-    $osszesTelepulesSql = "SELECT * FROM telepulesek";
-    $osszesTelepulesQuery = mysqli_query($dbconnect, $osszesTelepulesSql);
+  $kiir = "";
+  while ($sor = mysqli_fetch_assoc($osszesTelepulesQuery)) {
 
-    $kiir = "";
-    while ($sor = mysqli_fetch_assoc($osszesTelepulesQuery)) {
+    $selected = "";
 
+    if ($iranyitoszam == $sor['id']) {
+      $selected = "selected";
+    } else {
       $selected = "";
-
-      if ($iranyitoszam == $sor['id']) {
-        $selected = "selected";
-      } else {
-        $selected = "";
-      }
-
-      $kiir .= "
-      <option value=\"{$sor['id']}\" {$selected} > {$sor['nev']} ({$sor['irsz']})</option>";
     }
 
+    $kiir .= "
+      <option value=\"{$sor['id']}\" {$selected} > {$sor['nev']} ({$sor['irsz']})</option>";
+  }
 
-    $form = '
+
+  $form = '
      
      
       <div class="form-box login-section">
@@ -152,7 +164,7 @@ if (mysqli_num_rows($query) > 0) {
    
    
     ';
-  }
+
 
 
   if (isset($_POST['torles'])) {
@@ -262,8 +274,7 @@ if (mysqli_num_rows($query) > 0) {
   if (isset($_POST['adatokMaradNew'])) {
     $update = "UPDATE `users` SET `mentve`='1' WHERE mentve = 0 AND name = '{$felhasznalo}'";
     $eredmeny = mysqli_query($dbconnect, $update);
-  }
-
+  } 
   if (isset($_POST['rendbennew'])) {
 
     $veznev = $_POST['last-name'];
@@ -338,7 +349,7 @@ if (mysqli_num_rows($query) > 0) {
 
       $sqlUpdate = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`utcaNev`='{$utcak}', `hazszam` = '{$hazszamok}',`telepules` = '{$irsz}', `idopont`='{$idopontok}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0 ";
       mysqli_query($dbconnect, $sqlUpdate);
-      echo  "AZ SQL: " . $sqlUpdate;
+      echo "AZ SQL: " . $sqlUpdate;
 
       $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
       mysqli_query($dbconnect, $update);
@@ -382,7 +393,8 @@ if (mysqli_num_rows($query) > 0) {
   <script src="sweetalert2.all.min.js"></script>
   <script src="sweetalert2.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+    integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -392,7 +404,7 @@ if (mysqli_num_rows($query) > 0) {
     $(document).ready(() => {
       $('#iranyitoszam').select2();
 
-      $(".showTooltip").on("click", function() {
+      $(".showTooltip").on("click", function () {
         $(".tooltip").toggle();
       });
       // $("#rendbennew").on("click", function(){
