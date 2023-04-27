@@ -26,6 +26,14 @@ $felhasznalo = $_SESSION['name'];
 // print_r($_SESSION);
 // echo "</pre>";
 
+$sorszamSQL = "SELECT sorszam FROM megrendeles ORDER BY sorszam DESC LIMIT 1";
+$sorszamQURY = mysqli_query($dbconnect, $sorszamSQL);
+
+$sorozatok = mysqli_fetch_assoc($sorszamQURY);
+$sorszamErtek = "";
+$sorszamErtek = $sorozatok['sorszam'];
+$sorszam = $sorszamErtek;
+$sorszamP = $sorszam + 1;
 
 
 
@@ -71,9 +79,9 @@ if (mysqli_num_rows($query) > 0) {
   $szamlazasiCim = mysqli_fetch_assoc($szamlazasiCimQuery);
 
   if (mysqli_num_rows($szamlazasiCimQuery) > 0) {
-    echo $utca = $szamlazasiCim["utcaNev"];
-    echo $hazszam = $szamlazasiCim["hazszam"];
-    echo $iranyitoszam = $szamlazasiCim["telepules"];
+     $utca = $szamlazasiCim["utcaNev"];
+     $hazszam = $szamlazasiCim["hazszam"];
+     $iranyitoszam = $szamlazasiCim["telepules"];
 
   }
 
@@ -175,7 +183,7 @@ if (mysqli_num_rows($query) > 0) {
     header("Location:index.php");
   }
   if (isset($_POST['rendben'])) {
-
+    
     $vezetekNev = $_POST['last-name'];
     $keresztNev = $_POST['first-name'];
     $kartyaszamNev = $_POST['card'];
@@ -185,15 +193,15 @@ if (mysqli_num_rows($query) > 0) {
     $hazszam = $_POST['hazszam'];
     $idopont = date('Y-m-d');
     $iranyitoszam = $_POST["iranyitoszam"];
-    $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$keresztNev}',`vezetekNev`='{$vezetekNev}',`kartyaszam`='{$kartyaszamNev}',`kartyaKod`='{$kodNev}',`telefonszam`='{$telefonNev}',`utcaNev`='{$utca}', `hazszam` = '{$hazszam}', `telepules`='{$iranyitoszam}', `idopont`= '{$idopont}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0";
+    $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$keresztNev}',`vezetekNev`='{$vezetekNev}',`kartyaszam`='{$kartyaszamNev}',`kartyaKod`='{$kodNev}',`telefonszam`='{$telefonNev}',`utcaNev`='{$utca}', `hazszam` = '{$hazszam}', `telepules`='{$iranyitoszam}', `idopont`= '{$idopont}', `sorszam`='{$sorszamP}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0";
     $eredmeny = mysqli_query($dbconnect, $sql);
     $update = "UPDATE termek INNER JOIN megrendeles ON termek.id=megrendeles.termekId SET darab=darab-megrendeles.raktaron, `status` = 1 WHERE megrendeles.termekId=termek.id AND megrendeles.status != 1";
     mysqli_query($dbconnect, $update);
     header("location:koszonjuk.php");
 
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
+    // echo "<pre>";
+    // print_r($_POST);
+    // echo "</pre>";
   }
 } else {
 
@@ -307,7 +315,7 @@ if (mysqli_num_rows($query) > 0) {
     //Kártyaszám hosszának ellenőrzése
     if (empty($kartyaszam)) {
       $hibak[] = "Nem adott meg bankkártyaszámot!";
-    } elseif (strlen($kartyaszam) > 19) {
+    } elseif (strlen($kartyaszam) > 30) {
       $hibak[] = "Túl hosszú bankkártyaszámnak!";
     } elseif (strlen($kartyaszam) < 19) {
       $hibak[] = "Túl rövid bankkártyaszámnak!";
@@ -344,10 +352,10 @@ if (mysqli_num_rows($query) > 0) {
         $kimenet .= "<p style=\"color: white; padding: 3px\"><b>X</b> {$hiba}</p>";
       }
       $kimenet .= "</div>";
-      print $kimenet;
+      // print $kimenet;
     } else {
 
-      $sqlUpdate = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`utcaNev`='{$utcak}', `hazszam` = '{$hazszamok}',`telepules` = '{$irsz}', `idopont`='{$idopontok}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0 ";
+      $sqlUpdate = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$kernev}',`vezetekNev`='{$veznev}',`kartyaszam`='{$kartyaszam}',`kartyaKod`='{$kod}',`telefonszam`='{$telefon}',`utcaNev`='{$utcak}', `hazszam` = '{$hazszamok}',`telepules` = '{$irsz}', `idopont`='{$idopontok}', `sorszam`='{$sorszamP}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0 ";
       mysqli_query($dbconnect, $sqlUpdate);
       echo "AZ SQL: " . $sqlUpdate;
 

@@ -24,9 +24,18 @@ if($data['c'] == 'regisztracioValidalas') {
     $result = mysqli_query($dbconnect, $select);
     if (mysqli_num_rows($result) > 0) {
         $message = 'Létezik már egy olyan felhasználó!';
-    } else if ($pass != $cpass) {
+    } else if(empty($pass)){
+        $message = "Nem adott meg jelszót!";
+    } else if($pass != $cpass) {
         $message = "Nem egyezik meg a két jelszó!";
     } 
+    
+    if(empty($name)){
+        $message = "Nem adott meg nevet!";
+    }else
+    if(empty($email)){
+        $message = "Nem adott meg email címet!";
+    }
     
     $result = array(
         'message' => $message,

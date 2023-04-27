@@ -126,6 +126,7 @@ window.onload = function () {
   //rendelés hozzáadása a kosárhoz
   const kosarikonP = document.querySelector(".kosaricon p");
   console.log(kosarikonP);
+  
   let no = 0;
   JSON.parse(localStorage.getItem("termekek")).map((data) => {
     no = no + data.no;
@@ -135,6 +136,7 @@ window.onload = function () {
   //táblázat feltöltése az adatbázisba
   const cartBoxTable = cartBox.querySelector("table");
   console.log(cartBoxTable);
+  
   let tableData = "";
   let price = [];
   let nevDb = -1;
@@ -170,7 +172,6 @@ window.onload = function () {
     });
   }
   let sum = 0;
-
   JSON.parse(localStorage.getItem("termekek")).map((data) => {
     sum += data.no * data.price;
   });

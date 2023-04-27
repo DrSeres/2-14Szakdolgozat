@@ -18,7 +18,7 @@ session_start();
     <meta name="description" content="Bejelentkező és regisztrációs oldal"> <!--Keresőmotor optimalizáláshoz kellenek ezen kódsorok -->
     <meta name="keywords" content="PC Webshop, Számítógép Webshop, Számítógépes Webshop, Számítógép szaküzlet">
     <meta name="author" content="Laczka Adrián Zsolt, Seres Szabolcs">
-    
+
     <link rel="stylesheet" href="css/FoBejelentkezes.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -80,7 +80,7 @@ session_start();
                     <input name="action" id="action" type="hidden" value="register" readonly disabled>
                     <h2>Regisztráció</h2>
                     <div class="input-box">
-                        
+
                         <span class="icon"><i class='bx bxs-user'></i></span>
                         <input type="text" id="name" name="name" required>
                         <label>Felhasználónév</label>
@@ -92,16 +92,17 @@ session_start();
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                        <input type="password" id="reg-password" name="password" required>
+                        <input type="password" id="reg-password" name="password">
                         <label>Jelszó</label>
                     </div>
                     <div class="input-box">
                         <span class="icon"><i class='bx bxs-lock-alt'></i></span>
-                        <input type="password"id="passwordAgain" name="passwordAgain" required>
+                        <input type="password" id="passwordAgain" name="passwordAgain" >
                         <label>Jelszó megerősítése</label>
                     </div>
                     <div class="remember-password">
-                        <label for="egyetertek"><input type="checkbox" id="egyetertek">Egyetértek a szerződési feltételekkel</label>
+                        <!-- <button onclick="myFunction()">Try it</button> -->
+                        <label for="egyetertek"><input type="checkbox" id="egyetertek" required>Egyetértek a <span onclick="myFunction()" style="text-decoration:underline; cursor:pointer"> szerződési feltételekkel</span> </label>
                     </div>
                     <button class="btn" id="re" type="submit">Regisztráció</button>
                     <div class="create-account">
@@ -113,8 +114,12 @@ session_start();
     </div>
     <!-- SIGN UP FORM CREATION -->
     <script type="text/javascript">
-    localStorage.clear();
-</script>
+        localStorage.clear();
+
+        function myFunction() {
+            var myWindow = window.open("aszf.html", "", "width=600,height=800");
+        }
+    </script>
     <script src="js/FoBejelentkezes.js"></script>
 </body>
 

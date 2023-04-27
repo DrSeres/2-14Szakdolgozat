@@ -312,7 +312,7 @@ article .kosar {
 
 
 
-@media (max-width:900px)
+@media (max-width:1000px)
 {
   .html{
     overflow-x: hidden;
@@ -473,6 +473,7 @@ article .kosar {
     letter-spacing: .2rem;
 
 }
+
 }
 
 

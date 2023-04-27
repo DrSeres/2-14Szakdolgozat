@@ -8,11 +8,34 @@ error_reporting(E_ALL);
 
 require("kapcsolat.php");
 
-$szamlaSorszamaSql = "SELECT COUNT(id) AS 'Sorszam' FROM megrendeles";
+// $szamlaSorszamaSql = "SELECT COUNT(id) AS 'Sorszam' FROM megrendeles";
+// $szamlaSorszamQuery = mysqli_query($dbconnect, $szamlaSorszamaSql);
+// $beolvasas = mysqli_fetch_assoc($szamlaSorszamQuery);
+// $sorszam = $beolvasas['Sorszam'];
+$szamlaSorszamaSql = "SELECT sorszam FROM megrendeles ORDER BY sorszam DESC LIMIT 1";
 $szamlaSorszamQuery = mysqli_query($dbconnect, $szamlaSorszamaSql);
 $beolvasas = mysqli_fetch_assoc($szamlaSorszamQuery);
-$sorszam = $beolvasas['Sorszam'];
-$szamHossz = (strlen((string)$sorszam) == 3) ?  "00" : (strlen((string)$sorszam) == 4 ? "0" : "");
+$sorszam = $beolvasas['sorszam'];
+
+
+switch(strlen((string)$sorszam)) {
+    case 1:
+      $szamHossz =  "0000";
+      break;
+    case 2:
+        $szamHossz = "000";
+        break;
+    case 3:
+     $szamHossz = "00";
+      break;
+    case 4:
+       $szamHossz = "0";
+        break;
+    
+    default:
+       $szamHossz = "";
+  }
+
 
 
 
@@ -94,7 +117,7 @@ $bizonylat = 'SZ'. $szamHossz. $sorszam . "/" . date("Y");
 
 $html = '
 <!DOCTYPE html>
-<html lang="hun">
+<html lang="hu">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -209,7 +232,7 @@ $html = '
     </thead>
     <tbody>
         <tr>
-            <td class="szallitoVevo"><b>Seres és Társa.Kft</b></td>
+            <td class="szallitoVevo"><b>Seres és Társa KFT</b></td>
             <td class="szallitoVevo"><b>'. $veznev .' '. $kernev .'</b></td>
         </tr>
         <tr>
@@ -218,7 +241,7 @@ $html = '
         </tr>
         <tr>
             <td>Helyszín: 1022, Budapest I.kerület Domb utca 11.</td>
-            <td>Helyszín:  '. $telepulesIranyitoszam .', '. $telepules . ' '. $utcaNev . ' ' . $hazszam .'</td>
+            <td>Helyszín:  '. $telepulesIranyitoszam .', '. $telepules . ', '. $utcaNev . ' utca ' . $hazszam .'</td>
         </tr>
         <tr>
             <td>E-mail cím: onlinePcWebshop2023@gmail.com</td>
@@ -288,7 +311,7 @@ echo $update = "UPDATE megrendeles INNER JOIN users ON megrendeles.usersId = use
 $stmt = $dbconnect->prepare($update);
 $stmt->execute();
 
-
+echo "<script>localStorage.removeItem('termekek')</script>";
 
 ?>
 

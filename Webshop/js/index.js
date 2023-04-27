@@ -187,7 +187,7 @@ window.onload = () => {
 
 
 
-console.log("helloooooo");
+
 const toggle = document.querySelector(".toggle");
 console.log(toggle);
 const menu = document.querySelector(".menu");
@@ -356,5 +356,5 @@ function clickCounter() {
 }
 
 
-
+//Számla kiállítása postán
 

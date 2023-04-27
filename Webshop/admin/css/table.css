@@ -197,7 +197,7 @@ html::-webkit-scrollbar-track {
         margin:0;
       }
 }
-@media (max-width:1300px) {
+@media (min-width:1200px) {
     html{
         width: 100%;
     };
