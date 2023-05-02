@@ -6,8 +6,7 @@ postaBtn.addEventListener('click', () => {
 
 
 Swal.fire({
-  title: 'Biztos vagy benne, hogy meg szeretnéd kapni postán is a számlát?',
-  icon: 'warning',
+  title: 'Biztos benne, hogy meg szeretné kapni postán is a számlát?',
   icon: 'warning',
       iconColor:'red',
       background: '#003554',
@@ -24,7 +23,7 @@ Swal.fire({
         color:'white',
         icon: 'success',
         title: 'Kérés feldolgozva!',
-        timer: 3500,
+        timer: 3000,
         showCancelButton: false,
         showConfirmButton: false
       })

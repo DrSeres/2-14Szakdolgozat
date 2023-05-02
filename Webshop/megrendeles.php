@@ -72,7 +72,7 @@ if (mysqli_num_rows($query) > 0) {
 
 
   $szallitasiCimSql = "
-  SELECT m.telepules, m.utcaNev, m.hazszam, m.id FROM megrendeles as m INNER JOIN users as u ON m.usersId = u.id  WHERE u.name = '{$felhasznalo}' AND m.status = 1 AND m.szamlazva = 1 ORDER BY m.id DESC LIMIT 1
+  SELECT m.telepules, m.utcaNev, m.hazszam, m.id FROM megrendeles as m INNER JOIN users as u ON m.usersId = u.id  WHERE u.name = '{$felhasznalo}' AND (m.status = 1 AND m.szamlazva = 1 OR m.szamlazva = 2) ORDER BY m.id DESC LIMIT 1
 ";
 
   $szamlazasiCimQuery = mysqli_query($dbconnect, $szallitasiCimSql);
@@ -80,7 +80,12 @@ if (mysqli_num_rows($query) > 0) {
 
   if (mysqli_num_rows($szamlazasiCimQuery) > 0) {
      $utca = $szamlazasiCim["utcaNev"];
+     echo "entity :";
+     $formazottUtcak = htmlentities($utca);
+     echo $formazottUtcak;
+     echo "uj " . $formUjUtca = html_entity_decode($formazottUtcak);
      $hazszam = $szamlazasiCim["hazszam"];
+     $formazottHazszam = html_entity_decode($hazszam);
      $iranyitoszam = $szamlazasiCim["telepules"];
 
   }
@@ -119,12 +124,12 @@ if (mysqli_num_rows($query) > 0) {
         <div class="two-columns">
           <fieldset>
             <label class="c-form-label" for="last-name">Keresztnév<span class="c-form-required"> *</span></label>
-            <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve" value = ' . "{$veznev}" . '>
+            <input id="last-name" class="c-form-input" type="text" name="last-name" placeholder="Ön keresztneve" value = "' . $veznev . '">
           </fieldset>
  
           <fieldset>
             <label class="c-form-label" for="first-name">Vezetéknév<span class="c-form-required"> *</span></label>
-            <input id="first-name" class="c-form-input" type="text" name="first-name" placeholder="Ön vezetékneve" value = ' . "{$kernev}" . '>
+            <input id="first-name" class="c-form-input" type="text" name="first-name" placeholder="Ön vezetékneve" value = "' . $kernev . '">
           </fieldset>
         </div>
         <div class="two-columns">
@@ -154,11 +159,11 @@ if (mysqli_num_rows($query) > 0) {
         <div class="two-columns">
         <fieldset>
         <label class="c-form-label" for="utca">Utca név:<span class="c-form-required"> *</span></label>
-        <input id="utca" class="c-form-input" type="text" name="utca" placeholder="Utca név" value= ' . "{$utca}" . '>
+        <input id="utca" class="c-form-input" type="text" name="utca" placeholder="Utca név" value= "' . $utca. '">
       </fieldset>
       <fieldset>
         <label class="c-form-label" for="hazszam">Házszám:<span class="c-form-required"> *</span></label>
-        <input id="hazszam" class="c-form-input" type="text" name="hazszam" placeholder="Házszám" value= ' . "{$hazszam}" . '>
+        <input id="hazszam" class="c-form-input" type="text" name="hazszam" placeholder="Házszám" value= "' . $hazszam . '">
       </fieldset>
         </div> 
         </details>
@@ -190,7 +195,9 @@ if (mysqli_num_rows($query) > 0) {
     $kodNev = $_POST['code'];
     $telefonNev = $_POST['phone'];
     $utca = $_POST['utca'];
+    $formUtca = htmlspecialchars($utca);
     $hazszam = $_POST['hazszam'];
+    $formHazszam = htmlspecialchars($hazszam);
     $idopont = date('Y-m-d');
     $iranyitoszam = $_POST["iranyitoszam"];
     $sql = "UPDATE `users` INNER JOIN megrendeles ON megrendeles.usersId=users.id SET `keresztNev`='{$keresztNev}',`vezetekNev`='{$vezetekNev}',`kartyaszam`='{$kartyaszamNev}',`kartyaKod`='{$kodNev}',`telefonszam`='{$telefonNev}',`utcaNev`='{$utca}', `hazszam` = '{$hazszam}', `telepules`='{$iranyitoszam}', `idopont`= '{$idopont}', `sorszam`='{$sorszamP}' WHERE users.name = '{$felhasznalo}' AND megrendeles.status = 0 AND megrendeles.szamlazva = 0";

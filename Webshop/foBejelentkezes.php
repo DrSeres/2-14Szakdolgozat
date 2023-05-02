@@ -102,7 +102,7 @@ session_start();
                     </div>
                     <div class="remember-password">
                         <!-- <button onclick="myFunction()">Try it</button> -->
-                        <label for="egyetertek"><input type="checkbox" id="egyetertek" required>Egyetértek a <span onclick="myFunction()" style="text-decoration:underline; cursor:pointer"> szerződési feltételekkel</span> </label>
+                        <label for=""><input type="checkbox" id="egyetertek" required>Egyetértek a <span onclick="myFunction()" style="text-decoration:underline; cursor:pointer" > szerződési feltételekkel</span> </label>
                     </div>
                     <button class="btn" id="re" type="submit">Regisztráció</button>
                     <div class="create-account">
@@ -118,6 +118,7 @@ session_start();
 
         function myFunction() {
             var myWindow = window.open("aszf.html", "", "width=600,height=800");
+            myWindowdocument.body.style.backgroundColor = '#666666';
         }
     </script>
     <script src="js/FoBejelentkezes.js"></script>
